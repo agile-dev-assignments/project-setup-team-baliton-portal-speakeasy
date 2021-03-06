@@ -8,10 +8,10 @@ Daniel Tomkovicz is a Film Major at Tisch NYU pursuing a double major in compute
 Kirill Dolgin is double majoring in Business Science at NYU Stern and Computer Science at NYU CAS.
 [Kirill’s github account link](https://github.com/KirDolgin)
 
-Bill Ziyan Lin 
+Bill Ziyan Lin. 
 [Bill’s github account link](https://github.com/CH33ZED)
 
-Oli Chen Computer Science Major at NYU Shanghai
+Oli Chen Computer Science Major at NYU Shanghai.
 [Oli’s Github account link](https://github.com/solidstatechen)
 
 ### A Short History of Speakeasy and How to Contribute
