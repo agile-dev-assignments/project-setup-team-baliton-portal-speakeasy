@@ -3,13 +3,13 @@ Speakeasy is an audio chat room application that runs directly in the browser. I
 
 ### Core Team Members
 Daniel Tomkovicz is a Film Major at Tisch NYU pursuing a double major in computer science.
-[Dan's github account link](https://github.com/dtomkovicz) \
+[Dan's github account link](https://github.com/dtomkovicz) 
 
 Kirill Dolgin is double majoring in Business Science at NYU Stern and Computer Science at NYU CAS.
-[Kirill’s github account link](https://github.com/KirDolgin)\
+[Kirill’s github account link](https://github.com/KirDolgin)
 
 Bill Ziyan Lin 
-[Bill’s github account link](https://github.com/CH33ZED)\
+[Bill’s github account link](https://github.com/CH33ZED)
 
 Oli Chen Computer Science Major at NYU Shanghai
 [Oli’s Github account link](https://github.com/solidstatechen)
@@ -21,9 +21,9 @@ This project was inspired by the Clubhouse app. We wanted to address specific sh
 
 ### Instructions for Building and Testing The Project (to do at later date)
 ### Related Links
-[Clubhouse App Page Link](https://apps.apple.com/us/app/clubhouse-drop-in-audio-chat/id1503133294)\
+[Clubhouse App Page Link](https://apps.apple.com/us/app/clubhouse-drop-in-audio-chat/id1503133294)
 
-[Ring RTC Open Source Library](https://github.com/signalapp/ringrtc)\
+[Ring RTC Open Source Library](https://github.com/signalapp/ringrtc)
 
-[How to Contribute](https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy/blob/master/CONTRIBUTING.md)\
+[How to Contribute](https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy/blob/master/CONTRIBUTING.md)
 
