@@ -14,6 +14,9 @@ Bill Ziyan Lin.
 Oli Chen Computer Science Major at NYU Shanghai.
 [Oli’s Github account link](https://github.com/solidstatechen)
 
+Sharri Glloxhani is majoring in Computer Science and Mathematics at NYU College of Arts & Science. 
+[Sharri's GitHub account link](https://github.com/SharriGlloxhani)
+
 ### A Short History of Speakeasy and How to Contribute
 This project was inspired by the Clubhouse app. We wanted to address specific shortcomings of clubhouse and create an alternative that is more anonymous while being more accessible to the public. We will develop Speakeasy as a website that is optimized for mobile devices. The tool we use will likely include React (javascript), mongoDB, and the RingRTC library. We will start with creating the base individual webpages. Then we will create and connect the database. Finally, the audio, authentication, and other miscellaneous components will be added and polished. Each group member will test each added functionality at the end of each sprint. 
 
