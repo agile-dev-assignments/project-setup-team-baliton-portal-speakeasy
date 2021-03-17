@@ -1,26 +1,24 @@
 import React from 'react'
 import './App.css';
-import Toplog from './App'
 import './About.css'
 
 const About = (props) => {
-    let profiles = [
-        {
-            "name": "Daniel Tomkovicz",
-            "bio": "Daniel Tomkovicz is a Computer Science/Tisch Film major at NYU.",
-            "github": "github.com/dtomkovicz",
-            "email": "mailto:dht253@nyu.edu"
-        },
-        {
-            "name": "Oil(temp)",
-            "bio": "Oli is a studnet at nyu(temp).",
-            "github": "github.com/dtomkovicz",
-            "email": "mailto:dht253@nyu.edu"
-        }
+    let profileArray = [
+      {
+          "name": "Daniel Tomkovicz",
+          "bio": "Daniel Tomkovicz is a Computer Science/Tisch Film major at NYU.",
+          "github": "github.com/dtomkovicz",
+          "email": "mailto:dht253@nyu.edu"
+      },
+      {
+          "name": "Oil(temp)",
+          "bio": "Oli is a studnet at nyu(temp).",
+          "github": "github.com/dtomkovicz",
+          "email": "mailto:dht253@nyu.edu"
+      }
     ]
     return (
         <div>
-            <Toplog> </Toplog>
             <div className="about-page">
             <h1> About Us!</h1>
             <div className="mission-statement">
@@ -63,30 +61,34 @@ const About = (props) => {
                 (maybe add: email links, github account links)
               </p>
             </div>
-            { 
-            profiles.map(profile => {
-                return (
-                    <Profile key={profile.name}></Profile>
-                )
-            }) 
-            }
+            <ProfileList profiles={profileArray} />
           </div>
-          <h2> All right reserved 2021 </h2>
+          <div id = "bottom">
+            <h2> All right reserved 2021 </h2>
+          </div>
         </div>
     )
 }
 
-const Profile = (props) => {
-    <div className="ProfileEntry">
+const ProfileList = (props) => {
+  const profiles = props.profiles
+  const profileList = profiles.map((profile) => 
+    <li key={profile.name}>
+      <div className="ProfileEntry">
         <h4>
-            {props.name}
-        </h4>
+          {profile.name}
+      </h4>
         <p>
-            {props.bio}
+          {profile.bio}
         </p>
-        <a href={props.github}>{props.name}'s github account.</a>
-        <a href={props.email}>{props.name}'s email link.</a>
-    </div>
+        <a href={profile.github}>{profile.name}'s github account.</a>
+        <a href={profile.email}>{profile.name}'s email link.</a>
+      </div>
+    </li>
+  )
+  return (
+    <ul>{profileList}</ul>
+  )
 }
 
 export default About

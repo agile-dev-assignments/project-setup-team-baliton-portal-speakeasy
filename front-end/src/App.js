@@ -6,14 +6,12 @@ import About from './About'
 function MainPage(prop){                 //need  user name
   return (
     <div>
-      <Toplog> </Toplog>
       <h1 align = "left"> {prop.name} </h1>
       <Link ali = "left" var = "primary" action = "/tagPage" name = "Explore Tags"> </Link>
       <Link ali = "left" var = "primary" action = "/createCallPage" name = "Start Call"> </Link>
       <Link ali = "left" var = "primary" action = "/recentCalls" name = "Recent Calls"> </Link>
       <Textbox ali = "center" mess = "Enter Call Name: " tag = "tag" name = "Join Call"> </Textbox>
       <Link ali = "center" var = "primary" action = "/chatRoom" name = "I am feeling lucky!"> </Link>
-      <Bottom> </Bottom>
     </div>
   );
 }
@@ -23,20 +21,51 @@ function MainPage(prop){                 //need  user name
 
 function App() {
   return (
-    <div className="container">
-      <Router>
-        <Switch>
-          <Route path="/">
-            <MainPage />
-          </Route>
-          <Route path="/about" component={About} />
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/easter">
+          NOT IMPLEMENTED YET
+        </Route>
+        <Route path="/taglist">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/tag">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/recent">
+          <Toplog />
+          <MainPage />
+          <Bottom />
+        </Route>
+        <Route path="/createcall">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/chatroom">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/about">
+          <Toplog />
+          <About />
+        </Route>
+        <Route path="/">
+          <Toplog />
+          <MainPage />
+          <Bottom />
+        </Route>
+      </Switch>
+     </Router>
   );
 }
 
-function Toplog(prop) {
+export const Toplog = (props) => {
   return (
     <div id = "top">
       <div id = "nickname">
@@ -78,3 +107,4 @@ function Bottom() {
 }
 
 export default App;
+
