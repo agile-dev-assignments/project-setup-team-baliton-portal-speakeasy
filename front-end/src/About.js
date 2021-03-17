@@ -5,17 +5,35 @@ import './About.css'
 const About = (props) => {
     let profileArray = [
       {
-          "name": "Daniel Tomkovicz",
-          "bio": "Daniel Tomkovicz is a Computer Science/Tisch Film major at NYU.",
-          "github": "github.com/dtomkovicz",
-          "email": "mailto:dht253@nyu.edu"
+        "name": "Daniel Tomkovicz",
+        "bio": "Daniel Tomkovicz is a Computer Science/Tisch Film major at NYU.",
+        "github": "github.com/dtomkovicz",
+        "email": "mailto:dht253@nyu.edu"
       },
       {
-          "name": "Oil(temp)",
-          "bio": "Oli is a studnet at nyu(temp).",
-          "github": "github.com/dtomkovicz",
-          "email": "mailto:dht253@nyu.edu"
-      }
+        "name": "Oil Chen",
+         "bio": "Oli is a student at nyu and the man behind the idea for Speakeasy.",
+        "github": "github.com/solidstatechen",
+        "email": "mailto:oac240@nyu.edu"
+      },
+      {
+        "name": "Sharri Glloxhani",
+        "bio": "Sharri is a student at New York University. Former application developer at Cambrian Analytics..",
+        "github": "github.com/solidstatechen",
+        "email": "mailto:sg4335@nyu.edu"
+      },
+      {
+        "name": "Ziyan Lin",
+        "bio": "Ziyan is a student at NYU.",
+        "github": "github.com/CH33ZED",
+        "email": "mailto:bzl207@nyu.edu"
+      },
+      {
+        "name": "Kirill Dolgin",
+        "bio": "Kirill is a student at Stern NYU.",
+        "github": "github.com/KirDolgin",
+        "email": "mailto:kd1881@stern.nyu.edu"
+      },
     ]
     return (
         <div>
@@ -34,34 +52,8 @@ const About = (props) => {
               </p>
             </div>
             <div className="team-profiles">
-              <h2> Meet the Team:</h2>
-              <h4> Daniel Tomkovicz</h4>
-              <p>
-                Daniel Tomkovicz is a Computer Science/Tisch Film major at NYU.
-                (maybe add: email links, github account links)
-              </p>
-              <h4> team member 2</h4>
-              <p>
-                Place holder team member 2
-                (maybe add: email links, github account links)
-              </p>
-              <h4> team member 3</h4>
-              <p>
-                Place holder team member 3
-                (maybe add: email links, github account links)
-              </p>
-              <h4> team member 4</h4>
-              <p>
-                Place holder team member 4
-                (maybe add: email links, github account links)
-              </p>
-              <h4> team member 5</h4>
-              <p>
-                Place holder team member 5
-                (maybe add: email links, github account links)
-              </p>
+              <ProfileList profiles={profileArray} />
             </div>
-            <ProfileList profiles={profileArray} />
           </div>
           <div id = "bottom">
             <h2> All right reserved 2021 </h2>

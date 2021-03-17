@@ -1,7 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import About from './About'
-
+import About from '/About.js';
 
 function MainPage(prop){                 //need  user name
   return (
@@ -104,4 +103,3 @@ function Bottom() {
 }
 
 export default App;
-
