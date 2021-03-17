@@ -18,7 +18,7 @@ const About = (props) => {
       },
       {
         "name": "Sharri Glloxhani",
-        "bio": "Sharri is a student at New York University. Former application developer at Cambrian Analytics..",
+        "bio": "Sharri is a student at New York University. Former application developer at Cambrian Analytics.",
         "github": "github.com/solidstatechen",
         "email": "mailto:sg4335@nyu.edu"
       },
@@ -52,6 +52,7 @@ const About = (props) => {
               </p>
             </div>
             <div className="team-profiles">
+              <h2> Team Members:</h2>
               <ProfileList profiles={profileArray} />
             </div>
           </div>
