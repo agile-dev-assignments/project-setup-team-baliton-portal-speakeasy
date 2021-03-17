@@ -3,6 +3,10 @@ import './App.css';
 import './About.css'
 
 const About = (props) => {
+    //set up such that team member profiles are modular
+    //so that you can add extra team members and they 
+    //will automatically look the same, using this array
+    //of objects:
     let profileArray = [
       {
         "name": "Daniel Tomkovicz",
