@@ -1,32 +1,67 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 function MainPage(prop){                 //need  user name
   return (
     <div>
-      <Toplog> </Toplog>
       <h1 align = "left"> {prop.name} </h1>
       <Link ali = "left" var = "primary" action = "/tagPage" name = "Explore Tags"> </Link>
       <Link ali = "left" var = "primary" action = "/createCallPage" name = "Start Call"> </Link>
       <Link ali = "left" var = "primary" action = "/recentCalls" name = "Recent Calls"> </Link>
       <Textbox ali = "center" mess = "Enter Call Name: " tag = "tag" name = "Join Call"> </Textbox>
       <Link ali = "center" var = "primary" action = "/chatRoom" name = "I am feeling lucky!"> </Link>
-      <Bottom> </Bottom>
     </div>
   );
 }
-
 
 function App() {
   return (
-    <div className="App">
-      <MainPage></MainPage>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/easter">
+          NOT IMPLEMENTED YET
+        </Route>
+        <Route path="/taglist">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/tag">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/recent">
+          <Toplog />
+          <MainPage />
+          <Bottom />
+        </Route>
+        <Route path="/createcall">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/chatroom">
+          <Toplog />
+          NOT IMPLEMENTED YET
+          <Bottom />
+        </Route>
+        <Route path="/about">
+          <Toplog />
+          NOT IMPLEMENTED YET
+        </Route>
+        <Route path="/">
+          <Toplog />
+          <MainPage />
+          <Bottom />
+        </Route>
+      </Switch>
+     </Router>
   );
 }
 
-function Toplog(prop) {
+export const Toplog = (props) => {
   return (
     <div id = "top">
       <div id = "nickname">
@@ -61,7 +96,7 @@ function Textbox(prop) {
 function Bottom() {
   return (
     <div id = "bottom">
-      <Link ali = "center" var = "primary" action = "/aboutUs" name = "About us" id = 'au'> </Link>
+      <Link ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Link>
       <h2> All right reserved 2021 </h2>
     </div>
   );
