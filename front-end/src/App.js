@@ -15,9 +15,6 @@ function MainPage(prop){                 //need  user name
     </div>
   );
 }
-//<div className="App">
-//      <MainPage></MainPage>
-//    </div>
 
 function App() {
   return (
