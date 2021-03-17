@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-//import About from '/About.js';
+import About from '/About';
 
 function MainPage(prop){                 //need  user name
   return (
@@ -49,6 +49,7 @@ function App() {
         </Route>
         <Route path="/about">
           <Toplog />
+          <About />
         </Route>
         <Route path="/">
           <Toplog />
