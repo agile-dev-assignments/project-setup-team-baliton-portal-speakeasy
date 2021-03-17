@@ -1,6 +1,6 @@
 import './App.css';
 import MainPage from './MainPage.js';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 
 
@@ -24,7 +24,7 @@ function App() {
         </Route>
         <Route path="/recent">
           <Toplog />
-          <MainPage />
+          NOT IMPLEMENTED YET
           <Bottom />
         </Route>
         <Route path="/createcall">
@@ -62,11 +62,11 @@ export const Toplog = (props) => {
   );
 }
 
-function Link(prop) {
+function Linker(prop) {
   return (
     <div align = {prop.ali}>
-      <button variant = {prop.var} href = {prop.action} className = "buttons" id = {prop.id}>  {prop.name}
-      </button>
+      <Link variant = {prop.var} to = {prop.action} className = "buttons" id = {prop.id}>  {prop.name}
+      </Link>
     </div>
   );
 }
@@ -86,11 +86,11 @@ function Textbox(prop) {
 function Bottom() {
   return (
     <div id = "bottom">
-      <Link ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Link>
+      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Linker>
       <h2> All right reserved 2021 </h2>
     </div>
   );
 }
 
 export default App;
-export {Link , Textbox};
+export {Linker , Textbox};
