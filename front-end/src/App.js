@@ -1,5 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import About from './About'
 
 
 function MainPage(prop){                 //need  user name
@@ -16,12 +17,21 @@ function MainPage(prop){                 //need  user name
     </div>
   );
 }
-
+//<div className="App">
+//      <MainPage></MainPage>
+//    </div>
 
 function App() {
   return (
-    <div className="App">
-      <MainPage></MainPage>
+    <div className="container">
+      <Router>
+        <Switch>
+          <Route path="/">
+            <MainPage />
+          </Route>
+          <Route path="/about" component={About} />
+        </Switch>
+      </Router>
     </div>
   );
 }
@@ -61,7 +71,7 @@ function Textbox(prop) {
 function Bottom() {
   return (
     <div id = "bottom">
-      <Link ali = "center" var = "primary" action = "/aboutUs" name = "About us" id = 'au'> </Link>
+      <Link ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Link>
       <h2> All right reserved 2021 </h2>
     </div>
   );
