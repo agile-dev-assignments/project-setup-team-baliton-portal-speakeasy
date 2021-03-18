@@ -1,9 +1,7 @@
 import './App.css';
-import MainPage from './MainPage.js';
+import MainPage from './MainPage';
+import About from './About'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-
-
-
 
 function App() {
   return (
@@ -39,7 +37,7 @@ function App() {
         </Route>
         <Route path="/about">
           <Toplog />
-          NOT IMPLEMENTED YET
+          <About />
         </Route>
         <Route path="/">
           <Toplog />

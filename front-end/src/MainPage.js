@@ -1,7 +1,5 @@
 import './App.css';
 import {Linker, Textbox} from './App.js';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
 
 const MainPage = (prop) => {                 //need  user name
   return (
