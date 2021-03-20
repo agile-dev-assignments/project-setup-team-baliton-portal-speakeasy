@@ -56,7 +56,9 @@ function App() {
 function Linker(prop) {
   return (
     <div align = {prop.ali}>
-      <Link variant = {prop.var} to = {prop.action} className = "buttons" id = {prop.id}>  {prop.name}
+      <Link to = {prop.action}>
+         <button variant = {prop.var} className = "buttons" id = {prop.id}>  {prop.name}
+         </button>
       </Link>
     </div>
   );
