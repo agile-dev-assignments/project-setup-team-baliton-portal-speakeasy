@@ -68,8 +68,6 @@ export const Toplog = (props) => {
       <div id = "nickname">
         <Textbox mess = "Nickname: " tag = "nickname" name = "confirm"> </Textbox>
       </div>
-      {/*Difficulty changing button to new Linker type*/} 
-      <button position = "absolute" bottom = "0"  href = "/easter" id = "topper"> SpeakEasy </button>
     </div>
   );
 }
