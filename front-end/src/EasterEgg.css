@@ -1,0 +1,46 @@
+
+.App {
+    background-color: black;
+    
+  }
+  
+  .background {
+    background-size:contain;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    position: absolute;
+    width: 1000px;
+    height:900px;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  
+  #easterButton {
+    background-color:transparent;
+    position: relative;
+    margin-top: 150px;
+    margin-right:200px;
+    width:60px;
+    height:0px;
+  
+  }
