@@ -71,7 +71,6 @@ export const Toplog = (props) => {
         <Textbox mess = "Nickname: " tag = "nickname" name = "confirm"> </Textbox>
       </div>
       <Linker ali = "left" var = "primary" action = "/easter" name = "Speakeasy" id = 'au'> </Linker>
-
     </div>
   );
 }
