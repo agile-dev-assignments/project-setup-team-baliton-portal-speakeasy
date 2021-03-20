@@ -42,7 +42,7 @@ const Chatroom = () => {
 
 
     return (
-        <div>
+        <div class="chatroom">
             <h1>Welcome to *insertChatroomName</h1>
             <div id="moderatorContainer">
                 <div id="leftCon">
