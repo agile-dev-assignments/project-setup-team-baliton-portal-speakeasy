@@ -2,7 +2,7 @@
     display: flex;
     background-color: lightgrey;
     border-radius: 5px;
-    margin:20px;
+    margin:0px 20px 20px 20px;
 
 
 }
@@ -25,6 +25,7 @@ button {
 
 h1 {
     padding-top: 20px;
+    padding-bottom: 20px;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -84,4 +85,29 @@ width: 100%;
   overflow: auto;
   white-space: nowrap;
   margin: 20px auto;
+}
+
+#moderatorContainer{
+    width: 97%;
+    display: inline-block;
+    overflow: auto;
+    display: inline-block;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin-left: 1.5%;
+    
+    border: 0.5px solid grey;
+}
+
+#leftCon{
+    float: left;
+    margin-left: 15% ;
+
+    
+    }
+
+#rightCon{
+    float: right;
+    margin-right: 15%;
+
 }
