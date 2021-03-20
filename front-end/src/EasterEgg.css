@@ -1,6 +1,6 @@
 
   
-  .background {
+  .easter .background {
     background-size:contain;
     text-align: center;
     background-repeat: no-repeat;
@@ -11,31 +11,30 @@
     height:900px;
   }
   
-  .App-logo {
+  .easter .App-logo {
     height: 40vmin;
     pointer-events: none;
   }
   
-  .App-header {
+  .easter .App-header {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
   }
   
-  .App-link {
+  .easter .App-link {
     color: #61dafb;
   }
   
   
-  #easterButton {
+  .easter #easterButton {
     background-color:transparent;
     position: relative;
-    margin-top: 150px;
-    margin-right:200px;
-    width:60px;
-    height:0px;
+    margin-top: 50px;
+    margin-left:-225px;
+    width:70px;
+    height:100px;
   }
