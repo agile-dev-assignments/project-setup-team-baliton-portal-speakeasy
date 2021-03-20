@@ -1,11 +1,87 @@
-.speakerPool {
-    
+.speakersPool {
+    display: flex;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin:20px;
 
 
 }
 
 .listenersPool {
+    display: flex;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin:20px;
 
 
+}
 
+button {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+}
+
+h1 {
+    padding-top: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+}
+
+.profile-container{
+    background-color: #333333;
+    border-radius: 100%;
+}
+
+ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+li {
+    display: inline;
+    padding: 10px;
+    float: left;
+}
+
+
+li a:hover {
+    
+    
+    background-color: red;
+}
+
+li a {
+    width:30px;
+    height: 30px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px ;
+    text-decoration: none;
+}
+
+#muffleButton{
+    margin-left: 100px;
+    float: left;
+    width: 200px;
+}
+
+#endButton {
+    width: 200px;
+    float: right;
+    margin-right: 100px ;}
+
+#buttonContainer {
+width: 100%;
+  display: inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin: 20px auto;
 }

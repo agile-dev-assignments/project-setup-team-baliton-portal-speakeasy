@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './Chatroom.css'
 const Chatroom = () => {
 
-    let userArray = [
+    let speakersArray = [
         {
           "name": "Daniel",
         },
@@ -20,20 +20,51 @@ const Chatroom = () => {
         },
       ]
 
+      let listenersArray = [
+        {
+          "name": "Elon",
+        },
+        {
+          "name": "Bill Gates",
+        },
+        {
+          "name": "Venus Williams",
+        },
+        {
+          "name": "Obama",
+        },
+        {
+          "name": "Einstein",
+        },
+      ]
+
+
     return (
         <div>
             <h1>Welcome to *insertChatroomName</h1>
-            
+            <div id="moderatorContainer">
+                <div id="leftCon">
+                    <p>Moderator</p>
+                    <p>CALL TAG(link)</p>
+                </div>
+                <div id="rightCon">
+                    <p>Call Duration: XX</p>
+                    <p>Number people: X</p>
+                </div>
+            </div>
             <div class="speakersPool">
-                <UserList profiles={userArray} />
+                <UserList profiles={speakersArray} />
             </div>
 
             <button>Join Speakers</button>
 
             <div class="listenersPool">
-                <UserList profiles={userArray} />
+                <UserList profiles={listenersArray} />
             </div>
-
+            <div id="buttonContainer">
+                <button id="muffleButton">Muffle Voice</button>
+                <button id="endButton">Leave/End Call</button>
+            </div>
         </div>
     )
 }
@@ -42,14 +73,12 @@ const Chatroom = () => {
 const UserList = (props) => {
     const profiles = props.profiles
     const userList = profiles.map((profile) => 
+    <ul >
       <li key={profile.name}>
-        <div className="profile-details">
-          <h4 className="profile-entry">
+        <div className="profile-container">
+          <a className="profile-entry">
             {profile.name}
-          </h4>
-          <p className="profile-entry">
-            {profile.bio}
-          </p>
+          </a>
           {/*}
           <ul>
             <li>
@@ -62,6 +91,7 @@ const UserList = (props) => {
 */}
         </div>
       </li>
+    </ul>
     )
     return (
       <ul className="user-list">
