@@ -2,6 +2,7 @@ import './App.css';
 import MainPage from './MainPage';
 import About from './About'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Chatroom from './Chatroom'
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
         </Route>
         <Route path="/chatroom">
           <Toplog />
-          NOT IMPLEMENTED YET
+          <Chatroom/>
           <Bottom />
         </Route>
         <Route path="/about">
@@ -84,7 +85,7 @@ function Textbox(prop) {
 function Bottom() {
   return (
     <div id = "bottom">
-      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Linker>
+      <Linker ali = "center" var = "primary" action = "/chatroom" name = "About us" id = 'au'> </Linker>
       <h2> All right reserved 2021 </h2>
     </div>
   );
