@@ -69,6 +69,8 @@ export const Toplog = (props) => {
       <div id = "nickname">
         <Textbox mess = "Nickname: " tag = "nickname" name = "confirm"> </Textbox>
       </div>
+      <Linker ali = "left" var = "primary" action = "/easter" name = "Speakeasy" id = 'au'> </Linker>
+
     </div>
   );
 }
@@ -90,7 +92,7 @@ function Textbox(prop) {
 function Bottom() {
   return (
     <div id = "bottom">
-      <Linker ali = "center" var = "primary" action = "/chatroom" name = "About us" id = 'au'> </Linker>
+      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Linker>
       <h2> All right reserved 2021 </h2>
     </div>
   );
