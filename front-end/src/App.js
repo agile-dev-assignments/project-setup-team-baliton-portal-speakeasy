@@ -5,14 +5,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Chatroom from './Chatroom'
 import EasterEgg from './EasterEgg'
 
+
 function App() {
   return (
     <Router>
       <Switch>
         <Route path="/easter">
-        <Toplog />
           <EasterEgg/>
-          <Bottom />
         </Route>
         <Route path="/taglist">
           <Toplog />

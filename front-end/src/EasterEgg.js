@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './EasterEgg.css';
-// import Button from 'react-bootstrap/Button';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import background from "./front-page-background.png"
 
 

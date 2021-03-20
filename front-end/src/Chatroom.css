@@ -1,4 +1,4 @@
-.speakersPool {
+.chatroom .speakersPool {
     display: flex;
     background-color: lightgrey;
     border-radius: 5px;
@@ -7,7 +7,7 @@
 
 }
 
-.listenersPool {
+.chatroom .listenersPool {
     display: flex;
     background-color: lightgrey;
     border-radius: 5px;
@@ -16,14 +16,14 @@
 
 }
 
-button {
+.chatroom button {
     justify-content: center;
     display: flex;
     align-items: center;
     margin:0 auto;
 }
 
-h1 {
+.chatroom h1 {
     padding-top: 20px;
     padding-bottom: 20px;
     justify-content: center;
@@ -37,7 +37,7 @@ h1 {
     border-radius: 100%;
 }
 
-ul {
+.chatroom ul {
     display: inline;
     list-style-type: none;
     margin: 0;
@@ -45,20 +45,20 @@ ul {
     overflow: hidden;
 }
 
-li {
+.chatroom li {
     display: inline;
     padding: 10px;
     float: left;
 }
 
 
-li a:hover {
+.chatroom li a:hover {
     
     
     background-color: red;
 }
 
-li a {
+.chatroom li a {
     width:30px;
     height: 30px;
     display: block;

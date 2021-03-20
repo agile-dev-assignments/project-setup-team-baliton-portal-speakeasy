@@ -1,5 +1,7 @@
 import React from 'react'
 import './Chatroom.css'
+
+
 const Chatroom = () => {
 
     let speakersArray = [
@@ -94,9 +96,11 @@ const UserList = (props) => {
     </ul>
     )
     return (
-      <ul className="user-list">
-        {userList}
-      </ul>
+      <div class="chatroom">
+        <ul className="user-list">
+          {userList}
+        </ul>
+      </div>
     )
   }
 
