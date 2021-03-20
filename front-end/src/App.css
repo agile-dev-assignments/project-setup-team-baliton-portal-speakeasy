@@ -71,8 +71,10 @@ input#submitcall{
 }
 
 button#au{
-  width: 100%;
   size: lg;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 div#nickname{
