@@ -3,24 +3,24 @@ import MainPage from './MainPage';
 import About from './About'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Chatroom from './Chatroom'
+import TagList from './TagList'
+import TagPage from './TagPage'
 import EasterEgg from './EasterEgg'
+//import CreateNewCall from './CreateNewCall'
 
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/easter">
-          <EasterEgg/>
-        </Route>
         <Route path="/taglist">
           <Toplog />
-          NOT IMPLEMENTED YET
+            <TagListWithTags />
           <Bottom />
         </Route>
-        <Route path="/tag">
+        <Route path="/tagpage">
           <Toplog />
-          NOT IMPLEMENTED YET
+            <TagPageWithCalls />
           <Bottom />
         </Route>
         <Route path="/recent">
@@ -42,10 +42,13 @@ function App() {
           <Toplog />
           <About />
         </Route>
-        <Route path="/">
+        <Route path="/main">
           <Toplog />
           <MainPage />
           <Bottom />
+        </Route>
+        <Route path="/">
+          <EasterEgg/>
         </Route>
       </Switch>
      </Router>
@@ -64,13 +67,13 @@ function Linker(prop) {
 }
 
 
-export const Toplog = (props) => {
+const Toplog = (props) => {
   return (
     <div id = "top">
       <div id = "nickname">
         <Textbox mess = "Nickname: " tag = "nickname" name = "confirm"> </Textbox>
       </div>
-      <Linker ali = "left" var = "primary" action = "/easter" name = "Speakeasy" id = 'au'></Linker>
+      <Linker ali = "left" var = "primary" action = "/main" name = "Speakeasy" id = 'au'></Linker>
 
     </div>
   );
@@ -81,7 +84,7 @@ export const Toplog = (props) => {
 function Textbox(prop) {
   return (
     <div align = {prop.ali}>
-     <form action="/callPage">
+     <form action="/chatroom">
        <label form="tag"><b>{prop.mess}</b></label>
        <input type="text" id={prop.tag} name = {prop.tag}/><br/><br/>
        <input type="submit" value= {prop.name} id = "submitcall"/>
@@ -99,5 +102,66 @@ function Bottom() {
   );
 }
 
+const TagListWithTags = () => {
+  const tags = [
+    {
+      'tagName': 'TAG NAME 1',
+      'link': 'tagpage',
+      'numPeople': 123,
+      'numCalls': 456
+    },
+    {
+      'tagName': 'TAG NAME 2',
+      'link': 'tagpage',
+      'numPeople': 987,
+      'numCalls': 34
+    },
+    {
+      'tagName': 'TAG NAME 3',
+      'link': 'tagpage',
+      'numPeople': 9867,
+      'numCalls': 324
+    },
+    {
+      'tagName': 'TAG NAME 4',
+      'link': 'tagpage',
+      'numPeople': 28,
+      'numCalls': 35
+    }
+  ]
+  return <TagList tags={tags} />
+}
+
+const TagPageWithCalls = () => {
+  const calls = [
+    {
+      'callName': 'CALL NAME 1',
+      'link': 'chatroom',
+      'numPeople': 536,
+      'duration': 9.1
+    },
+    {
+      'callName': 'CALL NAME 2',
+      'link': 'chatroom',
+      'numPeople': 251,
+      'duration': 548.2
+    },
+    {
+      'callName': 'CALL NAME 3',
+      'link': 'chatroom',
+      'numPeople': 941,
+      'duration': 32.7
+    },
+    {
+      'callName': 'CALL NAME 4',
+      'link': 'chatroom',
+      'numPeople': 151,
+      'duration': 43.2
+    }
+  ]
+  return <TagPage calls={calls} />
+}
+
+
 export default App;
-export {Linker , Textbox};
+export {Linker , Textbox, Toplog, Bottom};

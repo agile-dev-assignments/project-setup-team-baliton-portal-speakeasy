@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Router, Switch } from 'react-router';
+import {Toplog, Bottom} from './App.js';
 import './EasterEgg.css';
-
+import MainPage from './MainPage';
 import background from "./front-page-background.png"
 
 
@@ -10,14 +10,20 @@ const EasterEgg = () => {
     const [count, setCount] = useState(0);
   
     if (count === 3){
-      alert("3 reached!");
-      
+      alert("Welcome back");
+      return (
+        <div>
+          <Toplog />
+          <MainPage />
+          <Bottom />
+        </div>
+      )
     }
     return (
       <div className="easter" >
         <header className="App-header" >
           <div className="background" style={{ backgroundImage:`url(${background})` }}>
-            <p>clicked {count} yes </p>
+          <p id="counter">clicked {count} yes </p>
               <button id="easterButton" onClick={() => setCount(count + 1)}></button>
           </div>
         </header>

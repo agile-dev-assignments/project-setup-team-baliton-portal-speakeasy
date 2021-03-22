@@ -37,4 +37,12 @@
     margin-left:-225px;
     width:70px;
     height:100px;
+    background:transparent;
+    border:none;
+    outline:none;
+  }
+
+  .easter #counter {
+
+    visibility: hidden;
   }

@@ -17,7 +17,7 @@ const About = (props) => {
       },
       {
         "name": "Oil Chen",
-         "bio": "Oli is a student at nyu and the man behind the idea for Speakeasy.",
+        "bio": "Oli is a student at nyu and the man behind the idea for Speakeasy.",
         "github": "https:/github.com/solidstatechen",
         "email": "mailto:oac240@nyu.edu"
       },
