@@ -33,7 +33,7 @@ const CreateNewCall = (prop) => {
       },
     ]
   return (
-        <div>
+        <div class="createNewCall">
             <h1 align="center">Create New Call</h1>
             <Textbox ali = "center" mess = "Enter Call Name: " tag = "tag"> </Textbox>
 
@@ -48,7 +48,9 @@ const CreateNewCall = (prop) => {
             <label for="new_tag">Enter New Tag:</label>
             <Textbox ali = "center" tag = "tag"> </Textbox>
 
-            <button>Create Call!</button>
+            <div id="buttonCreateContainer">
+              <button id="createCallButton">Create Call!</button>
+            </div>
         </div>
     )
 }
