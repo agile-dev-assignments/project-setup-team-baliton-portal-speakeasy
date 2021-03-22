@@ -34,17 +34,17 @@ const CreateNewCall = (prop) => {
     ]
   return (
         <div class="createNewCall">
-            <h1 align="center">Create New Call</h1>
+            <h1 align="center" id="header">Create New Call</h1>
             <Textbox ali = "center" mess = "Enter Call Name: " tag = "tag"> </Textbox>
 
-            <input type="radio" id="popular_tag" name="choice" value="popular_tag">
+            <input type="radio" id="popularTag" name="choice" value="popular_tag">
             <label for="popular_tag">Choose a Popular Tag:</label><br>
 
             <div className="popular-tags">
               <PopularTagsList tags={popularTagsList} />
             </div>
 
-            <input type="radio" id="new_tag" name="choice" value="new_tag">
+            <input type="radio" id="newTag" name="choice" value="new_tag">
             <label for="new_tag">Enter New Tag:</label>
             <Textbox ali = "center" tag = "tag"> </Textbox>
 
