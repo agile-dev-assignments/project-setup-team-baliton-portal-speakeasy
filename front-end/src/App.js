@@ -3,6 +3,8 @@ import MainPage from './MainPage';
 import About from './About'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Chatroom from './Chatroom'
+import TagList from './TagList'
+import TagPage from './TagPage'
 import EasterEgg from './EasterEgg'
 
 
@@ -15,12 +17,12 @@ function App() {
         </Route>
         <Route path="/taglist">
           <Toplog />
-          NOT IMPLEMENTED YET
+            <TagListWithTags />
           <Bottom />
         </Route>
         <Route path="/tag">
           <Toplog />
-          NOT IMPLEMENTED YET
+            <TagPageWithCalls />
           <Bottom />
         </Route>
         <Route path="/recent">
@@ -98,6 +100,67 @@ function Bottom() {
     </div>
   );
 }
+
+const TagListWithTags = () => {
+  const tags = [
+    {
+      'tagName': 'TAG NAME 1',
+      'link': 'tag',
+      'numPeople': 123,
+      'numCalls': 456
+    },
+    {
+      'tagName': 'TAG NAME 2',
+      'link': 'tag',
+      'numPeople': 987,
+      'numCalls': 34
+    },
+    {
+      'tagName': 'TAG NAME 3',
+      'link': 'tag',
+      'numPeople': 9867,
+      'numCalls': 324
+    },
+    {
+      'tagName': 'TAG NAME 4',
+      'link': 'tag',
+      'numPeople': 28,
+      'numCalls': 35
+    }
+  ]
+  return <TagList tags={tags} />
+}
+
+const TagPageWithCalls = () => {
+  const calls = [
+    {
+      'callName': 'CALL NAME 1',
+      'link': 'call1',
+      'numPeople': 536,
+      'duration': 9.1
+    },
+    {
+      'callName': 'CALL NAME 2',
+      'link': 'call2',
+      'numPeople': 251,
+      'duration': 548.2
+    },
+    {
+      'callName': 'CALL NAME 3',
+      'link': 'call3',
+      'numPeople': 941,
+      'duration': 32.7
+    },
+    {
+      'callName': 'CALL NAME 4',
+      'link': 'call4',
+      'numPeople': 151,
+      'duration': 43.2
+    }
+  ]
+  return <TagPage calls={calls} />
+}
+
 
 export default App;
 export {Linker , Textbox};
