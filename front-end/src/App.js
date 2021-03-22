@@ -7,20 +7,18 @@ import TagList from './TagList';
 import TagPage from './TagPage';
 import EasterEgg from './EasterEgg';
 import Logo from './speakeasyLogo.PNG';
+//import CreateNewCall from './CreateNewCall'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/easter">
-          <EasterEgg/>
-        </Route>
         <Route path="/taglist">
           <Toplog />
             <TagListWithTags />
           <Bottom />
         </Route>
-        <Route path="/tag">
+        <Route path="/tagpage">
           <Toplog />
             <TagPageWithCalls />
           <Bottom />
@@ -44,10 +42,13 @@ function App() {
           <Toplog />
           <About />
         </Route>
-        <Route path="/">
+        <Route path="/main">
           <Toplog />
           <MainPage />
           <Bottom />
+        </Route>
+        <Route path="/">
+          <EasterEgg/>
         </Route>
       </Switch>
      </Router>
@@ -66,7 +67,7 @@ function Linker(prop) {
 }
 
 
-export const Toplog = (props) => {
+const Toplog = (props) => {
   return (
     <div id = "top">
       <div id = "nickname">
@@ -85,7 +86,7 @@ export const Toplog = (props) => {
 function Textbox(prop) {
   return (
     <div align = {prop.ali}>
-     <form action="/callPage">
+     <form action="/chatroom">
        <label form="tag"><b>{prop.mess}</b></label>
        <input type="text" id={prop.tag} name = {prop.tag}/><br/><br/>
        <input type="submit" value= {prop.name} id = "submitcall"/>
@@ -107,25 +108,25 @@ const TagListWithTags = () => {
   const tags = [
     {
       'tagName': 'TAG NAME 1',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 123,
       'numCalls': 456
     },
     {
       'tagName': 'TAG NAME 2',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 987,
       'numCalls': 34
     },
     {
       'tagName': 'TAG NAME 3',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 9867,
       'numCalls': 324
     },
     {
       'tagName': 'TAG NAME 4',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 28,
       'numCalls': 35
     }
@@ -137,25 +138,25 @@ const TagPageWithCalls = () => {
   const calls = [
     {
       'callName': 'CALL NAME 1',
-      'link': 'call1',
+      'link': 'chatroom',
       'numPeople': 536,
       'duration': 9.1
     },
     {
       'callName': 'CALL NAME 2',
-      'link': 'call2',
+      'link': 'chatroom',
       'numPeople': 251,
       'duration': 548.2
     },
     {
       'callName': 'CALL NAME 3',
-      'link': 'call3',
+      'link': 'chatroom',
       'numPeople': 941,
       'duration': 32.7
     },
     {
       'callName': 'CALL NAME 4',
-      'link': 'call4',
+      'link': 'chatroom',
       'numPeople': 151,
       'duration': 43.2
     }
@@ -165,4 +166,4 @@ const TagPageWithCalls = () => {
 
 
 export default App;
-export {Linker , Textbox};
+export {Linker , Textbox, Toplog, Bottom};

@@ -16,7 +16,7 @@ const TagList = (props) => {
             {tags}
           </div>
           <div className="grayButton">
-            <a href="">
+            <a href="/taglist">
               LOAD MORE TAGS
             </a>
           </div>

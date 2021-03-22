@@ -15,7 +15,7 @@ const TagPage = (props) => {
             {calls}
           </div>
           <div className="grayButton">
-            <a href="">
+            <a href="/tagpage">
               LOAD MORE CALLS WITH TAG XXXX
             </a>
           </div>
