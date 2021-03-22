@@ -1,5 +1,6 @@
 import React from 'react'
 import './Chatroom.css'
+import {Linker} from './App.js';
 
 
 const Chatroom = () => {
@@ -65,7 +66,7 @@ const Chatroom = () => {
             </div>
             <div id="buttonContainer">
                 <button id="muffleButton">Muffle Voice</button>
-                <button id="endButton">Leave/End Call</button>
+                <Linker id="endButton" var = "primary" action = "/main" name = "Leave/End Call"> </Linker>
             </div>
         </div>
     )

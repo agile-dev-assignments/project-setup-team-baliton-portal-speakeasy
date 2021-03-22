@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import {Toplog, Bottom} from './App.js';
 import './EasterEgg.css';
-
+import MainPage from './MainPage';
 import background from "./front-page-background.png"
 
 
@@ -10,6 +11,13 @@ const EasterEgg = () => {
   
     if (count === 3){
       alert("3 reached!");
+      return (
+        <div>
+          <Toplog />
+          <MainPage />
+          <Bottom />
+        </div>
+      )
     }
     return (
       <div className="App" >

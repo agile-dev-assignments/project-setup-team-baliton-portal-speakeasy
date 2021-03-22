@@ -18,7 +18,7 @@ function App() {
             <TagListWithTags />
           <Bottom />
         </Route>
-        <Route path="/tag">
+        <Route path="/tagpage">
           <Toplog />
             <TagPageWithCalls />
           <Bottom />
@@ -67,7 +67,7 @@ function Linker(prop) {
 }
 
 
-export const Toplog = (props) => {
+const Toplog = (props) => {
   return (
     <div id = "top">
       <div id = "nickname">
@@ -106,25 +106,25 @@ const TagListWithTags = () => {
   const tags = [
     {
       'tagName': 'TAG NAME 1',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 123,
       'numCalls': 456
     },
     {
       'tagName': 'TAG NAME 2',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 987,
       'numCalls': 34
     },
     {
       'tagName': 'TAG NAME 3',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 9867,
       'numCalls': 324
     },
     {
       'tagName': 'TAG NAME 4',
-      'link': 'tag',
+      'link': 'tagpage',
       'numPeople': 28,
       'numCalls': 35
     }
@@ -164,4 +164,4 @@ const TagPageWithCalls = () => {
 
 
 export default App;
-export {Linker , Textbox};
+export {Linker , Textbox, Toplog, Bottom};
