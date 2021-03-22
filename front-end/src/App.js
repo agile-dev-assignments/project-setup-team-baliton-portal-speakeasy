@@ -1,12 +1,12 @@
 import './App.css';
 import MainPage from './MainPage';
-import About from './About'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Chatroom from './Chatroom'
-import TagList from './TagList'
-import TagPage from './TagPage'
-import EasterEgg from './EasterEgg'
-
+import About from './About';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Chatroom from './Chatroom';
+import TagList from './TagList';
+import TagPage from './TagPage';
+import EasterEgg from './EasterEgg';
+import Logo from './speakeasyLogo.PNG';
 
 function App() {
   return (
@@ -71,9 +71,11 @@ export const Toplog = (props) => {
     <div id = "top">
       <div id = "nickname">
         <Textbox mess = "Nickname: " tag = "nickname" name = "confirm"> </Textbox>
-      </div>
-      <Linker ali = "left" var = "primary" action = "/easter" name = "Speakeasy" id = 'au'></Linker>
 
+      </div>
+      <Link to = "/main">
+        <img className="logo" alt="" src={Logo} />
+      </Link>
     </div>
   );
 }
