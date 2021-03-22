@@ -11,6 +11,7 @@ const EasterEgg = () => {
   
     if (count === 3){
       alert("Welcome back");
+      
       return (
         <div>
           <Toplog />
@@ -20,7 +21,7 @@ const EasterEgg = () => {
       )
     }
     return (
-      <div className="easter" >
+      <div className="easter" id="easterDiv" >
         <header className="App-header" >
           <div className="background" style={{ backgroundImage:`url(${background})` }}>
           <p id="counter">clicked {count} yes </p>

@@ -23,6 +23,7 @@
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
+    background-color: black;
   }
   
   .easter .App-link {
@@ -32,17 +33,23 @@
   
   .easter #easterButton {
     background-color:transparent;
-    position: relative;
-    margin-top: 50px;
-    margin-left:-225px;
-    width:70px;
+    position:static;
+    margin-top: 5%;
+    margin-left:-20%;
+    width:110px;
     height:100px;
     background:transparent;
-    border:none;
-    outline:none;
+    border: none;
+    outline: none;
   }
 
   .easter #counter {
 
     visibility: hidden;
+  }
+
+  #easterContainer {
+    width:100%;
+    height: 100%;
+    background-color: black;
   }
