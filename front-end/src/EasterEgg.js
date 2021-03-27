@@ -10,7 +10,8 @@ const EasterEgg = () => {
     const [count, setCount] = useState(0);
   
     if (count === 3){
-      alert("3 reached!");
+      alert("Welcome back");
+      
       return (
         <div>
           <Toplog />
@@ -20,20 +21,17 @@ const EasterEgg = () => {
       )
     }
     return (
-      <div className="App" >
-        
+      <div className="easter" id="easterDiv" >
         <header className="App-header" >
-        
-        <div className="background" style={{ backgroundImage:`url(${background})` }}>
-          <p>clicked {count} yes </p>
-            <button id="easterButton" onClick={() => setCount(count + 1)}></button>
-        </div>
-        
-       
+          <div className="background" style={{ backgroundImage:`url(${background})` }}>
+          <p id="counter">clicked {count} yes </p>
+              <button id="easterButton" onClick={() => setCount(count + 1)}></button>
+          </div>
         </header>
-       
       </div>
     )
   }
+
+  
 
   export default EasterEgg;
