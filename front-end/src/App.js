@@ -8,6 +8,7 @@ import TagPage from './TagPage';
 import EasterEgg from './EasterEgg';
 import Logo from './speakeasyLogo.PNG';
 //import CreateNewCall from './CreateNewCall'
+import React, { useState, useRef } from 'react';
 
 function App() {
   return (
@@ -68,11 +69,34 @@ function Linker(prop) {
 
 
 const Toplog = (props) => {
+  const [nick, setNickname] = useState('')
+  const nicknameRef = useRef()
+
+  function handleNick(e) {
+    const nn = nicknameRef.current.value
+    setNickname(nn);
+  }
+
+  if (nick !== '') {
+    <div id = "top">
+      <div id = "nickname">
+        <h2>
+          {nick}
+        </h2>
+      </div>
+      <Link to = "/main">
+        <img className="logo" alt="" src={Logo} />
+      </Link>
+    </div>
+  }
   return (
     <div id = "top">
       <div id = "nickname">
-        <Textbox mess = "Nickname: " tag = "nickname" name = "confirm"> </Textbox>
-
+        <label><b>Nickname: </b></label>
+        <input ref={nicknameRef} type="text" />
+        <button className="buttons" onClick={handleNick}>
+          Submit
+        </button>
       </div>
       <Link to = "/main">
         <img className="logo" alt="" src={Logo} />
