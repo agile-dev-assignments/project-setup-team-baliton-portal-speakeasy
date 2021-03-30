@@ -28,5 +28,8 @@
   "homepage": "https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
