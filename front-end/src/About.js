@@ -5,7 +5,7 @@ import BannerImage from './speakeasyPhoto.jpg';
 
 const About = (props) => {
     //set up such that team member profiles are modular
-    //so that you can add extra team members and they 
+    //so that you can add extra team members and they
     //will automatically look the same, using this array
     //of objects:
     let profileArray = [
@@ -49,11 +49,11 @@ const About = (props) => {
             <h2> Mission Statement:</h2>
             <section>
               <p>
-                Here at Speakeasy.com we strive to provide a safe space for people all 
-                over the world to come together and chat anonymously. No usernames, 
-                no passwords, no call history! We strive to keep absolutely ZERO data 
-                about our users to ensure complete anominity. Even nicknames are simply 
-                non-unique per-session identifiers that are deleted right when you close 
+                Here at Speakeasy.com we strive to provide a safe space for people all
+                over the world to come together and chat anonymously. No usernames,
+                no passwords, no call history! We strive to keep absolutely ZERO data
+                about our users to ensure complete anominity. Even nicknames are simply
+                non-unique per-session identifiers that are deleted right when you close
                 the website! Grab a seat at the bar and enjoy your time here at Speakeasy.
               </p>
             </section>
@@ -72,7 +72,7 @@ const About = (props) => {
 
 const ProfileList = (props) => {
   const profiles = props.profiles
-  const profileList = profiles.map((profile) => 
+  const profileList = profiles.map((profile) =>
     <li key={profile.name}>
       <div className="profile-details">
         <h4 className="profile-entry">
