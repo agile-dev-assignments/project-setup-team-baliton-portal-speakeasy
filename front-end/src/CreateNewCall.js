@@ -1,4 +1,5 @@
 import React from 'react';
+import {Linker, Textbox} from './App.js';
 import './App.css';
 import './CreateNewCall.css';
 
@@ -20,51 +21,64 @@ const CreateNewCall = (prop) => {
         "name": "Movies",
       },
       {
-        "name": "Books";
+        "name": "Books",
       },
       {
-        "name": "Pandemic";
+        "name": "Pandemic",
       },
       {
-        "name": "Money";
+        "name": "Money",
       },
       {
-        "name": "Investing";
+        "name": "Investing",
       },
     ]
   return (
         <div class="createNewCall">
-            <h1 align="center" id="header">Create New Call</h1>
-            <Textbox ali = "center" mess = "Enter Call Name: " tag = "tag"> </Textbox>
 
-            <input type="radio" id="popularTag" name="choice" value="popular_tag">
-            <label for="popular_tag">Choose a Popular Tag:</label><br>
+            <div id="header">Create New Call:</div>
 
-            <div className="popular-tags">
-              <PopularTagsList tags={popularTagsList} />
+            <div id="newCallName">
+              <div id="callName">
+                <div id="link">Enter Call Name: </div>
+                <input type="text"/><br/><br/>
+              </div>
             </div>
 
-            <input type="radio" id="newTag" name="choice" value="new_tag">
-            <label for="new_tag">Enter New Tag:</label>
-            <Textbox ali = "center" tag = "tag"> </Textbox>
-
-            <div id="buttonCreateContainer">
-              <button id="createCallButton">Create Call!</button>
+            <div id="newCallName">
+              <div id="callName">
+                <input type="radio" id="popularTag" name="choice" value="popular_tag"/>
+                <label><b>Choose a Popular Tag:</b></label>
+              </div>
             </div>
+
+            <div id="newCallName">
+              <div id="callName">
+                <TagsList tags={popularTagsList} />
+              </div>
+            </div>
+
+            <div id="newCallName">
+              <div id="callName">
+                <input type="radio" id="newTag" name="choice" value="new_tag"/>
+                <label><b>Enter New Tag:</b></label>
+                </div>
+              </div>
+
+              <Linker ali = "center" var = "primary" action = "/chatroom" name = "Create Call!"> </Linker>
         </div>
     )
 }
 
-
 const TagsList = (props) => {
   const tags = props.tags
   const popularTagsList = tags.map((tag) =>
-    <li key={tag.name}>
+    <ul key={tag.name}>
       <div className="tag-details">
-        <input type="radio" id={tag.name} name="choice" value={tag.name}>
+        <input type="radio" id={tag.name} name="choice" value={tag.name}/>
         <label for={tag.name}>{tag.name}</label>
       </div>
-    </li>
+    </ul>
   )
   return (
     <ul className="tags-list">

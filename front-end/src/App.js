@@ -7,6 +7,7 @@ import TagList from './TagList';
 import TagPage from './TagPage';
 import EasterEgg from './EasterEgg';
 import Logo from './speakeasyLogo.PNG';
+import CreateNewCall from './CreateNewCall';
 //import CreateNewCall from './CreateNewCall'
 import React, { useState, useRef } from 'react';
 
@@ -31,7 +32,7 @@ function App() {
         </Route>
         <Route path="/createcall">
           <Toplog />
-          NOT IMPLEMENTED YET
+          <CreateNewCall />
           <Bottom />
         </Route>
         <Route path="/chatroom">
