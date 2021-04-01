@@ -2,7 +2,7 @@
   "name": "speakeasy-back-end",
   "version": "0.0.1",
   "description": "Back end for speakeasy project using express and web rtc",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,7 +27,9 @@
   },
   "homepage": "https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^4.0.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
