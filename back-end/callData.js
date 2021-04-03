@@ -30,5 +30,5 @@ let callList = [
         "startTime":"4-3-2021-5:31:59",
         "moderator":"00H",
         "participants":[ "00H", "00I", "00J", "00K", "00L", "00M", "00N", "00O", "00P"]
-    },
+    }
 ]
