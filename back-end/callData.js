@@ -22,7 +22,7 @@ let callList = [
         "startTime":"2-20-2021-23:43:10",
         "moderator":"00Q",
         "participants":[ "00Q" ]
-    }
+    },
     {
         "callName":"argument zone",
         "callNumber":"00301",
