@@ -2,7 +2,7 @@
   "name": "speakeasy-back-end",
   "version": "0.0.1",
   "description": "Back end for speakeasy project using express and web rtc",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
