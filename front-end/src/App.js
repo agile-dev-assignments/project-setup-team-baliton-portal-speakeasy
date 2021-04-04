@@ -28,7 +28,7 @@ function App() {
         </Route>
         <Route path="/recent">
           <Toplog />
-            <RecentCallsPageWithCalls />
+            <RecentCallsPage />
           <Bottom />
         </Route>
         <Route path="/createcall">
@@ -106,8 +106,6 @@ const Toplog = (props) => {
     </div>
   );
 }
-
-
 
 function Textbox(prop) {
   return (
@@ -189,37 +187,6 @@ const TagPageWithCalls = () => {
   ]
   return <TagPage calls={calls} />
 }
-
-const RecentCallsPageWithCalls = () => {
-  const calls = [
-    {
-      'callName': 'CALL NAME 1',
-      'link': 'chatroom',
-      'numPeople': 500,
-      'duration': 9.4
-    },
-    {
-      'callName': 'CALL NAME 2',
-      'link': 'chatroom',
-      'numPeople': 14,
-      'duration': 35.2
-    },
-    {
-      'callName': 'CALL NAME 3',
-      'link': 'chatroom',
-      'numPeople': 215,
-      'duration': 80.3
-    },
-    {
-      'callName': 'CALL NAME 4',
-      'link': 'chatroom',
-      'numPeople': 13,
-      'duration': 38.1
-    }
-  ]
-  return <RecentCallsPage calls={calls} />
-}
-
 
 export default App;
 export {Linker , Textbox, Toplog, Bottom};
