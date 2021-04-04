@@ -4,20 +4,8 @@ import './RecentCallsPage.css'
 
 
 function RecentCallsPage() {
-  //LEGACY OLD FAKE DATA
-  //  const calls = props.calls.map(call =>
-  //    <Call callName={call.callName} link={call.link} duration={call.duration} numPeople={call.numPeople} />
-  //  )
 
   const [recentCallList, setRecentCallList] = useState([]);
-  
-  /*constructor(props) {
-      super(props);
-      this.state = {
-        recentCallList: []
-      }
-  }
-  */
 
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
@@ -27,23 +15,6 @@ function RecentCallsPage() {
       .catch(error => {
         console.error('There was an error with /recentCallList !!', error);
       });
-      //.then(async response => {
-        
-        /*const data = await response.json();
-
-        // check for error response
-        if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-        }
-
-        setRecentCallList(data)
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-      });
-      */
 
   // empty dependency array means this effect will only run once (when page/component is loaded)
   }, []);
@@ -75,26 +46,21 @@ function RecentCallsPage() {
 }
 
 const Call = (props) => {
-  if (props.onGoing) {
-    return (
-      <div className="call">
-        <a className="link" href={props.link}>
-          {props.callName}
-        </a>
-        <div className="stats">
-          <div className="duration">
-            Start Time: {props.duration}
-          </div>
-          <div className="people">
-            Number of People: {props.numPeople}
-          </div>
+  return (
+    <div className="call">
+      <a className="link" href={props.link}>
+        {props.callName}
+      </a>
+      <div className="stats">
+        <div className="duration">
+          Start Time: {props.duration}
+        </div>
+        <div className="people">
+          Number of People: {props.numPeople}
         </div>
       </div>
-    )
-  }
-  else {
-    return null;
-  }
+    </div>
+  )
   
 }
 
