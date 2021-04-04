@@ -11,6 +11,7 @@ import Logo from './speakeasyLogo.PNG';
 import CreateNewCall from './CreateNewCall';
 //import CreateNewCall from './CreateNewCall'
 import React, { useState, useRef } from 'react';
+const dotenv = require("dotenv").config();
 
 function App() {
   return (
@@ -21,11 +22,7 @@ function App() {
             <TagListWithTags />
           <Bottom />
         </Route>
-        <Route path="/tagpage">
-          <Toplog />
-            <TagPageWithCalls />
-          <Bottom />
-        </Route>
+        <Route path="/tagpage/:tag" component={TagPage}/>
         <Route path="/recent">
           <Toplog />
             <RecentCallsPage />
@@ -131,26 +128,26 @@ function Bottom() {
 const TagListWithTags = () => {
   const tags = [
     {
-      'tagName': 'TAG NAME 1',
-      'link': 'tagpage',
+      'tagName': 'Red',
+      'link': 'Red',
       'numPeople': 123,
       'numCalls': 456
     },
     {
-      'tagName': 'TAG NAME 2',
-      'link': 'tagpage',
+      'tagName': 'Blue',
+      'link': 'Blue',
       'numPeople': 987,
       'numCalls': 34
     },
     {
-      'tagName': 'TAG NAME 3',
-      'link': 'tagpage',
+      'tagName': 'Yellow',
+      'link': 'Yellow',
       'numPeople': 9867,
       'numCalls': 324
     },
     {
-      'tagName': 'TAG NAME 4',
-      'link': 'tagpage',
+      'tagName': 'Green',
+      'link': 'Green',
       'numPeople': 28,
       'numCalls': 35
     }
@@ -158,35 +155,5 @@ const TagListWithTags = () => {
   return <TagList tags={tags} />
 }
 
-const TagPageWithCalls = () => {
-  const calls = [
-    {
-      'callName': 'CALL NAME 1',
-      'link': 'chatroom',
-      'numPeople': 536,
-      'duration': 9.1
-    },
-    {
-      'callName': 'CALL NAME 2',
-      'link': 'chatroom',
-      'numPeople': 251,
-      'duration': 548.2
-    },
-    {
-      'callName': 'CALL NAME 3',
-      'link': 'chatroom',
-      'numPeople': 941,
-      'duration': 32.7
-    },
-    {
-      'callName': 'CALL NAME 4',
-      'link': 'chatroom',
-      'numPeople': 151,
-      'duration': 43.2
-    }
-  ]
-  return <TagPage calls={calls} />
-}
-
 export default App;
-export {Linker , Textbox, Toplog, Bottom};
+export {Linker , Textbox, Toplog, Bottom, dotenv};

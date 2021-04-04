@@ -1,5 +1,6 @@
 import React from 'react'
 import './TagList.css'
+import { Link } from 'react-router-dom';
 
 
 const TagList = (props) => {
@@ -7,6 +8,7 @@ const TagList = (props) => {
       <Tag tagName={tag.tagName} link={tag.link}
            numCalls={tag.numCalls} numPeople={tag.numPeople} />
     )
+    
     return (
         <div className="page">
           <div className="grayButton">
@@ -28,9 +30,13 @@ const TagList = (props) => {
 const Tag = (props) => {
     return (
       <div className="tag">
-        <a className="link" href={props.link}>
+        <Link className="link"
+        to={{
+          pathname:'/tagpage/' + props.link,
+          state: { tagState: props.link}
+        }}>
           {props.tagName}
-        </a>
+        </Link>
         <div className="stats">
           <div className="calls">
             Number of Calls: {props.numCalls}

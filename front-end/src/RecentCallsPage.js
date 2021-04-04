@@ -31,7 +31,9 @@ function RecentCallsPage() {
       <div className="callsList">
         {recentCallList.map(call => {
           return (
-            <Call key={call.callID} onGoing={call.onGoing} callName={call.callName} link={"/chatroom/" + call.callID} duration={call.startTime} numPeople="0"/>
+            <Call key={call.callID} onGoing={call.onGoing} callName={call.callName} 
+            link={"/chatroom/" + call.callID} duration={call.startTime} numPeople="0"
+            callTag={call.callTag}/>
           )
         })}
       </div>
@@ -49,7 +51,7 @@ const Call = (props) => {
   return (
     <div className="call">
       <a className="link" href={props.link}>
-        {props.callName}
+        {props.callName + ", tag: " + props.callTag}
       </a>
       <div className="stats">
         <div className="duration">
