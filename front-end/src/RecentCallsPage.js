@@ -98,4 +98,4 @@ function moreRecent(a, b) {
 }
 
 export default RecentCallsPage;
-
+export { moreRecent };

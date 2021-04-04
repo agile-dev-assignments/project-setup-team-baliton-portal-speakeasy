@@ -20,8 +20,8 @@ const TagPage = (props) => {
           console.error('There was an error with /recentCallList !!', error);
         });
 
-    // empty dependency array means this effect will only run once (when page/component is loaded)
-    }, []);
+    // if param changes, reload the page and therefore make new fetch request
+    }, props.match.params.tag);
 
     return (
       <div>
