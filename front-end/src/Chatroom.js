@@ -42,7 +42,8 @@ const Chatroom = () => {
       ]
 
 
-    return (
+    return (         
+      
         <div class="chatroom">
             <h1>Welcome to *insertChatroomName</h1>
             <div id="moderatorContainer">
@@ -68,6 +69,9 @@ const Chatroom = () => {
                 <button id="muffleButton">Muffle Voice</button>
                 <Linker id="endButton" var = "primary" action = "/main" name = "Leave/End Call"> </Linker>
             </div>
+
+
+
         </div>
     )
 }

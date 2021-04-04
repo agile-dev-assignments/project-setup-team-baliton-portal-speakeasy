@@ -65,7 +65,7 @@ const CreateNewCall = (prop) => {
                 </div>
               </div>
 
-              <Linker ali = "center" var = "primary" action = "/chatroom" name = "Create Call!"> </Linker>
+              <Linker ali = "center" var = "primary" action = "/createRoom" name = "Create Call!"> </Linker>
         </div>
     )
 }

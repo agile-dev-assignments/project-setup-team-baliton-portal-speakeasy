@@ -35,7 +35,7 @@ function App() {
           <CreateNewCall />
           <Bottom />
         </Route>
-        <Route path="/chatroom">
+        <Route path="/createRoom">
           <Toplog />
           <Chatroom/>
           <Bottom />

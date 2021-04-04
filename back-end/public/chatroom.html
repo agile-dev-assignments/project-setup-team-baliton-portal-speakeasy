@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Express App</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/script.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+   </script>
+  </head>
+  <body>
+
+    <div class="chatroom">
+        <h1>Welcome to *insertChatroomName</h1>
+        <div id="moderatorContainer">
+            <div id="leftCon">
+                <p>Moderator</p>
+                <p>CALL TAG(link)</p>
+            </div>
+            <div id="rightCon">
+                <p>Call Duration: XX</p>
+                <p>Number people: X</p>
+            </div>
+        </div>
+        <div class="speakersPool">
+            <UserList profiles={speakersArray} />
+        </div>
+
+        <button>Join Speakers</button>
+
+        <div class="listenersPool">
+            <UserList profiles={listenersArray} />
+        </div>
+        <div id="buttonContainer">
+            <button id="muffleButton">Muffle Voice</button>
+            <Linker id="endButton" var = "primary" action = "/main" name = "Leave/End Call"> </Linker>
+        </div>
+    </div>
+
+
+    <button type="button" class="createChatroomButton">Display today's date</button>
+    <div class="date"></div>
+   
+
+  </body>
+</html>
