@@ -5,15 +5,17 @@ let callList = [
         "tag":"Economics",
         "startTime":"1-23-2021-1:03:47",
         "moderator":"00A",
-        "participants":[ "00A", "00B", "00C", "00D", "00E", "00F" ]
+        "participants":[ "00A", "00B", "00C", "00D", "00E", "00F" ],
+        "ongoing":"true"
     },
     {
         "callName":"Dans's Politicol Debate",
         "callNumber":"00077",
         "tag":"Politics",
         "startTime":"4-3-2021-13:07:00",
-        "moderator":"00X",
-        "participants":[ "00X", "00Y"]
+        "moderator":"00X", 
+        "participants":[ "00X", "00Y"],
+        "ongoing":"true"
     },
     {
         "callName":"Bill's Sports Talk",
@@ -21,7 +23,8 @@ let callList = [
         "tag":"Sports",
         "startTime":"2-20-2021-23:43:10",
         "moderator":"00Q",
-        "participants":[ "00Q" ]
+        "participants":[ "00Q" ],
+        "ongoing":"true"
     },
     {
         "callName":"argument zone",
@@ -29,6 +32,8 @@ let callList = [
         "tag":"Politics",
         "startTime":"4-3-2021-5:31:59",
         "moderator":"00H",
-        "participants":[ "00H", "00I", "00J", "00K", "00L", "00M", "00N", "00O", "00P"]
+        "participants":[ "00H", "00I", "00J", "00K", "00L", "00M", "00N", "00O", "00P"],
+        "ongoing":"true"
     }
-]
+];
+module.exports = callList;
