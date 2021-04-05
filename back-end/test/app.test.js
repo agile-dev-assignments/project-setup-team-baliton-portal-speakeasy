@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { moreRecent } = require('../app');
+import { moreRecent } from './app';
 
 //tests for moreRecent(arg1, arg2)
 //arg1: string with format XX:XX:XX or X:XX:XX
