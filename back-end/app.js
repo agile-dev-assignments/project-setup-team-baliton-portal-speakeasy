@@ -8,6 +8,37 @@ const axios = require('axios');
 //use cors middle ware
 app.use(cors())
 
+//helper function to help in sorting call list
+//takes two strings fomatted XX:XX:XX or X:XX:XX
+//returns 1 if a is more recent, -1 if b is more recent
+//and zero if they are equal
+const moreRecent = (a, b) => {
+    let aArr = a.split(":");
+    let bArr = b.split(":");
+  
+    if (parseInt(aArr[0]) < parseInt(bArr[0])) {
+      return 1;
+    } 
+    else if (parseInt(aArr[0]) > parseInt(bArr[0])) {
+      return -1;
+    }
+    else if (parseInt(aArr[1]) < parseInt(bArr[1])) {
+      return 1;
+    }
+    else if (parseInt(aArr[1]) > parseInt(bArr[1])) {
+      return -1;
+    }
+    else if (parseInt(aArr[2]) < parseInt(bArr[2])) {
+      return 1;
+    }
+    else if (parseInt(aArr[2]) > parseInt(bArr[2])) {
+      return -1;
+    }
+    else {
+      return 0;
+    }
+  }
+
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
 
@@ -19,6 +50,9 @@ app.get('/recentCallList', (req, res, next)=>{
             callList = callList.filter(call => {
                 return call.onGoing; 
             })
+            callList.sort((call1, call2) => {
+                return moreRecent(call1.startTime, call2.startTime);
+            });
             res.json(callList)
         })
         .catch(error => {
@@ -57,4 +91,7 @@ app.get('/tagCallList/:id', (req, res, next)=>{
 
 // we will put some server logic here later...
 // export the express app we created to make it available to other modules
-module.exports = app
+module.exports = {
+    app,
+    moreRecent
+}

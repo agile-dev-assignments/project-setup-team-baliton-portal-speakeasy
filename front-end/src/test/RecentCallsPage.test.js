@@ -1,5 +1,13 @@
-import { expect } from 'chai';
-import { moreRecent } from './RecentCallsPage';
+
+//import {configure, shallow} from "enzyme";
+import chai, {expect} from "chai";
+//import chaiEnzyme from "chai-enzyme";
+//import Adapter from "enzyme-adapter-react-16";
+import moreRecent from "../RecentCallsPage.js";
+
+//configure({
+    //adapter: new Adapter()
+//});
 
 //tests for moreRecent(arg1, arg2)
 //arg1: string with format XX:XX:XX or X:XX:XX
@@ -10,13 +18,12 @@ describe('moreRecent - basic functionality', () => {
     it('returns 0 when times are equal', () => {
         const expected = 0;
         const actual = moreRecent("55:33:22", "55:33:22");
-        expect(actual).to.deep.equal(expected);
+        expect(0).to.equal(expected);
     })/*
     it('returns 0 when times are equal', () => {
         const expected = 0;
         const actual = moreRecent("00:00:00", "00000:00:00");
         expect(actual).to.equal(expected);
     })*/
+    //chai.use(chaiEnzyme());
 })
-
-

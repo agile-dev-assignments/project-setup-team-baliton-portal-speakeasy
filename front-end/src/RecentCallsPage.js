@@ -19,9 +19,7 @@ function RecentCallsPage() {
   // empty dependency array means this effect will only run once (when page/component is loaded)
   }, []);
 
-  recentCallList.sort((a, b) => {
-    return moreRecent(a.startTime, b.startTime);
-  });
+  
 
   return (
     <div className="page">
@@ -66,36 +64,4 @@ const Call = (props) => {
   
 }
 
-//helper function to help in sorting call list
-//takes two strings fomatted XX:XX:XX or X:XX:XX
-//returns 1 if a is more recent, -1 if b is more recent
-//and zero if they are equal
-function moreRecent(a, b) {
-  let aArr = a.split(":");
-  let bArr = b.split(":");
-
-  if (parseInt(aArr[0]) < parseInt(bArr[0])) {
-    return 1;
-  } 
-  else if (parseInt(aArr[0]) > parseInt(bArr[0])) {
-    return -1;
-  }
-  else if (parseInt(aArr[1]) < parseInt(bArr[1])) {
-    return 1;
-  }
-  else if (parseInt(aArr[1]) > parseInt(bArr[1])) {
-    return -1;
-  }
-  else if (parseInt(aArr[2]) < parseInt(bArr[2])) {
-    return 1;
-  }
-  else if (parseInt(aArr[2]) > parseInt(bArr[2])) {
-    return -1;
-  }
-  else {
-    return 0;
-  }
-}
-
 export default RecentCallsPage;
-export { moreRecent };
