@@ -8,7 +8,7 @@ import TagPage from './TagPage';
 import RecentCallsPage from './RecentCallsPage';
 import EasterEgg from './EasterEgg';
 import Logo from './speakeasyLogo.PNG';
-import CreateNewCall from './CreateNewCall';
+import CreateNewCallPage from './CreateNewCall';
 //import CreateNewCall from './CreateNewCall'
 import React, { useState, useRef } from 'react';
 

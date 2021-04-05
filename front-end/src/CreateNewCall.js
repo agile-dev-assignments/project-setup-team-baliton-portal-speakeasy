@@ -1,38 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Linker, Textbox} from './App.js';
 import './App.css';
 import './CreateNewCall.css';
 
-const CreateNewCall = (prop) => {
-  let popularTagsList = [
-      {
-        "name": "Soccer",
-      },
-      {
-        "name": "Football",
-      },
-      {
-        "name": "Bitcoin",
-      },
-      {
-        "name": "Music",
-      },
-      {
-        "name": "Movies",
-      },
-      {
-        "name": "Books",
-      },
-      {
-        "name": "Pandemic",
-      },
-      {
-        "name": "Money",
-      },
-      {
-        "name": "Investing",
-      },
-    ]
+const CreateNewCallPage {
+
+  const [tagList, setTagList] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/createNewCall')
+      .then(response => response.json())
+      .then(data => setTagList([...data]))
+      .catch(error => {
+        console.error('There was an error with /createNewCall !!', error);
+      });
+  }, []);
+
   return (
         <div class="createNewCall">
 
@@ -54,7 +37,12 @@ const CreateNewCall = (prop) => {
 
             <div id="newCallName">
               <div id="callName">
-                <TagsList tags={popularTagsList} />
+              {tagList.map(tag => {
+                return (
+                  <Tag key={tag.ID} onGoing={tag.active} tagName={tag.tagName}
+                  link={"/chatroom/" + tag.ID} numPeople= {tag.numPeople} numCalls={tag.numCalls}/>
+                )
+              })}
               </div>
             </div>
 
@@ -70,21 +58,17 @@ const CreateNewCall = (prop) => {
     )
 }
 
-const TagsList = (props) => {
-  const tags = props.tags
-  const popularTagsList = tags.map((tag) =>
-    <ul key={tag.name}>
+const Tag = (props) => {
+  return (
+    <div className="tags-list">
+    <ul  key={props.name}>
       <div className="tag-details">
-        <input type="radio" id={tag.name} name="choice" value={tag.name}/>
-        <label for={tag.name}>{tag.name}</label>
+        <input type="radio" id={props.key} name="choice" value={props.tagName}/>
+        <label for={props.tagName}>{props.tagName}</label>
       </div>
     </ul>
-  )
-  return (
-    <ul className="tags-list">
-      {popularTagsList}
-    </ul>
+    </div>
   )
 }
 
-export default CreateNewCall;
+export default CreateNewCallPage;
