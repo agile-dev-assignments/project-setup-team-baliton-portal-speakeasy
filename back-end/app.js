@@ -37,7 +37,7 @@ const moreRecent = (a, b) => {
     else {
       return 0;
     }
-  }
+}
 
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
