@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const server = require('../app.js'); // load up the web server
+const { app } = require('./app'); // load up the web server
 const port = 5000 // the port to listen to for incoming requests
 // call express's listen function to start listening to the port
-const listener = server.listen(port, function () {
+const listener = app.listen(port, function () {
   console.log(`Server running on port: ${port}`)
 })
 // a function to stop listening to the port

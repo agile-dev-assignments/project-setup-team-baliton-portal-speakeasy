@@ -62,6 +62,13 @@ app.get('/recentCallList', (req, res, next)=>{
 
 })
 
+//helper function for tag call list route
+//returns true if the given call is both ongoing and has the given tag
+const onGoingWithTag = (call, store) => {
+    return ((call.callTag === store)
+            && (call.onGoing));
+}
+
 //make a request for calls for tag page
 app.get('/tagCallList/:id', (req, res, next)=>{
     let store = req.params.id;
@@ -71,11 +78,7 @@ app.get('/tagCallList/:id', (req, res, next)=>{
             // handle success, send data as json
             let callList = apiResponse.data;
             callList = callList.filter(call => {
-                return ((call.callTag === store)
-                        && (call.onGoing)); 
-            })
-            callList.map(call => {
-                call.ID = "wrong";
+                return onGoingWithTag(call, store); 
             })
 
             //res.send('the tag is ' + req.params.id)
@@ -91,4 +94,8 @@ app.get('/tagCallList/:id', (req, res, next)=>{
 
 // we will put some server logic here later...
 // export the express app we created to make it available to other modules
-module.exports = app
+module.exports = {
+    app: app,
+    moreRecent: moreRecent,
+    onGoingWithTag: onGoingWithTag
+}
