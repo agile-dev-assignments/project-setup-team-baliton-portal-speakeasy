@@ -21,7 +21,7 @@ const TagPage = (props) => {
         });
 
     // if param changes, reload the page and therefore make new fetch request
-    }, props.match.params.tag);
+    }, [props.match.params.tag]);
 
     return (
       <div>
