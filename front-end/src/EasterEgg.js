@@ -4,7 +4,6 @@ import './EasterEgg.css';
 import MainPage from './MainPage';
 import background from "./front-page-background.png"
 
-
 const EasterEgg = () => {
     // Declare a new state variable, which we'll call "count"
     const [count, setCount] = useState(0);
@@ -31,7 +30,5 @@ const EasterEgg = () => {
       </div>
     )
   }
-
-  
 
   export default EasterEgg;

@@ -4,7 +4,7 @@
   "description": "Back end for speakeasy project using express and web rtc",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,10 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0"
   }
 }
