@@ -1,0 +1,23 @@
+
+#mainDiv {
+    margin-bottom: 100px;
+    margin-top: 100px;
+    background-color: #b8c0c7;
+}
+
+#side {
+    margin-bottom: 100px;
+}
+
+.callNameField form {
+    font-size: 30px;
+}
+
+.callNameField input {
+    font-size: 30px;
+  }
+
+.sidebar {
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
+}
