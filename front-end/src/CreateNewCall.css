@@ -13,7 +13,7 @@
   border-width: 2px;
 }
 
-#newCallName {
+.blockDisplay {
   display: block;
 }
 
@@ -24,28 +24,59 @@
   padding: 20px;
   margin: 0 auto;
   margin-top: 10px;
-  width: 20%;
+  width: 25%;
 }
 
-#link {
-  font-size: 20px;
-  width: 60%;
+#popularTag {
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 5px;
+  width: 18%;
+}
+
+#popularTagRadio{
+  text-align: center;
+  margin-right: 5%;
+}
+
+#nameLabel{
+  font-size: 15px;
+  font-weight: bold;
   display: inline-block;
   vertical-align: top;
-  padding: 2%;
-  background-color: white;
-  border: solid black;
-  border-width: 1px;
-  text-align: center;
+  text-align: left;
   margin-right: 5%;
   height: 25px;
   line-height: 25px;
   text-decoration: none;
 }
 
-#stats {
-  width: 49%;
-  line-height: 100%;
-  vertical-align: top;
-  display: inline-block;
+#newTagName{
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 25%;
+  margin-bottom: 10px;
+}
+
+#newTagRadio{
+  text-align: center;
+  margin-right: 2%;
+  vertical-align: baseline;
+  margin-top: 2%;
+}
+
+#tagBlock {
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 20%;
 }
