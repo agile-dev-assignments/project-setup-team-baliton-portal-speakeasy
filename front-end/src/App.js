@@ -59,7 +59,7 @@ function Linker(prop) {
   return (
     <div align = {prop.ali}>
       <Link to = {prop.action}>
-         <button variant = {prop.var} className = "buttons" id = {prop.id}>  {prop.name}
+         <button variant = {prop.var} className = {prop.cn} id = {prop.id}>  {prop.name}
          </button>
       </Link>
     </div>
@@ -93,7 +93,7 @@ const Toplog = (props) => {
       <div id = "nickname">
         <label><b>Nickname: </b></label>
         <input ref={nicknameRef} type="text" />
-        <button className="buttons" onClick={handleNick}>
+        <button id="nicknameButton" onClick={handleNick}>
           Submit
         </button>
       </div>
@@ -106,7 +106,7 @@ const Toplog = (props) => {
 
 function Textbox(prop) {
   return (
-    <div align = {prop.ali}>
+    <div align = {prop.ali} className={prop.cn}>
      <form action="/chatroom">
        <label form="tag"><b>{prop.mess}</b></label>
        <input type="text" id={prop.tag} name = {prop.tag}/><br/><br/>
@@ -119,8 +119,9 @@ function Textbox(prop) {
 function Bottom() {
   return (
     <div id = "bottom">
-      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au'> </Linker>
-      <h2> All right reserved 2021 </h2>
+      <br></br>
+      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au' cn = "buttons"> </Linker>
+      <h2 id="reserved"> All rights reserved 2021 </h2>
     </div>
   );
 }
