@@ -66,6 +66,17 @@ button{
   height: 60px;
 }
 
+button:hover {
+  background-color: #6ab8f3;
+  font-size: 25px;
+}
+
+.buttons:hover  {
+  background-color: #6ab8f3;
+  font-size: 25px;
+}
+
+
 button#au{
   width: 20%;
   background-color: #b9c6cf;
@@ -78,6 +89,11 @@ input#submitcall{
   font-size: 20px;
   border-radius: 10px;
   height: 60px;
+}
+
+input#submitcall:hover {
+  background-color: #6ab8f3;
+  font-size: 25px;
 }
 
 div#nickname{
