@@ -9,6 +9,7 @@ window.onload = () => {
 async function init() {
     const peer = createPeer();
     peer.addTransceiver("video", { direction: "recvonly" })
+    peer.addTransceiver("audio", { direction: "recvonly" })
 }
 
 // create peer object 

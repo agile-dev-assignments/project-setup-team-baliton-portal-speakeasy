@@ -5,9 +5,10 @@ window.onload = () => {
     }
 }
 
+//leave video component for now we will use it while we stylise these static pages
 async function init() {
     // browser asks for video stream *not audio currently and adds video to each track
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true});
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio:true });
     document.getElementById("video").srcObject = stream;
     const peer = createPeer();
     stream.getTracks().forEach(track => peer.addTrack(track, stream));
