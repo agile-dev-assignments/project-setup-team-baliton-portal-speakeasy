@@ -30,7 +30,7 @@ function App() {
         </Route>
         <Route path="/createcall">
           <Toplog />
-          <CreateNewCall />
+          <CreateNewCallPage />
           <Bottom />
         </Route>
         <Route path="/chatroom">
