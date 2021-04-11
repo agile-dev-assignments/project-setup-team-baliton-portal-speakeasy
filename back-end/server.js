@@ -1,14 +1,10 @@
-#!/usr/bin/env node
-const { app } = require('./app'); // load up the web server
-const port = 5000 // the port to listen to for incoming requests
-// call express's listen function to start listening to the port
-const listener = app.listen(port, function () {
-  console.log(`Server running on port: ${port}`)
-})
-// a function to stop listening to the port
-const close = () => {
-  listener.close()
-}
-module.exports = {
-  close: close,
-}
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const webrtc = require('wrtc');
+
+app.use(express.static('public'));
+const express = require('express');
+
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
