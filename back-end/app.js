@@ -7,8 +7,8 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 //variables from dotenv
-const atlas_username = process.env.DB_USERNAME
-const atlas_password = process.env.DB_PASSWORD
+const atlas_username = process.env.DB_USERNAME;
+const atlas_password = process.env.DB_PASSWORD;
 
 //atlas url with dot env variables
 const atlasURL = 'mongodb+srv://' + atlas_username + ':' + atlas_password + '@speakeasycluster.meaba.mongodb.net/speakeasy-database?retryWrites=true&w=majority';
@@ -17,8 +17,6 @@ const atlasURL = 'mongodb+srv://' + atlas_username + ':' + atlas_password + '@sp
 mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => console.log('connected to speakeasy-database'))
   .catch((err) => console.log(err))
-
-
 
 
 //use cors middle ware
