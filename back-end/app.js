@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express() // instantiate an Express object
 const axios = require('axios');
 const mongoose = require('mongoose');
+const Call = require('./call')
 require('dotenv').config();
 
 //variables from dotenv
@@ -18,6 +19,24 @@ mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => console.log('connected to speakeasy-database'))
   .catch((err) => console.log(err))
 
+app.get('/add-call', (req, res) => {
+  const call = new Call({
+    callID: 123456,
+    callTitle: 'New Call Title',
+    callTag: 'Sample Tag',
+    moderatorID: 7777,
+    onGoing: true
+
+  });
+
+  call.save()
+    .then((result) => {
+      res.send(result)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+})
 
 //use cors middle ware
 app.use(cors())
