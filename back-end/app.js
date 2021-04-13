@@ -4,18 +4,22 @@ const cors = require('cors');
 const app = express() // instantiate an Express object
 const axios = require('axios');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 //variables from dotenv
+const atlas_username = process.env.DB_USERNAME
+const atlas_password = process.env.DB_PASSWORD
 
 //atlas url with dot env variables
-const atlasURL = 'mongodb+srv://' + 'USERNAME' + ':' + 'PASSWORD' + '@speakeasycluster.meaba.mongodb.net/speakeasy-database?retryWrites=true&w=majority'
+const atlasURL = 'mongodb+srv://' + atlas_username + ':' + atlas_password + '@speakeasycluster.meaba.mongodb.net/speakeasy-database?retryWrites=true&w=majority';
 
 //connect to mongoDB through atlas
-mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((result) => console.log('connected to speakeasy-database'))
+  .catch((err) => console.log(err))
 
-//SET UP DOT ENV DBUSERNAME
 
-//SET UP DOT ENV DBPASSWORD
+
 
 //use cors middle ware
 app.use(cors())
