@@ -73,8 +73,8 @@ app.use(cors())
 //helper functoin to sort time started's dates before sorting time
 //returns 1 if a is a more recent date, -1 if b is a more recent date
 //and zero if they are the same date
+//dates are in format of YYYY-MM-DD
 const sortDate = (a, b) => {
-  console.log('sortDate: a:' + a + " b: " + b) ;
   let datesA = a.split("-");
   let datesB = b.split("-");
 
@@ -104,7 +104,10 @@ const sortDate = (a, b) => {
 //helper functoin to sort time started's times if dates are the same
 //returns 1 if a is a more recent time, -1 if b is a more recent time
 //and zero if they are the same time
-const sortTime = (timeA, timeB) => {
+const sortTime = (rawTimeA, rawTimeB) => {
+  let timeA = rawTimeA.split(":");
+  let timeB = rawTimeB.split(":");
+
   if (parseInt(timeA[0]) < parseInt(timeB[0])) {
     return 1;
   }
@@ -129,11 +132,11 @@ const sortTime = (timeA, timeB) => {
 }
 
 //helper function to help in sorting call list
-//takes two strings fomatted XX:XX:XX or X:XX:XX
+//takes two strings representing date & time fomatted YYYY-MM-DDTXX:XX:XX.ETC
 //returns 1 if a is more recent, -1 if b is more recent
 //and zero if they are equal
 const moreRecent = (a, b) => {
-  console.log('more recent: a:' + a + " b: " + b) ;
+
   let dateAndTimeA = a.split("T");
   let dateAndTimeB = b.split("T");
 
@@ -154,10 +157,7 @@ const moreRecent = (a, b) => {
   }
   else {
     //if dates are equal, sort by time
-    let timeA = rawTimeA[0].split(":");
-    let timeB = rawTimeB[0].split(":");
-
-    return sortTime(timeA, timeB)
+    return sortTime(rawTimeA[0], rawTimeB[0])
   }
 }
 
@@ -219,5 +219,7 @@ app.get('/tagCallList/:id', (req, res, next)=>{
 module.exports = {
     app: app,
     moreRecent: moreRecent,
+    sortTime: sortTime,
+    sortDate: sortDate,
     onGoingWithTag: onGoingWithTag
 }
