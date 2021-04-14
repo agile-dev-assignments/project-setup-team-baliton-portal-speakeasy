@@ -16,15 +16,44 @@ const atlasURL = 'mongodb+srv://' + atlas_username + ':' + atlas_password + '@sp
 
 //connect to mongoDB through atlas
 mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => console.log('connected to speakeasy-database'))
-  .catch((err) => console.log('db string: ' + atlasURL + 'err: ' + err))
+  .then((result) => {
+    console.log('connected to speakeasy-database with username: ' + atlas_username) 
+  })
+  .catch((err) => {
+    console.log('connection to DB failed, string that the attempt use: ' + atlasURL + 'err: ' + err)
+  })
 
-app.get('/add-call', (req, res) => {
+//route to manually add  ongoing calls to the database for testing purposes
+app.get('/add-ongoing-call/:tag/:title', (req, res) => {
+  let storeTag = req.params.tag;
+  let storeTitle = req.params.title;
   const call = new Call({
-    callID: 123456,
-    callTitle: 'New Call Title',
-    callTag: 'Sample Tag',
-    moderatorID: 7777,
+    callID: 0,
+    callTitle: storeTitle,
+    callTag: storeTag,
+    moderatorID: 0,
+    onGoing: true
+
+  });
+
+  call.save()
+    .then((result) => {
+      res.send(result)
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+})
+
+//route to manually add ended calls to the database for testing purposes
+app.get('/add-ongoing-call/:tag/:title', (req, res) => {
+  let storeTag = req.params.tag;
+  let storeTitle = req.params.title;
+  const call = new Call({
+    callID: 0,
+    callTitle: storeTitle,
+    callTag: storeTag,
+    moderatorID: 0,
     onGoing: true
 
   });
