@@ -23,8 +23,8 @@ mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('connection to DB failed, string that the attempt use: ' + atlasURL + 'err: ' + err)
   })
 
-//route to manually add  ongoing calls to the database for testing purposes
-app.get('/add-ongoing-call/:tag/:title', (req, res) => {
+//route to manually add 'ongoing' calls to the database for testing purposes
+app.get('/backdoor-add-ongoing-call/:tag/:title', (req, res) => {
   let storeTag = req.params.tag;
   let storeTitle = req.params.title;
   const call = new Call({
@@ -45,8 +45,8 @@ app.get('/add-ongoing-call/:tag/:title', (req, res) => {
     })
 })
 
-//route to manually add ended calls to the database for testing purposes
-app.get('/add-ongoing-call/:tag/:title', (req, res) => {
+//route to manually add 'ended' calls to the database for testing purposes
+app.get('/backdoor-add-ended-call/:tag/:title', (req, res) => {
   let storeTag = req.params.tag;
   let storeTitle = req.params.title;
   const call = new Call({
@@ -54,7 +54,7 @@ app.get('/add-ongoing-call/:tag/:title', (req, res) => {
     callTitle: storeTitle,
     callTag: storeTag,
     moderatorID: 0,
-    onGoing: true
+    onGoing: false
 
   });
 
@@ -70,50 +70,103 @@ app.get('/add-ongoing-call/:tag/:title', (req, res) => {
 //use cors middle ware
 app.use(cors())
 
+//helper functoin to sort time started's dates before sorting time
+//returns 1 if a is a more recent date, -1 if b is a more recent date
+//and zero if they are the same date
+const sortDate = (a, b) => {
+  console.log('sortDate: a:' + a + " b: " + b) ;
+  let datesA = a.split("-");
+  let datesB = b.split("-");
+
+  if (parseInt(datesA[0]) < parseInt(datesB[0])) {
+    return 1;
+  }
+  else if (parseInt(datesA[0]) > parseInt(datesB[0])) {
+    return 1;
+  }
+  else if (parseInt(datesA[1]) < parseInt(datesB[1])) {
+    return 1;
+  }
+  else if (parseInt(datesA[1]) > parseInt(datesB[1])) {
+    return 1;
+  }
+  else if (parseInt(datesA[2]) < parseInt(datesB[2])) {
+    return 1;
+  }
+  else if (parseInt(datesA[2]) > parseInt(datesB[2])) {
+    return 1;
+  }
+  else {
+    return 0;
+  }
+}
+
 //helper function to help in sorting call list
 //takes two strings fomatted XX:XX:XX or X:XX:XX
 //returns 1 if a is more recent, -1 if b is more recent
 //and zero if they are equal
 const moreRecent = (a, b) => {
-    let aArr = a.split(":");
-    let bArr = b.split(":");
-  
-    if (parseInt(aArr[0]) < parseInt(bArr[0])) {
+  console.log('more recent: a:' + a + " b: " + b) ;
+  let dateAndTimeA = a.split("T");
+  let dateAndTimeB = b.split("T");
+
+  let dateA = dateAndTimeA[0];
+  let dateB = dateAndTimeB[0];
+
+  let rawTimeA = dateAndTimeA[1].split(".");
+  let rawTimeB = dateAndTimeB[1].split(".");
+
+  let sortDateResult = sortDate(dateA, dateB);
+
+  //if dates are not equal, return result
+  if (sortDateResult == 1) {
+    return 1;
+  }
+  else if (sortDateResult == -1) {
+    return -1;
+  }
+  else {
+    //if dates are equal, sort by time
+    let timeA = rawTimeB[0].split(":");
+    let timeB = rawTimeB[0].split(":");
+
+    if (parseInt(timeA[0]) < parseInt(timeB[0])) {
       return 1;
-    } 
-    else if (parseInt(aArr[0]) > parseInt(bArr[0])) {
+    }
+    else if (parseInt(timeA[0]) > parseInt(timeB[0])) {
       return -1;
     }
-    else if (parseInt(aArr[1]) < parseInt(bArr[1])) {
+    else if (parseInt(timeA[1]) < parseInt(timeB[1])) {
       return 1;
     }
-    else if (parseInt(aArr[1]) > parseInt(bArr[1])) {
+    else if (parseInt(timeA[1]) > parseInt(timeB[1])) {
       return -1;
     }
-    else if (parseInt(aArr[2]) < parseInt(bArr[2])) {
+    else if (parseInt(timeA[2]) < parseInt(timeB[2])) {
       return 1;
     }
-    else if (parseInt(aArr[2]) > parseInt(bArr[2])) {
+    else if (parseInt(timeA[2]) > parseInt(timeB[2])) {
       return -1;
     }
     else {
       return 0;
     }
+  }
+
 }
 
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
 
-    axios
-        .get('https://my.api.mockaroo.com/calllist.json?key=65c91aa0')
-        .then(apiResponse => {
+    Call.find()
+        .then(dbResponse => {
             // handle success, send data as json
-            let callList = apiResponse.data;
+            let callList = dbResponse;
             callList = callList.filter(call => {
                 return call.onGoing; 
             })
             callList.sort((call1, call2) => {
-                return moreRecent(call1.startTime, call2.startTime);
+                return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
             });
             res.json(callList)
         })
