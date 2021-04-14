@@ -3,6 +3,16 @@ import React, { useState, useEffect} from "react";
 import './RecentCallsPage.css'
 
 
+function displayTime(dateAndTime) {
+  dateAndTime.toString();
+  let arr = dateAndTime.split("T");
+  let date = arr[0].split("-");
+  let time = arr[1].split(".");
+  let timeString = time[0];
+  let dateString = date[1] + '/' + date[2] + '/' + date[0];
+  return timeString + ' - ' + dateString;
+}
+
 function RecentCallsPage() {
 
   const [recentCallList, setRecentCallList] = useState([]);
@@ -19,8 +29,6 @@ function RecentCallsPage() {
   // empty dependency array means this effect will only run once (when page/component is loaded)
   }, []);
 
-  
-
   return (
     <div className="page">
       <div className="grayButton">
@@ -29,8 +37,8 @@ function RecentCallsPage() {
       <div className="callsList">
         {recentCallList.map(call => {
           return (
-            <Call key={call.callID} onGoing={call.onGoing} callName={call.callName} 
-            link={"/chatroom/" + call.callID} duration={call.startTime} numPeople="0"
+            <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
+            link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
             callTag={call.callTag}/>
           )
         })}
