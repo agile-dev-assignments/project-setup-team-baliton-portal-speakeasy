@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express() // instantiate an Express object
 const axios = require('axios');
 const mongoose = require('mongoose');
-const Call = require('./call')
+const Call = require('./call');
 require('dotenv').config();
 
 //variables from dotenv
@@ -17,7 +17,7 @@ const atlasURL = 'mongodb+srv://' + atlas_username + ':' + atlas_password + '@sp
 //connect to mongoDB through atlas
 mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => console.log('connected to speakeasy-database'))
-  .catch((err) => console.log(err))
+  .catch((err) => console.log('db string: ' + atlasURL + 'err: ' + err))
 
 app.get('/add-call', (req, res) => {
   const call = new Call({
