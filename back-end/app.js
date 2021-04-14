@@ -82,19 +82,46 @@ const sortDate = (a, b) => {
     return 1;
   }
   else if (parseInt(datesA[0]) > parseInt(datesB[0])) {
-    return 1;
+    return -1;
   }
   else if (parseInt(datesA[1]) < parseInt(datesB[1])) {
     return 1;
   }
   else if (parseInt(datesA[1]) > parseInt(datesB[1])) {
-    return 1;
+    return -1;
   }
   else if (parseInt(datesA[2]) < parseInt(datesB[2])) {
     return 1;
   }
   else if (parseInt(datesA[2]) > parseInt(datesB[2])) {
+    return -1;
+  }
+  else {
+    return 0;
+  }
+}
+
+//helper functoin to sort time started's times if dates are the same
+//returns 1 if a is a more recent time, -1 if b is a more recent time
+//and zero if they are the same time
+const sortTime = (timeA, timeB) => {
+  if (parseInt(timeA[0]) < parseInt(timeB[0])) {
     return 1;
+  }
+  else if (parseInt(timeA[0]) > parseInt(timeB[0])) {
+    return -1;
+  }
+  else if (parseInt(timeA[1]) < parseInt(timeB[1])) {
+    return 1;
+  }
+  else if (parseInt(timeA[1]) > parseInt(timeB[1])) {
+    return -1;
+  }
+  else if (parseInt(timeA[2]) < parseInt(timeB[2])) {
+    return 1;
+  }
+  else if (parseInt(timeA[2]) > parseInt(timeB[2])) {
+    return -1;
   }
   else {
     return 0;
@@ -127,33 +154,13 @@ const moreRecent = (a, b) => {
   }
   else {
     //if dates are equal, sort by time
-    let timeA = rawTimeB[0].split(":");
+    let timeA = rawTimeA[0].split(":");
     let timeB = rawTimeB[0].split(":");
 
-    if (parseInt(timeA[0]) < parseInt(timeB[0])) {
-      return 1;
-    }
-    else if (parseInt(timeA[0]) > parseInt(timeB[0])) {
-      return -1;
-    }
-    else if (parseInt(timeA[1]) < parseInt(timeB[1])) {
-      return 1;
-    }
-    else if (parseInt(timeA[1]) > parseInt(timeB[1])) {
-      return -1;
-    }
-    else if (parseInt(timeA[2]) < parseInt(timeB[2])) {
-      return 1;
-    }
-    else if (parseInt(timeA[2]) > parseInt(timeB[2])) {
-      return -1;
-    }
-    else {
-      return 0;
-    }
+    return sortTime(timeA, timeB)
   }
-
 }
+
 
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
