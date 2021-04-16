@@ -165,22 +165,22 @@ const moreRecent = (a, b) => {
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
 
-    Call.find()
-        .then(dbResponse => {
-            // handle success, send data as json
-            let callList = dbResponse;
-            callList = callList.filter(call => {
-                return call.onGoing; 
-            })
-            callList.sort((call1, call2) => {
-                return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
-            });
-            res.json(callList)
+  Call.find()
+    .then(dbResponse => {
+        // handle success, send data as json
+        let callList = dbResponse;
+        callList = callList.filter(call => {
+          return call.onGoing; 
         })
-        .catch(error => {
-            //handle error and print to console
-            console.error('There was an error with /recentCallList !!!! ', error);
+        callList.sort((call1, call2) => {
+          return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
         });
+        res.json(callList)
+    })
+    .catch(error => {
+      //handle error and print to console
+      console.error('There was an error with /recentCallList !!!! ', error);
+    });
 
 })
 
@@ -193,17 +193,24 @@ const onGoingWithTag = (call, store) => {
 
 //make a request for calls for tag page
 app.get('/tagCallList/:tag', (req, res, next)=>{
-    let store = req.params.tag;
-            //callList = callList.filter(call => {
-            //    return onGoingWithTag(call, store); 
-            //})
 
-            //res.send('the tag is ' + store)
-            //res.json(callList);
-        //.catch(error => {
-            //handle error and print to console
-        //    console.error('There was an error with /tagCallList' + {store} + '! ', error);
-        //});
+    let store = req.params.tag;
+    Call.find()
+      .then(dbResponse => {
+        let callList = dbResponse;
+        callList = callList.filter(call => {
+          return onGoingWithTag(call, store); 
+        })
+        callList.sort((call1, call2) => {
+          return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOSTring());
+        })
+        res.send('Returning calls in DB with tag=' + store);
+        res.json(callList);
+      })
+      .catch(error => {
+        //handle error and print to console
+        console.error('There was an error with /tagCallList/' + {store} + '! ', error);
+      });
 
 })
 
