@@ -7,7 +7,7 @@ import TagList from './TagList';
 import TagPage from './TagPage';
 import RecentCallsPage from './RecentCallsPage';
 import EasterEgg from './EasterEgg';
-import Logo from './speakeasyLogo.PNG';
+import Logo from './images/speakeasyLogo.PNG';
 import CreateNewCallPage from './CreateNewCall';
 //import CreateNewCall from './CreateNewCall'
 import React, { useState, useRef } from 'react';
@@ -129,28 +129,28 @@ function Bottom() {
 const TagListWithTags = () => {
   const tags = [
     {
-      'tagName': 'Red',
-      'link': 'Red',
-      'numPeople': 123,
-      'numCalls': 456
+      'tagName': 'tag1',
+      'link': 'tag1',
+      'numPeople': 0,
+      'numCalls': 0
     },
     {
-      'tagName': 'Blue',
-      'link': 'Blue',
-      'numPeople': 987,
-      'numCalls': 34
+      'tagName': 'tag2',
+      'link': 'tag2',
+      'numPeople': 0,
+      'numCalls': 0
     },
     {
-      'tagName': 'Yellow',
-      'link': 'Yellow',
-      'numPeople': 9867,
-      'numCalls': 324
+      'tagName': 'tag3',
+      'link': 'tag3',
+      'numPeople': 0,
+      'numCalls': 0
     },
     {
-      'tagName': 'Green',
-      'link': 'Green',
-      'numPeople': 28,
-      'numCalls': 35
+      'tagName': 'tag4',
+      'link': 'tag4',
+      'numPeople': 0,
+      'numCalls': 0
     }
   ]
   return <TagList tags={tags} />

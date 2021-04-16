@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from "react";
 //import { render } from '../../back-end/app'
 import './RecentCallsPage.css'
+import NoCallsImage from './images/noCallsImage.jpg';
 
 
-function displayTime(dateAndTime) {
-  dateAndTime.toString();
-  let arr = dateAndTime.split("T");
+const displayTime = (dateAndTime) => {
+  let dateAndTimeString = dateAndTime.toString();
+  let arr = dateAndTimeString.split("T");
   let date = arr[0].split("-");
   let time = arr[1].split(".");
   let timeString = time[0];
@@ -29,28 +30,46 @@ function RecentCallsPage() {
   // empty dependency array means this effect will only run once (when page/component is loaded)
   }, []);
 
-  return (
-    <div className="page">
-      <div className="grayButton">
-        LIST OF RECENT CALLS
+  let numberOfRecentCalls = recentCallList.length;
+
+  if (numberOfRecentCalls === 0) {
+    return (
+      <div className="page">
+        <div className="grayButton">
+          No On-Going Calls!
+        </div>
+        <img className="no-calls-image" alt="" src={NoCallsImage} />
+        <div className="grayButton">
+          <a href="/recent">
+            Refresh
+          </a>
+        </div>
       </div>
-      <div className="callsList">
-        {recentCallList.map(call => {
-          return (
-            <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
-            link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
-            callTag={call.callTag}/>
-          )
-        })}
+    )
+  }
+  else {
+    return (
+      <div className="page">
+        <div className="grayButton">
+          LIST OF RECENT CALLS
+        </div>
+        <div className="callsList">
+          {recentCallList.map(call => {
+            return (
+              <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
+              link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
+              callTag={call.callTag}/>
+            )
+          })}
+        </div>
+        <div className="grayButton">
+          <a href="/recent">
+            Refresh
+          </a>
+        </div>
       </div>
-      <div className="grayButton">
-        <a href="/recent">
-          Refresh
-        </a>
-      </div>
-    </div>
-  );
-  
+    );
+  }
 }
 
 const Call = (props) => {
@@ -73,3 +92,4 @@ const Call = (props) => {
 }
 
 export default RecentCallsPage;
+export { displayTime };

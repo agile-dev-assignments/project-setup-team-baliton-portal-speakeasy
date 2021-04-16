@@ -165,22 +165,22 @@ const moreRecent = (a, b) => {
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
 
-    Call.find()
-        .then(dbResponse => {
-            // handle success, send data as json
-            let callList = dbResponse;
-            callList = callList.filter(call => {
-                return call.onGoing; 
-            })
-            callList.sort((call1, call2) => {
-                return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
-            });
-            res.json(callList)
+  Call.find()
+    .then(dbResponse => {
+        // handle success, send data as json
+        let callList = dbResponse;
+        callList = callList.filter(call => {
+          return call.onGoing; 
         })
-        .catch(error => {
-            //handle error and print to console
-            console.error('There was an error with /recentCallList !!!!', error);
+        callList.sort((call1, call2) => {
+          return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
         });
+        res.json(callList)
+    })
+    .catch(error => {
+      //handle error and print to console
+      console.error('There was an error with /recentCallList !!!! ', error);
+    });
 
 })
 
@@ -192,24 +192,24 @@ const onGoingWithTag = (call, store) => {
 }
 
 //make a request for calls for tag page
-app.get('/tagCallList/:id', (req, res, next)=>{
-    let store = req.params.id;
-    axios
-        .get('https://my.api.mockaroo.com/tagCallList.json?key=65c91aa0')
-        .then(apiResponse => {
-            // handle success, send data as json
-            let callList = apiResponse.data;
-            callList = callList.filter(call => {
-                return onGoingWithTag(call, store); 
-            })
+app.get('/tagCallList/:tag', (req, res, next)=>{
 
-            //res.send('the tag is ' + req.params.id)
-            res.json(callList);
+    let store = req.params.tag;
+    Call.find()
+      .then(dbResponse => {
+        let callList = dbResponse;
+        callList = callList.filter(call => {
+          return onGoingWithTag(call, store); 
         })
-        .catch(error => {
-            //handle error and print to console
-            console.error('There was an error with /recentCallList !!!!', error);
-        });
+        callList.sort((call1, call2) => {
+          return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
+        })
+        res.json(callList);
+      })
+      .catch(error => {
+        //handle error and print to console
+        console.error('There was an error with /tagCallList/' + {store} + '! ', error);
+      });
 
 })
 
