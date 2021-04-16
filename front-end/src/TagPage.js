@@ -40,7 +40,7 @@ const TagPage = (props) => {
             })}
           </div>
           <div className="grayButton">
-            <a href="/tagpage">
+            <a href={"/tagpage/" + props.match.params.tag}>
               Refresh
             </a>
           </div>

@@ -202,9 +202,8 @@ app.get('/tagCallList/:tag', (req, res, next)=>{
           return onGoingWithTag(call, store); 
         })
         callList.sort((call1, call2) => {
-          return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOSTring());
+          return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
         })
-        res.send('Returning calls in DB with tag=' + store);
         res.json(callList);
       })
       .catch(error => {
