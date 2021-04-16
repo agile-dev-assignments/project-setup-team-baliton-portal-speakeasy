@@ -129,28 +129,28 @@ function Bottom() {
 const TagListWithTags = () => {
   const tags = [
     {
-      'tagName': 'Red',
-      'link': 'Red',
-      'numPeople': 123,
-      'numCalls': 456
+      'tagName': 'Tag1',
+      'link': 'Tag1',
+      'numPeople': 0,
+      'numCalls': 0
     },
     {
-      'tagName': 'Blue',
-      'link': 'Blue',
-      'numPeople': 987,
-      'numCalls': 34
+      'tagName': 'Tag2',
+      'link': 'Tag2',
+      'numPeople': 0,
+      'numCalls': 0
     },
     {
-      'tagName': 'Yellow',
-      'link': 'Yellow',
-      'numPeople': 9867,
-      'numCalls': 324
+      'tagName': 'Tag3',
+      'link': 'Tag4',
+      'numPeople': 0,
+      'numCalls': 0
     },
     {
-      'tagName': 'Green',
-      'link': 'Green',
-      'numPeople': 28,
-      'numCalls': 35
+      'tagName': 'Tag4',
+      'link': 'Tag4',
+      'numPeople': 0,
+      'numCalls': 0
     }
   ]
   return <TagList tags={tags} />

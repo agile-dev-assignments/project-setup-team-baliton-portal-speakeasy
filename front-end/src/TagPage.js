@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import './TagPage.css';
 import { Toplog, Bottom } from './App.js';
-
+import { displayTime } from './RecentCallsPage.js';
 
 const TagPage = (props) => {
     //const calls = props.calls.map(call =>
@@ -10,14 +10,14 @@ const TagPage = (props) => {
     //)
 
     const [tagCallList, setTagCallList] = useState([]);
-
+ 
     useEffect(() => {
       // GET request using fetch inside useEffect React hook
       fetch('http://localhost:5000/tagCallList/' + props.match.params.tag)
         .then(response => response.json())
         .then(data => setTagCallList([...data]))
         .catch(error => {
-          console.error('There was an error with /recentCallList !!', error);
+          console.error('There was an error with /tagCallList/:tag !!', error);
         });
 
     // if param changes, reload the page and therefore make new fetch request
@@ -33,8 +33,8 @@ const TagPage = (props) => {
           <div className="callsList">
             {tagCallList.map(call => {
               return (
-                <Call key={call.callID} onGoing={call.onGoing} callName={call.callName} 
-                link={"/chatroom/" + call.callID} duration={call.startTime} numPeople="0"
+                <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
+                link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
                 callTag={call.callTag}/>
               )
             })}

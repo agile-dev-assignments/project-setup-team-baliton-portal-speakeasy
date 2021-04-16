@@ -3,9 +3,9 @@ import React, { useState, useEffect} from "react";
 import './RecentCallsPage.css'
 
 
-function displayTime(dateAndTime) {
-  dateAndTime.toString();
-  let arr = dateAndTime.split("T");
+const displayTime = (dateAndTime) => {
+  let dateAndTimeString = dateAndTime.toString();
+  let arr = dateAndTimeString.split("T");
   let date = arr[0].split("-");
   let time = arr[1].split(".");
   let timeString = time[0];
@@ -73,3 +73,4 @@ const Call = (props) => {
 }
 
 export default RecentCallsPage;
+export { displayTime };
