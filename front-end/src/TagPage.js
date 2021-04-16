@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import './TagPage.css';
 import { Toplog, Bottom } from './App.js';
 import { displayTime } from './RecentCallsPage.js';
+import NoCallsImage from './images/noCallsImage.jpg';
 
 const TagPage = (props) => {
     //const calls = props.calls.map(call =>
@@ -25,31 +26,52 @@ const TagPage = (props) => {
 
     let numberOfCallsWithTag = tagCallList.length;
 
-    return (
-      <div>
-        <Toplog />
-        <div className="page">
-          <div className="grayButton">
-            {numberOfCallsWithTag + " Calls with Tag: " + props.match.params.tag}
+    if (numberOfCallsWithTag === 0) {
+      return (
+        <div>
+          <Toplog />
+          <div className="page">
+            <div className="grayButton">
+              {"No Calls with Tag: " + props.match.params.tag + "!"}
+            </div>
+            <img className="no-calls-image" alt="" src={NoCallsImage} />
+            <div className="grayButton">
+              <a href={"/tagpage/" + props.match.params.tag}>
+                Refresh
+              </a>
+            </div>
           </div>
-          <div className="callsList">
-            {tagCallList.map(call => {
-              return (
-                <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
-                link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
-                callTag={call.callTag}/>
-              )
-            })}
-          </div>
-          <div className="grayButton">
-            <a href={"/tagpage/" + props.match.params.tag}>
-              Refresh
-            </a>
-          </div>
+          <Bottom />
         </div>
-        <Bottom />
-      </div>
+      )
+    }
+    else {
+      return (
+        <div>
+          <Toplog />
+          <div className="page">
+            <div className="grayButton">
+              {numberOfCallsWithTag + " Calls with Tag: " + props.match.params.tag}
+            </div>
+            <div className="callsList">
+              {tagCallList.map(call => {
+                return (
+                  <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
+                  link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
+                  callTag={call.callTag}/>
+                )
+              })}
+            </div>
+            <div className="grayButton">
+              <a href={"/tagpage/" + props.match.params.tag}>
+                Refresh
+              </a>
+            </div>
+          </div>
+          <Bottom />
+        </div>
     )
+  }
 }
 
 
