@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Toplog, Bottom} from './App.js';
 import './EasterEgg.css';
 import MainPage from './MainPage';
-import background from "./front-page-background.png"
+import background from "./images/front-page-background.png"
 
 const EasterEgg = () => {
     // Declare a new state variable, which we'll call "count"

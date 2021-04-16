@@ -23,12 +23,14 @@ const TagPage = (props) => {
     // if param changes, reload the page and therefore make new fetch request
     }, [props.match.params.tag]);
 
+    let numberOfCallsWithTag = tagCallList.length;
+
     return (
       <div>
         <Toplog />
         <div className="page">
           <div className="grayButton">
-            {"Calls with Tag: " + props.match.params.tag}
+            {numberOfCallsWithTag + " Calls with Tag: " + props.match.params.tag}
           </div>
           <div className="callsList">
             {tagCallList.map(call => {

@@ -7,7 +7,7 @@ import TagList from './TagList';
 import TagPage from './TagPage';
 import RecentCallsPage from './RecentCallsPage';
 import EasterEgg from './EasterEgg';
-import Logo from './speakeasyLogo.PNG';
+import Logo from './images/speakeasyLogo.PNG';
 import CreateNewCallPage from './CreateNewCall';
 //import CreateNewCall from './CreateNewCall'
 import React, { useState, useRef } from 'react';
@@ -129,26 +129,26 @@ function Bottom() {
 const TagListWithTags = () => {
   const tags = [
     {
-      'tagName': 'Tag1',
-      'link': 'Tag1',
+      'tagName': 'tag1',
+      'link': 'tag1',
       'numPeople': 0,
       'numCalls': 0
     },
     {
-      'tagName': 'Tag2',
-      'link': 'Tag2',
+      'tagName': 'tag2',
+      'link': 'tag2',
       'numPeople': 0,
       'numCalls': 0
     },
     {
-      'tagName': 'Tag3',
-      'link': 'Tag4',
+      'tagName': 'tag3',
+      'link': 'tag3',
       'numPeople': 0,
       'numCalls': 0
     },
     {
-      'tagName': 'Tag4',
-      'link': 'Tag4',
+      'tagName': 'tag4',
+      'link': 'tag4',
       'numPeople': 0,
       'numCalls': 0
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import './About.css';
-import BannerImage from './speakeasyPhoto.jpg';
+import BannerImage from './images/speakeasyPhoto.jpg';
 
 const About = (props) => {
     //set up such that team member profiles are modular
