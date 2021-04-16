@@ -179,7 +179,7 @@ app.get('/recentCallList', (req, res, next)=>{
         })
         .catch(error => {
             //handle error and print to console
-            console.error('There was an error with /recentCallList !!!!', error);
+            console.error('There was an error with /recentCallList !!!! ', error);
         });
 
 })
@@ -192,24 +192,18 @@ const onGoingWithTag = (call, store) => {
 }
 
 //make a request for calls for tag page
-app.get('/tagCallList/:id', (req, res, next)=>{
-    let store = req.params.id;
-    axios
-        .get('https://my.api.mockaroo.com/tagCallList.json?key=65c91aa0')
-        .then(apiResponse => {
-            // handle success, send data as json
-            let callList = apiResponse.data;
-            callList = callList.filter(call => {
-                return onGoingWithTag(call, store); 
-            })
+app.get('/tagCallList/:tag', (req, res, next)=>{
+    let store = req.params.tag;
+            //callList = callList.filter(call => {
+            //    return onGoingWithTag(call, store); 
+            //})
 
-            //res.send('the tag is ' + req.params.id)
-            res.json(callList);
-        })
-        .catch(error => {
+            //res.send('the tag is ' + store)
+            //res.json(callList);
+        //.catch(error => {
             //handle error and print to console
-            console.error('There was an error with /recentCallList !!!!', error);
-        });
+        //    console.error('There was an error with /tagCallList' + {store} + '! ', error);
+        //});
 
 })
 
