@@ -1,0 +1,88 @@
+div{
+  width: device-width;
+}
+
+.grayButton {
+  background-color: lightgrey;
+  width: 20%;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: solid;
+  border-width: 2px;
+}
+
+.grayButton > a {
+  text-decoration: none;
+}
+
+.callsList {
+  display: block;
+}
+
+.call {
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 40%;
+}
+
+.link {
+  font-size: 14px;
+  width: 40%;
+  height: 80px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 2%;
+  background-color: white;
+  border: solid black;
+  border-width: 1px;
+  text-align: center;
+  margin-right: 5%;
+  line-height: 80px;
+  text-decoration: none;
+}
+
+.stats {
+  width: 49%;
+  line-height: 100%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.duration {
+  text-align: center;
+  height: 39.5px;
+  line-height: 39.5px;
+  background-color: white;
+  padding: 7px;
+  border: solid;
+  border-bottom: 0px;
+  border-width: 1px;
+}
+
+.people {
+  text-align: center;
+  height: 39.5px;
+  line-height: 39.5px;
+  background-color: white;
+  padding: 7px;
+  border: solid;
+  border-width: 1px;
+}
+
+.no-calls-image {
+  width: 100%;
+  height: auto;
+  margin-left: 0px;
+  margin-right: 0px;
+}

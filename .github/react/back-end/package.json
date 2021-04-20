@@ -1,0 +1,46 @@
+{
+  "name": "speakeasy-back-end",
+  "version": "0.0.1",
+  "description": "Back end for speakeasy project using express and web rtc",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test",
+    "prettify": "prettier --write \"./**/*.{js,css,html,md}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy.git"
+  },
+  "keywords": [
+    "speakeasy",
+    "speak",
+    "easy",
+    "webrtc",
+    "private",
+    "anonymous",
+    "audio",
+    "call"
+  ],
+  "author": "Oliver Chen, Daniel Tomkovicz, Kirill Dolgin, Sharri Glloxhani, Ziyan Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy/issues"
+  },
+  "homepage": "https://github.com/agile-dev-assignments/project-setup-team-baliton-portal-speakeasy#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7",
+    "wrtc": "^0.4.7"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1"
+  }
+}

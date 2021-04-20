@@ -1,0 +1,82 @@
+#header {
+  background-color: lightgrey;
+  width: 20%;
+  font-size: 23px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-top: 20px;
+  border: solid;
+  border-width: 2px;
+}
+
+.blockDisplay {
+  display: block;
+}
+
+#callName {
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 25%;
+}
+
+#popularTag {
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 5px;
+  width: 18%;
+}
+
+#popularTagRadio{
+  text-align: center;
+  margin-right: 5%;
+}
+
+#nameLabel{
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  margin-right: 5%;
+  height: 25px;
+  line-height: 25px;
+  text-decoration: none;
+}
+
+#newTagName{
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 25%;
+  margin-bottom: 10px;
+}
+
+#newTagRadio{
+  text-align: center;
+  margin-right: 2%;
+  vertical-align: baseline;
+  margin-top: 2%;
+}
+
+#tagBlock {
+  background: lightgrey;
+  border: solid;
+  border-width: 2px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 20%;
+}
