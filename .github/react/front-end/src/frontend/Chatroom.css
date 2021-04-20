@@ -1,0 +1,113 @@
+.chatroom .speakersPool {
+    display: flex;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin:0px 20px 20px 20px;
+
+
+}
+
+.chatroom .listenersPool {
+    display: flex;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin:20px;
+
+
+}
+
+.chatroom button {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+}
+
+.chatroom h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+}
+
+.profile-container{
+    background-color: #333333;
+    border-radius: 100%;
+}
+
+.chatroom ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.chatroom li {
+    display: inline;
+    padding: 10px;
+    float: left;
+}
+
+
+.chatroom li a:hover {
+    
+    
+    background-color: red;
+}
+
+.chatroom li a {
+    width:30px;
+    height: 30px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px ;
+    text-decoration: none;
+}
+
+#muffleButton{
+    margin-left: 100px;
+    float: left;
+    width: 200px;
+}
+
+#endButton {
+    width: 200px;
+    float: right;
+    margin-right: 100px ;}
+
+#buttonContainer {
+width: 100%;
+  display: inline-block;
+  overflow: auto;
+  white-space: nowrap;
+  margin: 20px auto;
+}
+
+#moderatorContainer{
+    width: 97%;
+    display: inline-block;
+    overflow: auto;
+    display: inline-block;
+    background-color: lightgrey;
+    border-radius: 5px;
+    margin-left: 1.5%;
+    
+    border: 0.5px solid grey;
+}
+
+#leftCon{
+    float: left;
+    margin-left: 15% ;
+
+    
+    }
+
+#rightCon{
+    float: right;
+    margin-right: 15%;
+
+}
