@@ -53,6 +53,30 @@ const CreateNewCallPage = (props) => {
           "callIDs":[ "00020", "00021", "00022", "00023", "00024"],
           "active":"true"
       },
+      {
+          "ID": 7,
+          "tagName":"Music",
+          "numPeople": 15,
+          "numCalls": 2,
+          "callIDs":[ "00025", "00026"],
+          "active":"true"
+      },
+      {
+          "ID": 8,
+          "tagName":"Environment",
+          "numPeople": 24,
+          "numCalls": 5,
+          "callIDs":[ "00027", "00028", "00029", "00030", "00031"],
+          "active":"true"
+      },
+      {
+          "ID": 9,
+          "tagName":"Jobs",
+          "numPeople": 54,
+          "numCalls": 6,
+          "callIDs":[ "00032", "00033", "00034", "00035", "00036"],
+          "active":"true"
+      },
   ];
   const [tagList2, setTagList] = useState([]);
 
@@ -61,7 +85,7 @@ const CreateNewCallPage = (props) => {
       .then(response => response.json())
       .then(data => setTagList([...data]))
       .catch(error => {
-        console.error('There was an error with /createNewCall !!', error);
+        console.error('There was an error with create new call page !', error);
       });
   }, []);
 
@@ -103,6 +127,14 @@ const CreateNewCallPage = (props) => {
                 </div>
               </div>
 
+              <div class="blockDisplay">
+                <div id="newTagID">
+                  <input type="radio" id="newTagIDRadio" name="choice" value="popular_tag"/>
+                  <label for="newCallName" id="nameLabel">Enter Tag ID: </label>
+                  <input type="text" id="newTagID" name="newTagID"/>
+                  </div>
+                </div>
+
               <Linker ali = "center" var = "primary" action = "/chatroom" name = "Create Call!"> </Linker>
         </div>
     )
@@ -115,6 +147,7 @@ const Tag = (props) => {
       <div className="tag-details">
         <input type="checkbox" id={props.key} name="choice" value={props.tagName}/>
         <label for={props.tagName}>{props.tagName}</label>
+        <label for={props.ID}>{props.ID}</label>
       </div>
     </ul>
     </div>

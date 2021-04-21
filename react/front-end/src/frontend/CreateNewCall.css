@@ -80,3 +80,23 @@
   margin-top: 10px;
   width: 20%;
 }
+
+#newTagID{
+  background: lightgrey;
+  border-radius: solid;
+  border: solid;
+  border-width: 2px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 25%;
+  margin-bottom: 10px;
+}
+
+#newTagIDRadio{
+  text-align: center;
+  margin-right: 2%;
+  vertical-align: baseline;
+  margin-top: 2%;
+  margin-left: 3%;
+}
