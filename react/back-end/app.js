@@ -1,11 +1,16 @@
 // import and instantiate express
+
+//DO NOT COMMIT TO MAIN BRANCH YET!
 const express = require("express"); // CommonJS import style!
+const session = require('express-session');
 const cors = require('cors');
 const app = express() // instantiate an Express object
 const axios = require('axios');
 const mongoose = require('mongoose');
 const Call = require('./call');
+const bodyp = require('body-parser')
 require('dotenv').config();
+const sesstimeout = 1000 * 60 * 60 * 3; //3 hours before session times out
 
 //variables from dotenv
 const atlas_username = process.env.DB_USERNAME;
@@ -14,10 +19,108 @@ const atlas_password = process.env.DB_PASSWORD;
 //atlas url with dot env variables
 const atlasURL = 'mongodb+srv://' + atlas_username + ':' + atlas_password + '@speakeasycluster.meaba.mongodb.net/speakeasy-database?retryWrites=true&w=majority';
 
+const {                          //defaults
+  PORT = 5000,
+  NODE_ENV = 'development',
+  SESNAMAE = "sid",
+  SESSEC = 'some message',
+  SESTIME = sesstimeout
+} = process.env
+
+app.use(bodyp.urlencoded({
+  extended: true
+}))
+
+const IN_PROD = NODE_ENV === 'production' //only sets secure to true in development
+
+app.use(session({
+  name: SESNAME,
+  resave: false,
+  sveUninitialized: false,
+  cookie: {
+    maxAge: SESTIME,
+    sameSite: true,
+    secure: IN_PROD
+  }
+}))
+
+/*are we bringing back log in page?
+app.get('/login', (req, res) => {
+  res.sent('../front-end/src/frontend/MainPage ')
+})
+*/
+
+//testing authenticaation
+
+const user = [
+  { id: 0, name: 'A', password: '123'},
+  { id: 1, name: 'B', password: '123'},
+  { id: 2, name: 'C', password: '123'},
+  { id: 3, name: 'D', password: '123'},
+  { id: 4, name: 'E', password: '123'}
+]
+
+app.get('/', (req,res) => {
+  const { userId } = req.session
+  res.send(`
+    <h2> Welcome to Speakeasy </h2>
+    ${userId ? '
+      <a href='/login'>Login</a>
+      <a href='/signup'>Sign up</a>
+      <form method='post' action='/logout'>
+          <button>Logout</button>
+      </form>
+    '}
+  )
+})
+
+
+app.get('/login', (req,res) => {
+  res.send(`
+    <h2>Login</h2>
+    <form method='post' action='/login'>
+        <input type='name' name = 'name' required />
+        <input type='password' name = 'password' required />
+    </form>
+    `)
+})
+
+app.post('/login', redirectHome, (req, res) =>{
+const { name, password } = req.body
+  if (email && password){
+    const user = users.find(
+      user => user.name === name && user.password === password
+    )
+
+    if (user) {
+      req.session.userId = user.id
+      return res.redirect('../front-end/src/frontend/MainPage')
+    }
+  }
+
+  res.redirect('login')
+})
+
+app.get('/signup', (req,res) => {
+  res.send(`
+    <h2>Login</h2>
+    <form method='post' action='/login'>
+        <input type='name' name = 'name' required />
+        <input type='password' name = 'password' required />
+    </form>
+  `)
+})
+app.get('/Logout', (req,res) => {
+  res.send(`
+
+  `)
+})
+
+
 //connect to mongoDB through atlas
 mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    console.log('connected to speakeasy-database with username: ' + atlas_username) 
+    console.log('connected to speakeasy-database with username: ' + atlas_username)
   })
   .catch((err) => {
     console.log('connection to DB failed, string that the attempt use: ' + atlasURL + 'err: ' + err)
@@ -170,7 +273,7 @@ app.get('/recentCallList', (req, res, next)=>{
         // handle success, send data as json
         let callList = dbResponse;
         callList = callList.filter(call => {
-          return call.onGoing; 
+          return call.onGoing;
         })
         callList.sort((call1, call2) => {
           return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
@@ -199,7 +302,7 @@ app.get('/tagCallList/:tag', (req, res, next)=>{
       .then(dbResponse => {
         let callList = dbResponse;
         callList = callList.filter(call => {
-          return onGoingWithTag(call, store); 
+          return onGoingWithTag(call, store);
         })
         callList.sort((call1, call2) => {
           return moreRecent(call1.timeStarted.toISOString(), call2.timeStarted.toISOString());
