@@ -27,6 +27,14 @@ const {                          //defaults
   SESTIME = sesstimeout
 } = process.env
 
+const redirectLogi = (req, res, next) => {
+  if (!req.session.userId){
+    res.redirect('/login')
+  }else{
+    next()
+  }
+}
+
 app.use(bodyp.urlencoded({
   extended: true
 }))
