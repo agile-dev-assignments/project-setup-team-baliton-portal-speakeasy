@@ -12,6 +12,7 @@ import CreateNewCallPage from './CreateNewCall';
 //import CreateNewCall from './CreateNewCall'
 import React, { useState, useRef } from 'react';
 import Backend from '../App';
+
 const dotenv = require("dotenv").config();
 
 function App() {
@@ -34,9 +35,7 @@ function App() {
           <CreateNewCallPage />
           <Bottom />
         </Route>
-        <Route path="/chatroom">
-          <Backend/>
-        </Route>
+        <Route path="/chatroom" component={Backend}/>
         <Route path="/about">
           <Toplog />
           <About />
@@ -106,11 +105,11 @@ const Toplog = (props) => {
 function Textbox(prop) {
   return (
     <div align = {prop.ali} className={prop.cn}>
-     <form action="/chatroom">
-       <label form="tag"><b>{prop.mess}</b></label>
-       <input type="text" id={prop.tag} name = {prop.tag}/><br/><br/>
-       <input type="submit" value= {prop.name} id = "submitcall"/>
-     </form>
+      <form action="/chatroom">
+        <label form="tag"><b>{prop.mess}</b></label>
+        <input type="text" name={prop.tag} required="true"/><br/><br/>
+        <input type="submit" value= {prop.name} id = "submitcall"/>
+      </form>
     </div>
   );
 }
