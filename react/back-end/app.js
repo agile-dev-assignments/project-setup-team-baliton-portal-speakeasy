@@ -214,8 +214,6 @@ app.get('/getDistinctTags', (req, res, next) => {
         return call.onGoing;
       })
       let uniqueTagsList = getUniqueTags(callList);
-      console.log(uniqueTagsList.length);
-      console.log("hello");
       res.send(uniqueTagsList)
 
     })
