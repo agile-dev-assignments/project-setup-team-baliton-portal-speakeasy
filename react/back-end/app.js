@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const Call = require('./call');
 require('dotenv').config();
 
+//use cors middle ware
+app.use(cors())
+
 //variables from dotenv
 const atlas_username = process.env.DB_USERNAME;
 const atlas_password = process.env.DB_PASSWORD;
@@ -66,9 +69,6 @@ app.get('/backdoor-add-ended-call/:tag/:title', (req, res) => {
       console.log(err);
     })
 })
-
-//use cors middle ware
-app.use(cors())
 
 //helper functoin to sort time started's dates before sorting time
 //returns 1 if a is a more recent date, -1 if b is a more recent date
@@ -161,6 +161,25 @@ const moreRecent = (a, b) => {
   }
 }
 
+//get unique tags
+//accepts a json array of ongoing calls and returns a list of unique tags
+const getUniqueTags = (callArray) => {
+  let seenList = [];
+
+  callArray.map(call => {
+    let callTag = call.callTag;
+    if (seenList.includes(callTag)) {
+      //do nothing if this tag is already in the list
+      return;
+    }
+    else {
+      seenList.push(callTag);
+    }
+  })
+  
+  return seenList;
+}
+
 
 //make a request for calls
 app.get('/recentCallList', (req, res, next)=>{
@@ -182,6 +201,26 @@ app.get('/recentCallList', (req, res, next)=>{
       console.error('There was an error with /recentCallList !!!! ', error);
     });
 
+})
+
+//make a request for distinct tags
+app.get('/getDistinctTags', (req, res, next) => {
+
+  Call.find()
+    .then(dbResponse => {
+      //handle success, process data and send back as json
+      let callList = dbResponse;
+      callList = callList.filter(call => {
+        return call.onGoing;
+      })
+      let uniqueTagsList = getUniqueTags(callList);
+      res.send(uniqueTagsList)
+
+    })
+    .catch(error => {
+      //handle error and print it to console with message
+      console.error('There was an error with /getDistinctTags !!', error)
+    })
 })
 
 //helper function for tag call list route
@@ -221,5 +260,6 @@ module.exports = {
     moreRecent: moreRecent,
     sortTime: sortTime,
     sortDate: sortDate,
-    onGoingWithTag: onGoingWithTag
+    onGoingWithTag: onGoingWithTag,
+    getUniqueTags: getUniqueTags
 }

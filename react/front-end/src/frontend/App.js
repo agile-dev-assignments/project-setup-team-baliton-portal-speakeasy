@@ -20,7 +20,7 @@ function App() {
       <Switch>
         <Route path="/taglist">
           <Toplog />
-            <TagListWithTags />
+            <TagList />
           <Bottom />
         </Route>
         <Route path="/tagpage/:tag" component={TagPage}/>
@@ -106,7 +106,7 @@ function Textbox(prop) {
     <div align = {prop.ali} className={prop.cn}>
       <form action="/chatroom">
         <label form="tag"><b>{prop.mess}</b></label>
-        <input type="text" id={prop.tag} name={prop.tag} required="true"/><br/><br/>
+        <input type="text" id={prop.tag} name={prop.tag} required={true}/><br/><br/>
         <input type="submit" value={prop.name} id="submitcall"/>
       </form>
     </div>
@@ -121,36 +121,6 @@ function Bottom() {
       <h2 id="reserved"> All rights reserved 2021 </h2>
     </div>
   );
-}
-
-const TagListWithTags = () => {
-  const tags = [
-    {
-      'tagName': 'tag1',
-      'link': 'tag1',
-      'numPeople': 0,
-      'numCalls': 0
-    },
-    {
-      'tagName': 'tag2',
-      'link': 'tag2',
-      'numPeople': 0,
-      'numCalls': 0
-    },
-    {
-      'tagName': 'tag3',
-      'link': 'tag3',
-      'numPeople': 0,
-      'numCalls': 0
-    },
-    {
-      'tagName': 'tag4',
-      'link': 'tag4',
-      'numPeople': 0,
-      'numCalls': 0
-    }
-  ]
-  return <TagList tags={tags} />
 }
 
 export default App;
