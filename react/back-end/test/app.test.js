@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { sortTime, sortDate, moreRecent, onGoingWithTag } = require('../app');
+const { sortTime, sortDate, moreRecent, onGoingWithTag, getUniqueTags } = require('../app');
 
 //tests for sortTime(arg1, arg2)
 //arg1: string with format XX:XX:XX or X:XX:XX
@@ -158,5 +158,59 @@ describe('onGoingWithTag - basic functionality', () => {
         const expected = false;
         const actual = onGoingWithTag({ "callTag":"aLigAtors", "onGoing":true} , "aliGatorS");
         expect(actual).to.be.eq(expected);
+    });
+});
+
+//tests for getUniqueTags(callArray)
+//input: array of calls with field call.callTag
+//output: a list of strings with all the unique callTags
+describe('getUniqueTags - basic functionality', () => {
+    it('returns an empty list if given empty json array', () => {
+        const expected = [];
+        const actual = getUniqueTags([]);
+        expect(actual.length).to.be.eq(expected.length);
+    });
+    it('returns just one of each tag in the event of duplicates', () => {
+        const arg = [
+            {
+                "callTitle": 'call1',
+                "callTag": 'red'
+            },
+            {
+                "callTitle": 'call2',
+                "callTag": 'red'
+            },
+            {
+                "callTitle": 'call3',
+                "callTag": 'blue'
+            }
+        ]
+        const expected = ['red', 'blue'];
+        const actual = getUniqueTags(arg);
+        expect(actual.includes('red')).to.be.eq(true);
+        expect(expected.includes('red')).to.be.eq(true);
+        expect(actual.includes('blue')).to.be.eq(true);
+        expect(expected.includes('blue')).to.be.eq(true);
+    });
+    it('edge case, returns just one tag with many calls of same tag', () => {
+        const arg = [
+            {
+                "callTitle": 'call1',
+                "callTag": 'green'
+            },
+            {
+                "callTitle": 'call2',
+                "callTag": 'green'
+            },
+            {
+                "callTitle": 'call3',
+                "callTag": 'green'
+            }
+        ]
+        const expected = ['green'];
+        const actual = getUniqueTags(arg);
+        expect(actual.includes('green')).to.be.eq(true);
+        expect(expected.includes('green')).to.be.eq(true);
+        expect(actual.length).to.be.eq(expected.length);
     });
 });

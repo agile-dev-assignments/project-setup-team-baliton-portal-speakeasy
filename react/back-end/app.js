@@ -262,5 +262,6 @@ module.exports = {
     moreRecent: moreRecent,
     sortTime: sortTime,
     sortDate: sortDate,
-    onGoingWithTag: onGoingWithTag
+    onGoingWithTag: onGoingWithTag,
+    getUniqueTags: getUniqueTags
 }
