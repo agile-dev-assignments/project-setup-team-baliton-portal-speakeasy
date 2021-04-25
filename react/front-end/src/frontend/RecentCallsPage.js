@@ -51,7 +51,7 @@ function RecentCallsPage() {
     return (
       <div className="page">
         <div className="grayButton">
-          LIST OF RECENT CALLS
+          {numberOfRecentCalls + " On Going Calls!"}
         </div>
         <div className="callsList">
           {recentCallList.map(call => {
@@ -74,7 +74,7 @@ function RecentCallsPage() {
 
 const Call = (props) => {
   return (
-    <div className="call">
+    <div key={props.callName} className="call">
       <a className="link" href={props.link}>
         {props.callName + ", tag: " + props.callTag}
       </a>

@@ -78,3 +78,10 @@ div{
   border: solid;
   border-width: 1px;
 }
+
+.no-calls-image {
+  width: 100%;
+  height: auto;
+  margin-left: 0px;
+  margin-right: 0px;
+}

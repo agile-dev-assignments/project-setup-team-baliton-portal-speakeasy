@@ -5,10 +5,6 @@ import { displayTime } from './RecentCallsPage.js';
 import NoCallsImage from './images/noCallsImage.jpg';
 
 const TagPage = (props) => {
-    //const calls = props.calls.map(call =>
-    //  <Call callcallName={call.callName} link={call.link} duration={call.startTime}
-    //   numPeople={call.numPeople} />
-    //)
 
     const [tagCallList, setTagCallList] = useState([]);
  
@@ -25,6 +21,11 @@ const TagPage = (props) => {
     }, [props.match.params.tag]);
 
     let numberOfCallsWithTag = tagCallList.length;
+
+    const displayList = tagCallList.map(call =>
+      <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
+            link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="X"
+            callTag={call.callTag}/>)
 
     if (numberOfCallsWithTag === 0) {
       return (
@@ -54,13 +55,7 @@ const TagPage = (props) => {
               {numberOfCallsWithTag + " Calls with Tag: " + props.match.params.tag}
             </div>
             <div className="callsList">
-              {tagCallList.map(call => {
-                return (
-                  <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
-                  link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
-                  callTag={call.callTag}/>
-                )
-              })}
+              {displayList}
             </div>
             <div className="grayButton">
               <a href={"/tagpage/" + props.match.params.tag}>
@@ -77,7 +72,7 @@ const TagPage = (props) => {
 
 const Call = (props) => {
     return (
-      <div className="call">
+      <div key={props.callName} className="call" >
         <a className="link" href={props.link}>
           {props.callName + ", tag: " + props.callTag}
         </a>
