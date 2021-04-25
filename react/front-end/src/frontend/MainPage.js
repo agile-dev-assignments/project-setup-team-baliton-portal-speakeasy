@@ -13,9 +13,8 @@ const MainPage = (prop) => {                 //need  user name
         <Linker ali = "left" var = "primary" action = "/recent" name = "Recent Calls" cn="sidebar"> </Linker>
         <br></br>
       </div>
-      
-      <Linker ali = "center" var = "primary" action = "/chatroom" name = "Create / Join Call" cn = "buttons"> </Linker>
-
+      <Textbox ali = "center" mess = "Call ID: " action = "/chatroom" tag = "id" name = "Join Call by Call ID" cn="callNameField"> </Textbox>
+      <Linker ali = "center" var = "primary" action = "/chatroom?id=" name = "Create New Call" cn = "buttons"> </Linker>
       <Linker ali = "center" var = "primary" action = "/chatroom" name = "I am feeling lucky!" cn = "buttons"> </Linker>
       <br></br>
       <br></br>
