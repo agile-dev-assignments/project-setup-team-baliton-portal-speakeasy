@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const callSchema = new Schema({
     callID: {
-        type: Number,
+        type: String,
         required: true
     },
     callTitle: {
@@ -17,10 +17,6 @@ const callSchema = new Schema({
     timeStarted: {
         type: Date,
         default: Date.now,
-        required: true
-    },
-    moderatorID: {
-        type: Number,
         required: true
     },
     onGoing: {
