@@ -75,18 +75,6 @@ export const CallProvider = ({ children }) => {
 
     //post newly created call to database
     if(starting) {
-      /*
-      const request = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors',
-        body: JSON.stringify({
-          reqName: 'name',
-          reqCallTag: 'callTag',
-          reqCallTitle: 'callTitle' 
-        })
-      }
-      */
 
       //roomInfo.name
       fetch('http://localhost:5000/postCall/' +  roomInfo.name + '/' + callTitle + '/' + callTag)

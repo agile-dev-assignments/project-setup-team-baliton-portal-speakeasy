@@ -9,9 +9,8 @@ require('dotenv').config();
 
 //use cors middle ware
 app.use(cors())
-
-//app.use(express.json());
-//app.use(express.urlencoded());
+//use json parsing middleware
+app.use(express.json());
 
 //variables from dotenv
 const atlas_username = process.env.DB_USERNAME;
