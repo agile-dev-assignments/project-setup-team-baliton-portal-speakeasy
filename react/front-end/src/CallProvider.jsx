@@ -57,19 +57,31 @@ export const CallProvider = ({ children }) => {
     return result;
   };
 
-  const joinRoom = async ({ userName, name, moderator }) => {
+  const joinRoom = async ({ userName, name, callTag, callTitle, moderator }) => {
     if (callFrame) {
       callFrame.leave();
     }
 
+    let starting = false;
     let roomInfo = { name };
     /**
      * The first person to join will need to create the room first
      */
-    if (!name && !moderator) {
+    if (!name) {
+      starting = true;
       roomInfo = await createRoom();
     }
     setRoom(roomInfo);
+
+    //post newly created call to database
+    if(starting) {
+
+      //roomInfo.name
+      fetch('http://localhost:5000/postCall/' +  roomInfo.name + '/' + callTitle + '/' + callTag)
+        .catch((err) => {
+          console.log("/postCall gave error: ", err);
+        });
+    }
 
     /**
      * When a moderator makes someone else a moderator,

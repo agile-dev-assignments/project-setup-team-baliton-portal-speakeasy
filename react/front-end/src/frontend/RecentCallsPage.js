@@ -57,7 +57,7 @@ function RecentCallsPage() {
           {recentCallList.map(call => {
             return (
               <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
-              link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="0"
+              link={"/chatroom?id=" + call.callID + "?title=" + call.callTitle} duration={displayTime(call.timeStarted)} numPeople="0"
               callTag={call.callTag}/>
             )
           })}

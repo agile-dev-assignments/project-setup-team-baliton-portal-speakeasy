@@ -8,13 +8,23 @@ import {useLocation} from "react-router-dom";
 const PreJoinRoom = () => {
   
   const search = useLocation().search;
-  const urlID = new URLSearchParams(search).get('id');
+  const searchURL = new URLSearchParams(search).get('id');
+  const attributeList = searchURL.split('?title=');
+  const urlID = attributeList[0];
+  const callTitle = attributeList[1];
+  let callMessage = "";
+
+  if (callTitle) {
+    callMessage = "Joining Call: '" + callTitle + "'"; 
+  }
+  else {
+    callMessage = "Joining Call";
+  }
 
   const { joinRoom, error } = useCallState();
-
   const firstNameRef = useRef(null);
-  const roomNameRef = useRef(null);
-  const [roomName, setRoomName] = useState("");
+  const callTitleRef = useRef(null);
+  const callTagRef = useRef(null);
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
@@ -22,7 +32,6 @@ const PreJoinRoom = () => {
       setSubmitting(false);
     }
   }, [error]);
-
 
   const submitForm = useCallback(
     (e) => {
@@ -34,9 +43,18 @@ const PreJoinRoom = () => {
         return;
       }
 
-      let userName = `${firstNameRef?.current?.value}`;
+      if ((urlID === "") && ((!callTagRef?.current) || (!callTitleRef?.current))) {
+        return;
+      }
 
+      let userName = `${firstNameRef?.current?.value}`;
       let name = "";
+      let callTag = "";
+      let callTitle = "";
+      
+      console.log(`Creating call, username: ${firstNameRef?.current?.value}`);
+      console.log(`Creating call, call title: ${callTitleRef?.current?.value}`);
+      console.log(`Creating call, call tag: ${callTagRef?.current?.value}`);
 
       if (urlID !== "" ) {
         name = urlID;
@@ -51,17 +69,19 @@ const PreJoinRoom = () => {
          * If they're not submitting a specific room name, we'll create a new
          * room in joinRoom() so let's make them the moderator by default.
          */
+         callTag = `${callTagRef?.current?.value}`;
+         callTitle = `${callTitleRef?.current?.value}`;
         userName = `${userName?.trim()}_${MOD}`;
       }
-      joinRoom({ userName, name });
+      joinRoom({ userName, name, callTag, callTitle });
     },
-    [firstNameRef, roomNameRef, joinRoom, submitting]
+    [firstNameRef, callTagRef, callTitleRef, joinRoom, submitting, urlID]
   );
 
   if (urlID !== "") {
     return (
       <Container>
-        <Title>Joining Call: 'CALL TITLE'</Title>
+        <Title>{callMessage}</Title>
         <Form onSubmit={submitForm}>
           <Label htmlFor="fname">Choose a nickname:</Label>
           <Input
@@ -81,7 +101,7 @@ const PreJoinRoom = () => {
             value={
               submitting
                 ? "Joining..."
-                : roomName?.trim()
+                : "Joining..."
                 ? "Join Room!"
                 : "Join Room!"
             }
@@ -104,6 +124,22 @@ const PreJoinRoom = () => {
             name="fname"
             required
           />
+          <Label htmlFor="ctitle">Enter Call Title:</Label>
+          <Input
+            ref={callTitleRef}
+            type="text"
+            id="ctitle"
+            name="ctitle"
+            required
+          />
+          <Label htmlFor="ctag">Enter Call Tag:</Label>
+          <Input
+            ref={callTagRef}
+            type="text"
+            id="ctag"
+            name="ctag"
+            required
+          />
           <SmallText>
             Nicknames will never be tracked and do not create an account, only serve
             as a temporary identifying name while you are in the call you are about
@@ -114,7 +150,7 @@ const PreJoinRoom = () => {
             value={
               submitting
                 ? "Creating & Joining..."
-                : roomName?.trim()
+                : "Creating & Joining..."
                 ? "Create & Join Room!"
                 : "Create & Join Room!"
             }

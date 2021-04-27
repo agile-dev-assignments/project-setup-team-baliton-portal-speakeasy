@@ -24,7 +24,7 @@ const TagPage = (props) => {
 
     const displayList = tagCallList.map(call =>
       <Call key={call.callID} onGoing={call.onGoing} callName={call.callTitle} 
-            link={"/chatroom/" + call.callID} duration={displayTime(call.timeStarted)} numPeople="X"
+            link={"/chatroom?id=" + call.callID + "?title=" + call.callTitle} duration={displayTime(call.timeStarted)} numPeople="X"
             callTag={call.callTag}/>)
 
     if (numberOfCallsWithTag === 0) {

@@ -9,6 +9,8 @@ require('dotenv').config();
 
 //use cors middle ware
 app.use(cors())
+//use json parsing middleware
+app.use(express.json());
 
 //variables from dotenv
 const atlas_username = process.env.DB_USERNAME;
@@ -26,42 +28,22 @@ mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('connection to DB failed, string that the attempt use: ' + atlasURL + 'err: ' + err)
   })
 
-//route to manually add 'ongoing' calls to the database for testing purposes
-app.get('/backdoor-add-ongoing-call/:tag/:title', (req, res) => {
-  let storeTag = req.params.tag;
+//post route to upload to database
+app.get('/postCall/:id/:title/:tag', (req, res) => {
+  let storeId = req.params.id;
   let storeTitle = req.params.title;
-  const call = new Call({
-    callID: 0,
+  let storeTag = req.params.tag;
+  console.log("Adding Call to database with ID: ", storeId, "");
+  console.log("Adding Call to database with Title: ", storeTitle);
+  console.log("Adding Call to database with Tag: ", storeTag);
+  const postCall = new Call({
+    callID: storeId,
     callTitle: storeTitle,
     callTag: storeTag,
-    moderatorID: 0,
     onGoing: true
+  })
 
-  });
-
-  call.save()
-    .then((result) => {
-      res.send(result)
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-})
-
-//route to manually add 'ended' calls to the database for testing purposes
-app.get('/backdoor-add-ended-call/:tag/:title', (req, res) => {
-  let storeTag = req.params.tag;
-  let storeTitle = req.params.title;
-  const call = new Call({
-    callID: 0,
-    callTitle: storeTitle,
-    callTag: storeTag,
-    moderatorID: 0,
-    onGoing: false
-
-  });
-
-  call.save()
+  postCall.save()
     .then((result) => {
       res.send(result)
     })
