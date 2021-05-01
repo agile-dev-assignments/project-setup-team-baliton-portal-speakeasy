@@ -419,7 +419,8 @@ export const CallProvider = ({ children }) => {
       const exp = room?.config?.exp;
       setRoom(room);
       if (exp) {
-        setRoomExp(exp * 1000 || Date.now() + 1 * 60 * 1000);
+        setRoomExp(Date.now() + 2 * 60 * 60 * 1000);
+        console.log(exp);
       }
     }
     getRoom();
