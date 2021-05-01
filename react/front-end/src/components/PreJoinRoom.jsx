@@ -6,7 +6,7 @@ import { useCallState } from "../CallProvider";
 import {useLocation} from "react-router-dom";
 
 const PreJoinRoom = () => {
-  
+
   const search = useLocation().search;
   const searchURL = new URLSearchParams(search).get('id');
   const attributeList = searchURL.split('?title=');
@@ -15,7 +15,7 @@ const PreJoinRoom = () => {
   let callMessage = "";
 
   if (callTitle) {
-    callMessage = "Joining Call: '" + callTitle + "'"; 
+    callMessage = "Joining Call: '" + callTitle + "'";
   }
   else {
     callMessage = "Joining Call";
@@ -51,7 +51,7 @@ const PreJoinRoom = () => {
       let name = "";
       let callTag = "";
       let callTitle = "";
-      
+
       console.log(`Creating call, username: ${firstNameRef?.current?.value}`);
       console.log(`Creating call, call title: ${callTitleRef?.current?.value}`);
       console.log(`Creating call, call tag: ${callTagRef?.current?.value}`);
@@ -164,11 +164,11 @@ const PreJoinRoom = () => {
 
 const Container = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  max-width: 400px;
+  width: 100%;
   margin-top: 48px;
 
   @media only screen and (min-width: 768px) {
@@ -213,7 +213,7 @@ const Input = styled.input`
 const Submit = styled(Input)`
   margin-top: 16px;
   border: ${theme.colors.cyanLight} 2px solid;
-  background-color: ${theme.colors.turquoise};
+  background-color: ${theme.colors.blue};
   padding: 5px;
   font-size: ${theme.fontSize.base};
   font-weight: 600;
