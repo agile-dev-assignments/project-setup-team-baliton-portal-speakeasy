@@ -17,10 +17,11 @@ const Counter = () => {
     clearInterval(interval);
     interval = setInterval(() => {
       let secs = Math.round((roomExp - Date.now()) / 1000);
+      console.log(secs);
       const value = Math.floor(secs / 60) + ":" + ("0" + (secs % 60)).slice(-2);
       if (secs <= 0) {
         clearInterval(interval);
-        console.log("Eep! Room has expired");
+        console.log("Sorry, the room has expired!");
         leaveCall();
         return;
       }
@@ -34,7 +35,7 @@ const Counter = () => {
 
   return (
     <Container>
-      Demo ends in <Count>{counter}</Count>
+      Call ends in <Count>{counter}</Count>
     </Container>
   );
 };
