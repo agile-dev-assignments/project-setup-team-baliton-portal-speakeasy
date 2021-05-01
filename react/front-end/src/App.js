@@ -5,6 +5,8 @@ import theme from "./theme";
 import logo from "./icons/logo.svg";
 import { SmallText } from "./components/shared/SmallText";
 import { CallProvider, INCALL, PREJOIN, useCallState } from "./CallProvider";
+import Logos from './frontend/images/speakeasyLogo.PNG';
+import './App.css';
 export const MOD = "MOD";
 export const SPEAKER = "SPK";
 export const LISTENER = "LST";
@@ -12,14 +14,11 @@ export const LISTENER = "LST";
 const AppContent = () => {
   const { view } = useCallState();
   return (
+    <Container>
+    <Toplog />
     <AppContainer>
       <Wrapper>
         <Header>
-          <HeaderTop>
-            <Title>Speakeasy</Title>
-            {/*<Logo src={logo} className="" alt="logo" />*/}
-          </HeaderTop>
-          <SmallText>Powered by Daily</SmallText>
         </Header>
         {view === PREJOIN && <PreJoinRoom />}
         {view === INCALL && <InCall />}
@@ -34,6 +33,8 @@ const AppContent = () => {
   </Link>*/}
       </Wrapper>
     </AppContainer>
+    <Bottom />
+    </Container>
   );
 };
 
@@ -44,6 +45,29 @@ function Backend() {
     </CallProvider>
   );
 }
+
+const Toplog = (props) => {
+  return (
+    <div id = "top">
+      <Link to = "/main">
+        <img className="logo" alt="" src={Logos} />
+      </Link>
+    </div>
+  );
+}
+
+function Bottom() {
+  return (
+    <div id = "bottom">
+      <br></br>
+      <h2 id="reserved"> All rights reserved 2021 </h2>
+    </div>
+  );
+}
+
+const Container = styled.div`
+  background-color: ${theme.colors.grey}
+`;
 
 const AppContainer = styled.div`
   background-color: ${theme.colors.greyLightest};
@@ -89,5 +113,6 @@ const Link = styled.a`
     max-width: ${(props) => (props.center ? "100%" : "400px")};
   }
 `;
+
 
 export default Backend;

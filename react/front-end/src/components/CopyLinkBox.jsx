@@ -59,8 +59,8 @@ const Bold = styled.span`
   font-weight: 600;
 `;
 const CopyButton = styled.button`
-  border: ${theme.colors.cyanLight} 1px solid;
-  background-color: ${theme.colors.turquoise};
+  border: ${theme.colors.turquoise} 1px solid;
+  background-color: ${theme.colors.blueLight};
   padding: 8px 12px;
   border-radius: 8px;
   width: 122px;

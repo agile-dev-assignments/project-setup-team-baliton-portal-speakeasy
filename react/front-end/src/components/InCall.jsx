@@ -2,12 +2,15 @@ import { useMemo, useCallback } from "react";
 import styled from "styled-components";
 import { INCALL, useCallState } from "../CallProvider";
 import { SPEAKER, LISTENER, MOD } from "../App";
+import { Link } from 'react-router-dom';
 import CopyLinkBox from "./CopyLinkBox";
 import Participant from "./Participant";
 import Counter from "./Counter";
 import MicIcon from "./MicIcon";
 import MutedIcon from "./MutedIcon";
+import Logo from '../frontend/images/speakeasyLogo.PNG';
 import theme from "../theme";
+import './InCall.css';
 
 const InCall = () => {
   const {
@@ -95,9 +98,11 @@ const InCall = () => {
         <Counter />
       </CallHeader>
       {canSpeak}
+      <ListeningContainer>
       <Header>Listeners</Header>
       {listeners}
       <CopyLinkBox room={room} />
+      </ListeningContainer>
       <Tray>
         <TrayContent>
           {[MOD, SPEAKER].includes(getAccountType(local?.user_name)) ? (
@@ -129,13 +134,15 @@ const InCall = () => {
   );
 };
 
+
 const Container = styled.div`
-  margin: 48px 0 0;
+  margin: 0 0 0;
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
   height: ${(props) => (props.hidden ? "0" : "100%")};
+  width: 100%;
 `;
 const CanSpeakContainer = styled.div`
-  border-bottom: ${theme.colors.grey} 1px solid;
+  border-bottom: ${theme.colors.green} 7px solid;
   margin-bottom: 24px;
   display: flex;
   flex-wrap: wrap;
@@ -143,11 +150,11 @@ const CanSpeakContainer = styled.div`
 const ListeningContainer = styled.div`
   margin-top: 24px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;\
 `;
 const Header = styled.h2`
   font-size: ${theme.fontSize.large};
-  color: ${theme.colors.greyDark};
+  color: ${theme.colors.blueDark};
 `;
 const CallHeader = styled.div`
   display: flex;
@@ -158,13 +165,13 @@ const CallHeader = styled.div`
 const Tray = styled.div`
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
-  height: 52px;
-  width: 100vw;
+  height: 100px;
+  width: 100%;
   box-sizing: border-box;
-  background-color: ${theme.colors.greyLight};
+  background-color: ${theme.colors.blue};
   padding: 12px;
 `;
 const TrayContent = styled.div`
@@ -186,18 +193,32 @@ const Button = styled.button`
   }
 `;
 const LeaveButton = styled(Button)`
-  margin-left: auto;
+margin-top: 5px;
+margin-left: 0;
+margin-bottom: 5px;
+width: 34%;
+background-color: #2a9df4;
+font-size: 20px;
+border-radius: 10px;
+height: 60px;
 `;
 const HandButton = styled(Button)`
   margin-right: auto;
 `;
 const AudioButton = styled(Button)`
-  margin-right: auto;
-  display: flex;
-  align-items: center;
+margin-top: 5px;
+margin-left: 0;
+margin-bottom: 5px;
+width: 34%;
+background-color: #2a9df4;
+font-size: 20px;
+border-radius: 10px;
+height: 60px;
 `;
 const ButtonText = styled.span`
   margin-left: 4px;
 `;
+
+
 
 export default InCall;
