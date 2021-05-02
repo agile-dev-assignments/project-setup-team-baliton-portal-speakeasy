@@ -11,6 +11,8 @@ import MutedIcon from "./MutedIcon";
 import Logo from '../frontend/images/speakeasyLogo.PNG';
 import theme from "../theme";
 import './InCall.css';
+import { useHistory } from "react-router-dom";
+
 
 const InCall = () => {
   const {
@@ -26,6 +28,20 @@ const InCall = () => {
     endCall,
   } = useCallState();
   console.log(participants);
+
+const history = useHistory();
+
+const handleEndCall = () => {
+  endCall();
+  let path = 'main';
+  history.push(path);
+}
+
+const handleLeaveCall = () => {
+  leaveCall();
+  let path = 'main'
+  history.push(path);
+}
 
   const local = useMemo((p) => participants?.filter((p) => p?.local)[0], [
     participants,
@@ -124,9 +140,9 @@ const InCall = () => {
             </HandButton>
           )}
           {mods?.length < 2 && getAccountType(local?.user_name) === MOD ? (
-            <LeaveButton onClick={endCall}>End call</LeaveButton>
+            <LeaveButton onClick={handleEndCall}>End call</LeaveButton>
           ) : (
-            <LeaveButton onClick={leaveCall}>Leave call</LeaveButton>
+            <LeaveButton onClick={handleLeaveCall}>Leave call</LeaveButton>
           )}
         </TrayContent>
       </Tray>
