@@ -11,6 +11,8 @@ import MutedIcon from "./MutedIcon";
 import Logo from '../frontend/images/speakeasyLogo.PNG';
 import theme from "../theme";
 import './InCall.css';
+import { useHistory } from "react-router-dom";
+
 
 const InCall = () => {
   const {
@@ -26,18 +28,27 @@ const InCall = () => {
     endCall,
   } = useCallState();
   console.log(participants);
+  
+const history = useHistory();
 
-  
-  const handleEndCall = () => {
-    //get request to remove call from database
-    fetch('http://localhost:5000/end/' + room.name)
-      .then(response => response.json())
-      .catch(error => {
-        console.error('There was an error with /endcall/' + room.name + '!!', error);
-      });
-    endCall();
-  }
-  
+const handleEndCall = () => {
+  //get request to remove call from database
+  fetch('http://localhost:5000/end/' + room.name)
+  .then(response => response.json())
+  .catch(error => {
+    console.error('There was an error with /endcall/' + room.name + '!!', error);
+  });
+  endCall();
+  let path = 'main';
+  history.push(path);
+}
+
+const handleLeaveCall = () => {
+  leaveCall();
+  let path = 'main'
+  history.push(path);
+}
+
   const local = useMemo((p) => participants?.filter((p) => p?.local)[0], [
     participants,
   ]);
@@ -137,7 +148,7 @@ const InCall = () => {
           {mods?.length < 2 && getAccountType(local?.user_name) === MOD ? (
             <LeaveButton onClick={handleEndCall}>End call</LeaveButton>
           ) : (
-            <LeaveButton onClick={leaveCall}>Leave call</LeaveButton>
+            <LeaveButton onClick={handleLeaveCall}>Leave call</LeaveButton>
           )}
         </TrayContent>
       </Tray>

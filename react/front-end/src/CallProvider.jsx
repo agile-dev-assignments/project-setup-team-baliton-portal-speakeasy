@@ -7,6 +7,7 @@ import {
 } from "react";
 import Daily from "@daily-co/daily-js";
 import { LISTENER, MOD, SPEAKER } from "./App";
+import { useHistory } from "react-router-dom";
 
 export const CallContext = createContext(null);
 
@@ -26,6 +27,7 @@ export const CallProvider = ({ children }) => {
   const [roomExp, setRoomExp] = useState(null);
   const [activeSpeakerId, setActiveSpeakerId] = useState(null);
   const [updateParticipants, setUpdateParticipants] = useState(null);
+  const history = useHistory();
 
   const createRoom = async (roomName) => {
     if (roomName) return roomName;
@@ -187,7 +189,9 @@ export const CallProvider = ({ children }) => {
       await callFrame.leave();
     }
     leave();
-    setView(PREJOIN);
+   // setView(PREJOIN);
+   let path = 'main';
+   history.push(path);
   }, [callFrame]);
 
   const removeFromCall = useCallback(

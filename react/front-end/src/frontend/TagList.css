@@ -42,8 +42,7 @@ div{
   vertical-align: top;
   padding: 2%;
   background-color: white;
-  border: solid black;
-  border-width: 1px;
+  border: 1px solid black;
   text-align: center;
   margin-right: 5%;
   height: 80px;
@@ -51,32 +50,27 @@ div{
   text-decoration: none;
 }
 
-.stats {
-  width: 49%;
-  line-height: 100%;
-  vertical-align: top;
-  display: inline-block;
-}
-
 .calls {
-  text-align: center;
-  height: 39.5px;
-  line-height: 39.5px;
-  background-color: white;
-  padding: 7px;
-  border: solid;
-  border-bottom: 0px;
-  border-width: 1px;
+    font-size: 24px;
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 2%;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 5%;
+    height: 80px;
+    text-decoration: none;
 }
 
-.people {
+.paragraph {
   text-align: center;
-  height: 39.5px;
-  line-height: 39.5px;
-  background-color: white;
-  padding: 7px;
-  border: solid;
-  border-width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px !important;
+  line-height: 80px;
+  margin: 0 auto;
 }
 
 .no-calls-image {
