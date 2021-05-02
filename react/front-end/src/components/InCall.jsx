@@ -197,8 +197,9 @@ const Tray = styled.div`
   height: 100px;
   width: 100%;
   box-sizing: border-box;
-  background-color: ${theme.colors.blue};
+  background-color:#dee8ff;
   padding: 12px;
+  border-radius:5px 5px ;
 `;
 const TrayContent = styled.div`
   max-width: 700px;
@@ -215,7 +216,7 @@ const Button = styled.button`
   border-radius: 8px;
 
   &:hover {
-    background-color: ${theme.colors.greyLightest};
+    background-color: ${theme.colors.blueLightest};
   }
 `;
 const LeaveButton = styled(Button)`
