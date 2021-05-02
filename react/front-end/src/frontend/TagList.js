@@ -17,7 +17,7 @@ function TagList() {
       });
 
   //empty dependency array so this will only run once; when the page/component is loaded
-  }, {})
+  }, [])
 
   let numberOfDistinctTags = distinctTagsList.length;
 

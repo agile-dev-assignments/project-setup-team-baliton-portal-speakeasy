@@ -1,8 +1,7 @@
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import { INCALL, useCallState } from "../CallProvider";
 import { SPEAKER, LISTENER, MOD } from "../App";
-import { Link } from 'react-router-dom';
 import CopyLinkBox from "./CopyLinkBox";
 import Participant from "./Participant";
 import Counter from "./Counter";
@@ -11,7 +10,6 @@ import MutedIcon from "./MutedIcon";
 import theme from "../theme";
 import './InCall.css';
 import { useHistory } from "react-router-dom";
-
 
 
 const InCall = () => {
@@ -28,26 +26,40 @@ const InCall = () => {
     endCall,
   } = useCallState();
   console.log(participants);
+
+  //use room ID to get call info from database
+  const [callInfoDB, setCallInfoDB] = useState([]);
+  useEffect(() => {
+    //get request call info using fetch inside useEffect react hook
+    fetch('http://localhost:5000/getCall/' + room.name)
+      .then(response => response.json())
+      .then(data => setCallInfoDB(data))
+      .catch(error => {
+        console.error('There was an error with /getCall/' + room.name + ' !!', error);
+      });
+
+  //empty dependency array so this will only run once; when the page/component is loaded
+  }, [])
   
-const history = useHistory();
+  const history = useHistory();
 
-const handleEndCall = () => {
-  //get request to remove call from database
-  fetch('http://localhost:5000/end/' + room.name)
-  .then(response => response.json())
-  .catch(error => {
-    console.error('There was an error with /endcall/' + room.name + '!!', error);
-  });
-  endCall();
-  let path = 'main';
-  history.push(path);
-}
+  const handleEndCall = () => {
+    //get request to remove call from database
+    fetch('http://localhost:5000/end/' + room.name)
+    .then(response => response.json())
+    .catch(error => {
+      console.error('There was an error with /endcall/' + room.name + '!!', error);
+    });
+    endCall();
+    let path = 'main';
+    history.push(path);
+  }
 
-const handleLeaveCall = () => {
-  leaveCall();
-  let path = 'main'
-  history.push(path);
-}
+  const handleLeaveCall = () => {
+    leaveCall();
+    let path = 'main'
+    history.push(path);
+  }
 
   const local = useMemo((p) => participants?.filter((p) => p?.local)[0], [
     participants,
@@ -113,10 +125,36 @@ const handleLeaveCall = () => {
     [lowerHand, raiseHand, local]
   );
 
+  const ChatroomToplog = () => {
+    return (
+      <div id = "top">
+        {mods?.length < 2 && getAccountType(local?.user_name) === MOD ? (
+            <a className="linka" href="/main">
+              <h1 id="logotext" onClick={handleEndCall}>Speakeasy </h1>
+            </a>
+          ) : (
+            <a className="linka" href="/main">
+              <h1 id="logotext" onClick={handleLeaveCall}>Speakeasy </h1>
+            </a>
+          )}
+      </div>
+    );
+  }
+  const ChatroomBottom = () => {
+    return (
+      <div id = "bottom">
+        <br></br>
+        <h2 id="reserved"> All rights reserved 2021 </h2>
+      </div>
+    );
+  }
+
   return (
     <div>
-
+    <ChatroomToplog />
     <Container hidden={view !== INCALL}>
+      <h1 id="title">{"'" + callInfoDB.callTitle + "'"}</h1>
+      <h1 id="tag">{"Tag: " + callInfoDB.callTag}</h1>
       <CallHeader>
         <Header>Speakers</Header>
         <Counter />
@@ -155,14 +193,15 @@ const handleLeaveCall = () => {
         </TrayContent>
       </Tray>
     </Container>
-    
+    <ChatroomBottom />
     </div>
   );
 };
 
 
 const Container = styled.div`
-  margin: 0 0 0;
+  max-width: 700px;
+  margin: auto;
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
   height: ${(props) => (props.hidden ? "0" : "100%")};
   width: 100%;
@@ -245,7 +284,5 @@ height: 60px;
 const ButtonText = styled.span`
   margin-left: 4px;
 `;
-
-
 
 export default InCall;

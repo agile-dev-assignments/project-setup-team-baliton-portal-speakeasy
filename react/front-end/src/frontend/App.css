@@ -29,7 +29,7 @@ div{
 
 div#top{
    background-color: #1261A0;
-   min-height: 100px;
+   min-height: 70px;
    position: relative;
 }
 
@@ -105,4 +105,17 @@ div#nickname{
 h2#reserved {
   text-align: center;
   font-size: 15px;
+}
+
+h1#logotext {
+  font-size: 50px;
+  font-family: Blippo, fantasy;
+  color: white;
+  margin: 0 auto;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }

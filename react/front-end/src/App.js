@@ -5,7 +5,6 @@ import theme from "./theme";
 import logo from "./icons/logo.svg";
 import { SmallText } from "./components/shared/SmallText";
 import { CallProvider, INCALL, PREJOIN, useCallState } from "./CallProvider";
-import Logos from './frontend/images/speakeasyLogo.PNG';
 import './App.css';
 export const MOD = "MOD";
 export const SPEAKER = "SPK";
@@ -16,7 +15,6 @@ const AppContent = () => {
   const { view } = useCallState();
   return (
     <Container>
-    <Toplog />
     <AppContainer>
       <Wrapper>
         <Header>
@@ -25,7 +23,6 @@ const AppContent = () => {
         {view === INCALL && <InCall />}
       </Wrapper>
     </AppContainer>
-    <Bottom />
     </Container>
   );
 };
@@ -35,25 +32,6 @@ function Backend() {
     <CallProvider>
       <AppContent />
     </CallProvider>
-  );
-}
-
-const Toplog = (props) => {
-  return (
-    <div id = "top">
-      <div id = "t">
-          <Speakeasy>Speakeasy</Speakeasy>
-      </div>
-    </div>
-  );
-}
-
-function Bottom() {
-  return (
-    <div id = "bottom">
-      <br></br>
-      <h2 id="reserved"> All rights reserved 2021 </h2>
-    </div>
   );
 }
 
@@ -69,8 +47,6 @@ const AppContainer = styled.div`
   overflow-x: hidden;
 `;
 const Wrapper = styled.div`
-  max-width: 700px;
-  padding: 32px 24px 0;
   min-height: 100%;
   margin: 0 auto;
 `;
@@ -104,13 +80,6 @@ const Link = styled.a`
     justify-content: ${(props) => (props.center ? "center" : "flex-start")};
     max-width: ${(props) => (props.center ? "100%" : "400px")};
   }
-`;
-const Speakeasy = styled.h1`
-  margin: 0 auto;
-  color:white;
-  width:100%;
-  font-family: Blippo, fantasy;
-  
 `;
 
 export default Backend;
