@@ -146,17 +146,14 @@ const moreRecent = (a, b) => {
 //get unique tags
 //accepts a json array of ongoing calls and returns a list of unique tags
 const getUniqueTags = (callArray) => {
-  let seenList = [];
+  let seenList = {};
 
   callArray.map(call => {
     let callTag = call.callTag;
-    if (seenList.includes(callTag)) {
-      //do nothing if this tag is already in the list
-      return;
+    if (!(callTag in seenList)) {
+      seenList[callTag] = 0
     }
-    else {
-      seenList.push(callTag);
-    }
+    seenList[callTag] += 1
   })
   
   return seenList;
@@ -195,9 +192,10 @@ app.get('/getDistinctTags', (req, res, next) => {
       callList = callList.filter(call => {
         return call.onGoing;
       })
-      let uniqueTagsList = getUniqueTags(callList);
-      res.send(uniqueTagsList)
-
+      let uniqueTagsWithNumberOfCalls = getUniqueTags(callList)
+      const unqiueTagsWithNumberOfCallsList = Object.entries(uniqueTagsWithNumberOfCalls)
+      unqiueTagsWithNumberOfCallsList.sort((a, b) => (b[1] - a[1]))
+      res.send(unqiueTagsWithNumberOfCallsList)
     })
     .catch(error => {
       //handle error and print it to console with message

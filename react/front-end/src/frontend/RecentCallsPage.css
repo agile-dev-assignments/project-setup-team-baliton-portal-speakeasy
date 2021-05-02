@@ -86,3 +86,23 @@ div{
   margin-left: 0px;
   margin-right: 0px;
 }
+
+.paragraph-call {
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px !important;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.paragraph-info {
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px !important;
+  margin: 0 auto;
+  text-decoration: none;
+}
