@@ -38,8 +38,8 @@ const InCall = () => {
         console.error('There was an error with /getCall/' + room.name + ' !!', error);
       });
 
-  //empty dependency array so this will only run once; when the page/component is loaded
-  }, [])
+  //reload if different call name 
+  }, [room.name])
   
   const history = useHistory();
 
