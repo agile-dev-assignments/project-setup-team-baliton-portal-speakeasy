@@ -11,6 +11,7 @@ export const MOD = "MOD";
 export const SPEAKER = "SPK";
 export const LISTENER = "LST";
 
+
 const AppContent = () => {
   const { view } = useCallState();
   return (
@@ -22,15 +23,6 @@ const AppContent = () => {
         </Header>
         {view === PREJOIN && <PreJoinRoom />}
         {view === INCALL && <InCall />}
-        {/*}
-        <Link
-          center={view === INCALL}
-          href="https://docs.daily.co/docs/reference-docs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn more about this demo
-  </Link>*/}
       </Wrapper>
     </AppContainer>
     <Bottom />
@@ -49,9 +41,7 @@ function Backend() {
 const Toplog = (props) => {
   return (
     <div id = "top">
-      <Link to = "/main">
-        <img className="logo" alt="" src={Logos} />
-      </Link>
+          <Speakeasy>Speakeasy</Speakeasy>
     </div>
   );
 }
@@ -66,7 +56,7 @@ function Bottom() {
 }
 
 const Container = styled.div`
-  background-color: ${theme.colors.grey}
+  background-color: ${theme.colors.greyLightest}
 `;
 
 const AppContainer = styled.div`
@@ -113,6 +103,11 @@ const Link = styled.a`
     max-width: ${(props) => (props.center ? "100%" : "400px")};
   }
 `;
-
+const Speakeasy = styled.h1`
+  margin: 0 auto;
+  color:white;
+  width:100%;
+  
+`;
 
 export default Backend;

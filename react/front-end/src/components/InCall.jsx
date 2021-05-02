@@ -8,10 +8,10 @@ import Participant from "./Participant";
 import Counter from "./Counter";
 import MicIcon from "./MicIcon";
 import MutedIcon from "./MutedIcon";
-import Logo from '../frontend/images/speakeasyLogo.PNG';
 import theme from "../theme";
 import './InCall.css';
 import { useHistory } from "react-router-dom";
+
 
 
 const InCall = () => {
@@ -114,6 +114,8 @@ const handleLeaveCall = () => {
   );
 
   return (
+    <div>
+
     <Container hidden={view !== INCALL}>
       <CallHeader>
         <Header>Speakers</Header>
@@ -153,6 +155,8 @@ const handleLeaveCall = () => {
         </TrayContent>
       </Tray>
     </Container>
+    
+    </div>
   );
 };
 
