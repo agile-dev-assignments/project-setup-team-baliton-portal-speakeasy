@@ -166,9 +166,9 @@ describe('onGoingWithTag - basic functionality', () => {
 //output: a list of strings with all the unique callTags
 describe('getUniqueTags - basic functionality', () => {
     it('returns an empty list if given empty json array', () => {
-        const expected = [];
+        const expected = {};
         const actual = getUniqueTags([]);
-        expect(actual.length).to.be.eq(expected.length);
+        expect(Object.keys(actual).length).to.be.eq(Object.keys(expected).length);
     });
     it('returns just one of each tag in the event of duplicates', () => {
         const arg = [
@@ -185,12 +185,12 @@ describe('getUniqueTags - basic functionality', () => {
                 "callTag": 'blue'
             }
         ]
-        const expected = ['red', 'blue'];
+        const expected = { red: 2, blue: 1 };
         const actual = getUniqueTags(arg);
-        expect(actual.includes('red')).to.be.eq(true);
-        expect(expected.includes('red')).to.be.eq(true);
-        expect(actual.includes('blue')).to.be.eq(true);
-        expect(expected.includes('blue')).to.be.eq(true);
+        expect(actual.green).to.be.eq(expected.green);
+        expect(actual.red).to.be.eq(expected.red);
+        expect(actual.blue).to.be.eq(expected.blue);
+        expect(Object.keys(actual).length).to.be.eq(Object.keys(expected).length);
     });
     it('edge case, returns just one tag with many calls of same tag', () => {
         const arg = [
@@ -207,10 +207,10 @@ describe('getUniqueTags - basic functionality', () => {
                 "callTag": 'green'
             }
         ]
-        const expected = ['green'];
+        const expected = { green: 3 };
         const actual = getUniqueTags(arg);
-        expect(actual.includes('green')).to.be.eq(true);
-        expect(expected.includes('green')).to.be.eq(true);
-        expect(actual.length).to.be.eq(expected.length);
+        expect(actual.green).to.be.eq(expected.green);
+        expect(actual.red).to.be.eq(expected.red);
+        expect(Object.keys(actual).length).to.be.eq(Object.keys(expected).length);
     });
 });

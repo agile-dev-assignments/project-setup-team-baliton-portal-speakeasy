@@ -10,7 +10,7 @@ require('dotenv').config();
 //use cors middle ware
 app.use(cors())
 //use json parsing middleware
-app.use(express.json());
+//app.use(express.json());
 
 //variables from dotenv
 const atlas_username = process.env.DB_USERNAME;
@@ -33,7 +33,7 @@ app.get('/postCall/:id/:title/:tag', (req, res) => {
   let storeId = req.params.id;
   let storeTitle = req.params.title;
   let storeTag = req.params.tag;
-  console.log("Adding Call to database with ID: ", storeId, "");
+  console.log("Adding Call to database with ID: ", storeId);
   console.log("Adding Call to database with Title: ", storeTitle);
   console.log("Adding Call to database with Tag: ", storeTag);
   const postCall = new Call({
@@ -50,6 +50,28 @@ app.get('/postCall/:id/:title/:tag', (req, res) => {
     .catch((err) => {
       console.log(err);
     })
+})
+
+//route to end calls(update ongoing field boolean)
+app.get('/end/:callid', (req, res, next) =>{
+  let storeID = req.params.callid;
+  console.log("Updating Database to end call with ID: ", storeID);
+
+  Call.updateOne({callID:storeID}, {onGoing:false},
+    function (err, docs) {
+      if (err){
+          console.log(err)
+      }
+      else{
+          console.log("Updated Docs : ", docs);
+      }
+  }).then(dbResponse => {
+    res.json(dbResponse);
+  })
+  .catch(error => {
+    //handle error and print to console
+    console.error('There was an error with /end/:callid !!!! ', error);
+  });
 })
 
 //helper functoin to sort time started's dates before sorting time

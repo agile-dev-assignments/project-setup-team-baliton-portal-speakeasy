@@ -28,10 +28,16 @@ const InCall = () => {
     endCall,
   } = useCallState();
   console.log(participants);
-
+  
 const history = useHistory();
 
 const handleEndCall = () => {
+  //get request to remove call from database
+  fetch('http://localhost:5000/end/' + room.name)
+  .then(response => response.json())
+  .catch(error => {
+    console.error('There was an error with /endcall/' + room.name + '!!', error);
+  });
   endCall();
   let path = 'main';
   history.push(path);
