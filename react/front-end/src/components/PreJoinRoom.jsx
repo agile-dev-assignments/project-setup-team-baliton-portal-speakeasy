@@ -4,6 +4,7 @@ import { LISTENER, MOD } from "../App";
 import theme from "../theme";
 import { useCallState } from "../CallProvider";
 import {useLocation} from "react-router-dom";
+import '../App.css';
 
 const PreJoinRoom = () => {
 
@@ -155,6 +156,7 @@ const PreJoinRoom = () => {
                 : "Create & Join Room!"
             }
           />
+          <a href="/main">Cancel</a>
           {error && <ErrorText>Error: {error.toString()}</ErrorText>}
         </Form>
       </Container>
