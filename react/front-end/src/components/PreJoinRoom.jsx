@@ -156,6 +156,7 @@ const PreJoinRoom = () => {
                 : "Create & Join Room!"
             }
           />
+          <a href="/main">Cancel</a>
           {error && <ErrorText>Error: {error.toString()}</ErrorText>}
         </Form>
       </Container>
