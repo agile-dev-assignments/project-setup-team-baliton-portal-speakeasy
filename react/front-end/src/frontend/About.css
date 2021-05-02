@@ -12,7 +12,7 @@
 }
 
 .about-page h2 {
-    font-size: 4vw;
+    font-size: 2vw;
 }
 
 .team-profiles div {
@@ -24,11 +24,11 @@
 }
 
 .team-profiles {
-    font-size: 2vw;
+    font-size: 1vw;
 }
 
 .team-profiles h4 {
-    font-size: 3vw;
+    font-size: 1.5vw;
     margin-bottom: 0.5%;
 }
 
@@ -41,7 +41,7 @@
 .mission-statement section {
     margin-left: 3%;
     margin-right: 0%;
-    font-size: 2vw;
+    font-size: 1vw;
     background-color: #e6ebfc;
     border: 0.5vw outset rgb(61, 9, 9);
     border-radius: 2.5vw;
@@ -76,7 +76,12 @@
 }
 
 h1#about-title{
-    font-size: 10vw;
+    font-size: 8vw;
     font-family: georgia;
     margin-bottom: 5%;
 }
+
+h2#reserved {
+    text-align: center;
+    font-size: 15px;
+  }

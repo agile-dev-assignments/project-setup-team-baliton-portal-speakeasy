@@ -64,7 +64,7 @@ const About = (props) => {
            </div>
           </div>
           <div id = "bottom">
-            <h2> All right reserved 2021 </h2>
+            <h2 id="reserved"> All right reserved 2021 </h2>
           </div>
       </div>
     )

@@ -2,15 +2,11 @@ import './App.css';
 import MainPage from './MainPage';
 import About from './About';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Chatroom from './Chatroom';
 import TagList from './TagList';
 import TagPage from './TagPage';
 import RecentCallsPage from './RecentCallsPage';
 import EasterEgg from './EasterEgg';
-import Logo from './images/speakeasyLogo.PNG';
-import CreateNewCallPage from './CreateNewCall';
-//import CreateNewCall from './CreateNewCall'
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Backend from '../App';
 const dotenv = require("dotenv").config();
 
@@ -27,11 +23,6 @@ function App() {
         <Route path="/recent">
           <Toplog />
             <RecentCallsPage />
-          <Bottom />
-        </Route>
-        <Route path="/createcall">
-          <Toplog />
-          <CreateNewCallPage />
           <Bottom />
         </Route>
         <Route path="/chatroom" component={Backend} />
@@ -63,40 +54,23 @@ function Linker(prop) {
   );
 }
 
-
-const Toplog = (props) => {
-  const [nick, setNickname] = useState('')
-  const nicknameRef = useRef()
-
-  function handleNick(e) {
-    const nn = nicknameRef.current.value
-    setNickname(nn);
-  }
-
-  if (nick !== '') {
-    <div id = "top">
-      <div id = "nickname">
-        <h2>
-          {nick}
-        </h2>
-      </div>
-      <Link to = "/main">
-        <img className="logo" alt="" src={Logo} />
-      </Link>
+const LinkHeader = () => {
+  return (
+    <div>
+      <a className="linka" href='/main'>
+         <h1 id="logotext">Speakeasy</h1>
+      </a>
     </div>
-  }
+  );
+}
+
+
+const Toplog = () => {
   return (
     <div id = "top">
-      <div id = "nickname">
-        <label><b>Nickname: </b></label>
-        <input ref={nicknameRef} type="text" />
-        <button id="nicknameButton" onClick={handleNick}>
-          Submit
-        </button>
-      </div>
-      <Link to = "/main">
-        <img className="logo" alt="" src={Logo} />
-      </Link>
+      <a className="linka" href='/main'>
+         <h1 id="logotext">Speakeasy</h1>
+      </a>
     </div>
   );
 }
@@ -124,4 +98,4 @@ function Bottom() {
 }
 
 export default App;
-export {Linker , Textbox, Toplog, Bottom, dotenv};
+export {Linker , Textbox, Toplog, Bottom, LinkHeader, dotenv};

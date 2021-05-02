@@ -53,7 +53,7 @@ app.get('/postCall/:id/:title/:tag', (req, res) => {
 })
 
 //route to end calls(update ongoing field boolean)
-app.get('/end/:callid', (req, res, next) =>{
+app.get('/end/:callid', (req, res, next) => {
   let storeID = req.params.callid;
   console.log("Updating Database to end call with ID: ", storeID);
 
@@ -72,6 +72,29 @@ app.get('/end/:callid', (req, res, next) =>{
     //handle error and print to console
     console.error('There was an error with /end/:callid !!!! ', error);
   });
+})
+
+//route to get call DB entry by querying call ID
+app.get('/getCall/:callid', (req, res, next) => {
+  let storeID = req.params.callid;
+  console.log("Fetching Database entry to end call with ID: ", storeID);
+
+  Call.findOne({callID:storeID},
+    function (err, docs) {
+      if (err){
+          console.log(err)
+      }
+      else{
+          console.log("Updated Docs : ", docs);
+      }
+    }).then(dbResponse => {
+      res.json(dbResponse);
+    })
+    .catch(error => {
+      //handle error and print to console
+      console.error('There was an error with /getCall/:callid !!!! ', error);
+    });
+
 })
 
 //helper functoin to sort time started's dates before sorting time

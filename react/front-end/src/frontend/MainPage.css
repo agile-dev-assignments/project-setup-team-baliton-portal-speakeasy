@@ -1,8 +1,8 @@
 
 #mainDiv {
-    margin-bottom: 100px;
-    margin-top: 100px;
-    background-color: #b8c0c7;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    background-color: #e0eaf3;
 }
 
 #side {
@@ -10,7 +10,7 @@
 }
 
 .callNameField form {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .callNameField input {
