@@ -54,17 +54,6 @@ function Linker(prop) {
   );
 }
 
-const LinkHeader = () => {
-  return (
-    <div>
-      <a className="linka" href='/main'>
-         <h1 id="logotext">Speakeasy</h1>
-      </a>
-    </div>
-  );
-}
-
-
 const Toplog = () => {
   return (
     <div id = "top">
@@ -98,4 +87,4 @@ function Bottom() {
 }
 
 export default App;
-export {Linker , Textbox, Toplog, Bottom, LinkHeader, dotenv};
+export {Linker , Textbox, Toplog, Bottom, dotenv};

@@ -21,3 +21,8 @@
     margin-left: 7.5vw;
     margin-right: 7.5vw;
 }
+
+.luckymsg {
+    color:red;
+    text-align: center;
+}

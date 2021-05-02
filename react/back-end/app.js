@@ -94,7 +94,38 @@ app.get('/getCall/:callid', (req, res, next) => {
       //handle error and print to console
       console.error('There was an error with /getCall/:callid !!!! ', error);
     });
+})
 
+//returns a random in the given list of calls, or the string "noongoingcalls" if the list is empty
+const getRandomID = (callList) => {
+
+  callList = callList.filter(call => {
+    return call.onGoing; 
+  })
+  if (callList.length === 0) {
+    console.log("im feeling lucky attempted, no ongoing calls to return");
+    return "noongoingcalls";
+  }
+  else {
+    let randomIndex = Math.floor(Math.random() * callList.length); 
+    console.log("im feeling lucky attempted, directing to call with ID: " + callList[randomIndex].callID)
+    return callList[randomIndex].callID;
+  }
+}
+
+//route to get random ongoing call from DB
+app.get('/imFeelingLucky', (req, res, next) => {
+
+  Call.find()
+    .then(dbResponse => {
+      let callList = dbResponse;
+      let randomID = getRandomID(callList);
+      res.json({callID:randomID});
+    })
+    .catch(error => {
+      //handle error and print to console
+      console.error('There was an error with /imFeelingLucky !!!! ', error);
+    });
 })
 
 //helper functoin to sort time started's dates before sorting time
@@ -277,7 +308,6 @@ app.get('/tagCallList/:tag', (req, res, next)=>{
 
 })
 
-
 // we will put some server logic here later...
 // export the express app we created to make it available to other modules
 module.exports = {
@@ -286,5 +316,6 @@ module.exports = {
     sortTime: sortTime,
     sortDate: sortDate,
     onGoingWithTag: onGoingWithTag,
-    getUniqueTags: getUniqueTags
+    getUniqueTags: getUniqueTags,
+    getRandomID: getRandomID
 }
