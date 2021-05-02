@@ -41,7 +41,9 @@ function Backend() {
 const Toplog = (props) => {
   return (
     <div id = "top">
+      <div id = "t">
           <Speakeasy>Speakeasy</Speakeasy>
+      </div>
     </div>
   );
 }
@@ -107,6 +109,7 @@ const Speakeasy = styled.h1`
   margin: 0 auto;
   color:white;
   width:100%;
+  font-family: Blippo, fantasy;
   
 `;
 

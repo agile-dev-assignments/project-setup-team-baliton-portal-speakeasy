@@ -9,3 +9,9 @@ button#topper{
   bottom: 0;
   left: 0;
 }
+
+#t {
+  display: block;
+  padding: 20px;
+  padding-left: 10px;
+}
