@@ -17,10 +17,10 @@ function TagList() {
       });
 
   //empty dependency array so this will only run once; when the page/component is loaded
-  }, [])
+  }, {})
 
   let numberOfDistinctTags = distinctTagsList.length;
-  
+
   if (numberOfDistinctTags === 0) {
     return (
       <div className="page">
@@ -45,10 +45,10 @@ function TagList() {
           <div className="tagList">
             {distinctTagsList.map(callTag => {
               return (
-                <Tag tagName={callTag} 
-                  key={callTag}
-                  link={callTag}
-                  numCalls='X' 
+                <Tag tagName={callTag[0]} 
+                  key={callTag[0]}
+                  link={callTag[0]}
+                  numCalls={callTag[1]} 
                   numPeople='X' />
               )
             })}
@@ -70,17 +70,16 @@ const Tag = (props) => {
         <Link className="link"
         to={{
           pathname:'/tagpage/' + props.link,
-          state: { tagState: props.link}
+          state: {tagState: props.link}
         }}>
-          {props.tagName}
+          <p className="paragraph">
+            {props.tagName}
+          </p>
         </Link>
-        <div className="stats">
-          <div className="calls">
+        <div className="calls">
+          <p className="paragraph">
             Number of Calls: {props.numCalls}
-          </div>
-          <div className="people">
-            Number of People: {props.numPeople}
-          </div>
+          </p>
         </div>
       </div>
     )
