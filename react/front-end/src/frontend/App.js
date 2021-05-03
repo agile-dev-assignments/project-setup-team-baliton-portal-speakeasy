@@ -80,7 +80,7 @@ function Bottom() {
   return (
     <div id = "bottom">
       <br></br>
-      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au' cn = "buttons"> </Linker>
+      <Linker ali = "center" var = "primary" action = "/about" name = "About us" id = 'au' cn = "bclass"> </Linker>
       <h2 id="reserved"> All rights reserved 2021 </h2>
     </div>
   );

@@ -2,9 +2,9 @@ div{
   width: device-width;
 }
 
-.grayButton {
+.grayButtontag {
   background-color: lightgrey;
-  width: 20%;
+  width: calc(150px + 25vw);
   font-size: 20px;
   border-radius: 10px;
   padding: 20px;
@@ -12,30 +12,27 @@ div{
   text-align: center;
   border-radius: 25px;
   font-weight: 600;
-  margin-top: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   border: solid;
   border-width: 2px;
 }
 
-.grayButton > a {
+.grayButtontag > a {
   text-decoration: none;
-}
-
-.tagList {
-  display: block;
 }
 
 .tag {
   background: lightgrey;
   border: solid;
   border-width: 2px;
-  padding: 20px;
+  padding: 10px;
   margin: 0 auto;
   margin-top: 10px;
-  width: 40%;
+  width: calc(150px + 35vw);
 }
 
-.link {
+.linktag {
   font-size: 24px;
   width: 40%;
   display: inline-block;
@@ -50,7 +47,7 @@ div{
   text-decoration: none;
 }
 
-.calls {
+.callstag {
     font-size: 24px;
     width: 40%;
     display: inline-block;
@@ -63,12 +60,12 @@ div{
     text-decoration: none;
 }
 
-.paragraph {
+.paragraphtag {
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 18px !important;
+  font-size: calc(10px + 1.5vw) !important;
   line-height: 80px;
   margin: 0 auto;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import './TagPage.css';
+import './RecentCallsPage.css';
 import { Toplog, Bottom } from './App.js';
 import { displayTime } from './RecentCallsPage.js';
 import NoCallsImage from './images/noCallsImage.jpg';
@@ -75,7 +75,7 @@ const Call = (props) => {
     return (
       <div key={props.callName} className="call" >
         <a className="link" href={props.link}>
-          <p className="paragraph-call">
+          <p className="link-text">
             {props.callName}
           </p>
         </a>

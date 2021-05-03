@@ -77,12 +77,12 @@ const Call = (props) => {
   return (
     <div key={props.callName} className="call">
       <a className="link" href={props.link}>
-        {props.callName}
+        <p className="link-text">{props.callName}</p>
       </a>
       <div className="stats">
         <div className="duration">
           <p className="paragraph-info">
-            Start Time: {props.duration}
+            Started: {props.duration}
           </p>
         </div>
         <div className="people">

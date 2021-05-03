@@ -24,11 +24,11 @@ function TagList() {
   if (numberOfDistinctTags === 0) {
     return (
       <div className="page">
-        <div className="grayButton">
+        <div className="grayButtontag">
           No Tags with On Going Calls!
         </div>
         <img className="no-calls-image" alt="" src={NoCallsImage} />
-        <div className="grayButton">
+        <div className="grayButtontag">
           <a href="/taglist">
             Refresh
           </a>
@@ -39,7 +39,7 @@ function TagList() {
   else {
     return (
         <div className="page">
-          <div className="grayButton">
+          <div className="grayButtontag">
             {numberOfDistinctTags + " Distinct Tags!"}
           </div>
           <div className="tagList">
@@ -53,7 +53,7 @@ function TagList() {
               )
             })}
           </div>
-          <div className="grayButton">
+          <div className="grayButtontag">
             <a href="/taglist">
               Refresh
             </a>
@@ -67,18 +67,18 @@ function TagList() {
 const Tag = (props) => {
     return (
       <div key={props.tagName} className="tag">
-        <Link className="link"
+        <Link className="linktag"
         to={{
           pathname:'/tagpage/' + props.link,
           state: {tagState: props.link}
         }}>
-          <p className="paragraph">
+          <p className="paragraphtag">
             {props.tagName}
           </p>
         </Link>
-        <div className="calls">
-          <p className="paragraph">
-            Number of Calls: {props.numCalls}
+        <div className="callstag">
+          <p className="paragraphtag">
+            Num. Calls: {props.numCalls}
           </p>
         </div>
       </div>

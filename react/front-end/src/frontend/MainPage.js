@@ -34,14 +34,14 @@ const MainPage = (prop) => {
       <div id="side">
         <br></br>
         <h1 align = "left"> {prop.name} </h1>
-        <Linker ali = "left" var = "primary" action = "/taglist" name = "Explore Tags" cn="sidebar"> </Linker>
-        <Linker ali = "left" var = "primary" action = "/recent" name = "Recent Calls" cn="sidebar"> </Linker>
+        <Linker ali = "left" var = "primary" action = "/taglist" name = "Explore Tags" cn="bclass"> </Linker>
+        <Linker ali = "left" var = "primary" action = "/recent" name = "Recent Calls" cn="bclass"> </Linker>
         <br></br>
       </div>
       <Textbox ali = "center" mess = "Call ID: " action = "/chatroom" tag = "id" name = "Join Call by Call ID" cn="callNameField"> </Textbox>
-      <Linker ali = "center" var = "primary" action = "/chatroom?id=" name = "Create New Call" cn = "buttons"> </Linker>
+      <Linker ali = "center" var = "primary" action = "/chatroom?id=" name = "Create New Call" cn = "bclass"> </Linker>
       <div align="center">
-        <button onClick={handleImFeelingLucky} variant="primary" className="buttons" id = {prop.id}>I am feeling lucky!</button>
+        <button onClick={handleImFeelingLucky} variant="primary" className="bclass" >I am feeling lucky!</button>
       </div>
       <h4 className="luckymsg">{luckyMsg}</h4>
       <br></br>
