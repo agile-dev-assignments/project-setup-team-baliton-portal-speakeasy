@@ -17,7 +17,6 @@ const Counter = () => {
     clearInterval(interval);
     interval = setInterval(() => {
       let secs = Math.round((roomExp - Date.now()) / 1000);
-      console.log(secs);
       const value = Math.floor(secs / 60) + ":" + ("0" + (secs % 60)).slice(-2);
       if (secs <= 0) {
         clearInterval(interval);
@@ -35,13 +34,13 @@ const Counter = () => {
 
   return (
     <Container>
-      Call ends in &nbsp; <Count> {counter} </Count>
+      This call ends in <Count>{counter}</Count>
     </Container>
   );
 };
 
 const Container = styled.p`
-  font-size: ${theme.fontSize.small};
+  font-size: ${theme.fontSize.med};
   color: ${theme.colors.greyDark};
   margin: 0;
   display: flex;
@@ -50,6 +49,7 @@ const Count = styled.span`
   width: 28px;
   display: inline-block;
   text-align: right;
+  color: ${theme.colors.blueDark};
 `;
 
 export default Counter;
