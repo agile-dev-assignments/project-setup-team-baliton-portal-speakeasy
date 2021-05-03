@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const EasterEgg = () => {
     // Declare a new state variable, which we'll call "count"
     const [count, setCount] = useState(0);
-  
+
     const history = useHistory();
     if (count === 3){
       let path = '/main';
