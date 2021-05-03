@@ -79,7 +79,7 @@ export const CallProvider = ({ children }) => {
     if(starting) {
 
       //roomInfo.name
-      fetch('http://159.65.182.78:5000/postCall/' +  roomInfo.name + '/' + callTitle + '/' + callTag)
+      fetch('https://159.65.182.78:5000/postCall/' +  roomInfo.name + '/' + callTitle + '/' + callTag)
         .catch((err) => {
           console.log("/postCall gave error: ", err);
         });
