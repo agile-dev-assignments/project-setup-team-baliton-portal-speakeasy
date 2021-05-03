@@ -9,7 +9,7 @@ function TagList() {
 
   useEffect(() => {
     //get request for distinc calls using fetch inside useEffect react hook
-    fetch('http://159.65.182.78' + ':5000/getDistinctTags')
+    fetch('http://159.65.182.78:5000/getDistinctTags')
       .then(response => response.json())
       .then(data => setDistinctTagsList([...data]))
       .catch(error => {

@@ -186,7 +186,7 @@ const Participant = ({ participant, local, modCount }) => {
     if (participant?.local) return;
     // set the audio source for everyone else
     audioRef.current.srcObject = new MediaStream([participant?.audioTrack]);
-  }, [participant?.audioTrack]);
+  }, [participant?.audioTrack, participant?.local]);
 
   const showMoreMenu = useMemo(
     () => getAccountType(local?.user_name) === MOD || participant?.local,
