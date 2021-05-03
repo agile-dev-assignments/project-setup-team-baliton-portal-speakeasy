@@ -1,5 +1,5 @@
 
-  
+
   .easter .background {
     background-size:contain;
     text-align: center;
@@ -7,15 +7,15 @@
     background-attachment: fixed;
     background-position: center top;
     position: absolute;
-    width: 1000px;
-    height:900px;
+    width: 100%;
+    height:100%;
   }
-  
+
   .easter .App-logo {
     height: 40vmin;
     pointer-events: none;
   }
-  
+
   .easter .App-header {
     min-height: 100vh;
     display: flex;
@@ -25,12 +25,12 @@
     font-size: calc(10px + 2vmin);
     background-color: black;
   }
-  
+
   .easter .App-link {
     color: #61dafb;
   }
-  
-  
+
+
   .easter #easterButton {
     background-color:transparent;
     position:static;
