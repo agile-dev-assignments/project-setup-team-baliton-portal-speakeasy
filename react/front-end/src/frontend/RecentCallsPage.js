@@ -5,13 +5,9 @@ import NoCallsImage from './images/noCallsImage.jpg';
 
 
 const displayTime = (dateAndTime) => {
-  let dateAndTimeString = dateAndTime.toString();
-  let arr = dateAndTimeString.split("T");
-  let date = arr[0].split("-");
-  let time = arr[1].split(".");
-  let timeString = time[0];
-  let dateString = date[1] + '/' + date[2] + '/' + date[0];
-  return timeString + ' - ' + dateString;
+  let current = Date.now();
+  let duration = current - Date.parse(dateAndTime);
+  return Math.round(duration / (60 * 1000));
 }
 
 function RecentCallsPage() {
@@ -82,7 +78,7 @@ const Call = (props) => {
       <div className="stats">
         <div className="duration">
           <p className="paragraph-info">
-            Started: {props.duration}
+            Duration: {props.duration} min
           </p>
         </div>
         <div className="people">

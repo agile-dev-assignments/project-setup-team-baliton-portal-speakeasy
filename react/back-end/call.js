@@ -16,7 +16,7 @@ const callSchema = new Schema({
     },
     timeStarted: {
         type: Date,
-        default: Date.now,
+        default: Date.now(),
         required: true
     },
     onGoing: {
