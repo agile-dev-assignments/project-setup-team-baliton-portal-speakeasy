@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
-import {Toplog, Bottom} from './App.js';
 import './EasterEgg.css';
-import MainPage from './MainPage';
 import background from "./images/front-page-background.png"
+import { useHistory } from "react-router-dom";
 
 const EasterEgg = () => {
     // Declare a new state variable, which we'll call "count"
     const [count, setCount] = useState(0);
   
+    const history = useHistory();
     if (count === 3){
-      alert("Welcome back");
-      
-      return (
-        <div>
-          <Toplog />
-          <MainPage />
-          <Bottom />
-        </div>
-      )
+      let path = '/main';
+      history.push(path);
+      return (<div></div>)
     }
     return (
       <div className="easter" id="easterDiv" >
