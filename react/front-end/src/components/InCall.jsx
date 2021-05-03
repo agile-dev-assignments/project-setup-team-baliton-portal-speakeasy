@@ -38,9 +38,9 @@ const InCall = () => {
         console.error('There was an error with /getCall/' + room.name + ' !!', error);
       });
 
-  //reload if different call name 
+  //reload if different call name
   }, [room.name])
-  
+
   const history = useHistory();
 
   const handleEndCall = () => {
@@ -207,7 +207,7 @@ const Container = styled.div`
   width: 100%;
 `;
 const CanSpeakContainer = styled.div`
-  border-bottom: ${theme.colors.green} 7px solid;
+  border-bottom: ${theme.colors.blue} 7px solid;
   margin-bottom: 24px;
   display: flex;
   flex-wrap: wrap;
