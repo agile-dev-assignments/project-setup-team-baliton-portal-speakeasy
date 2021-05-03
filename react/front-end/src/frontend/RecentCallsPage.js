@@ -73,17 +73,24 @@ function RecentCallsPage() {
 }
 
 const Call = (props) => {
+  const tagpageLink = "/tagpage/" + props.callTag
   return (
     <div key={props.callName} className="call">
       <a className="link" href={props.link}>
-        {props.callName + ", tag: " + props.callTag}
+        <p className="link-text">{props.callName}</p>
       </a>
       <div className="stats">
         <div className="duration">
-          Start Time: {props.duration}
+          <p className="paragraph-info">
+            Started: {props.duration}
+          </p>
         </div>
         <div className="people">
-          Number of People: {props.numPeople}
+          <p className="paragraph-info">
+            <a href={tagpageLink}>
+              Tag: {props.callTag}
+            </a>
+          </p>
         </div>
       </div>
     </div>

@@ -1,35 +1,10 @@
-.App {
-  text-align: center;
-  width: device-width;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 div{
   width: device-width;
 }
 
 div#top{
    background-color: #1261A0;
-   min-height: 100px;
+   height: 70px;
    position: relative;
 }
 
@@ -39,61 +14,47 @@ div#bottom{
    height: 100px;
 }
 
-button#topper{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-button#bottom{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-button#nicknameButton{
-  margin-left: 100px;
-}
-
-button{
+.bclass {
   margin-top: 5px;
-  margin-left: 0;
   margin-bottom: 5px;
-  width: 34%;
+  width: calc(150px + 30vmin);
   background-color: #2a9df4;
-  font-size: 20px;
+  font-size: calc(20px + 1vmin);
   border-radius: 10px;
   height: 60px;
+  margin-left: 3vw;
+  margin-right: 3vw;
 }
 
-button:hover {
+.bclass:hover {
   background-color: #6ab8f3;
-  font-size: 25px;
+  font-size: calc(20px + 1.05vmin)
 }
 
-.buttons:hover  {
+.bclass:hover  {
   background-color: #6ab8f3;
-  font-size: 25px;
+  font-size: calc(20px + 1.05vmin)
 }
-
 
 button#au{
-  width: 20%;
+  width: calc(150px + 10vmin);
+  font-size: calc(12px + 1vmin);
   background-color: #b9c6cf;
   height: 30px;
 }
 
 input#submitcall{
-  width: 34%;
+  width: calc(150px + 30vmin);
   background-color: #2a9df4;
-  font-size: 20px;
+  font-size: calc(20px + 1vmin);
   border-radius: 10px;
   height: 60px;
+  margin-bottom: 5px;
 }
 
 input#submitcall:hover {
   background-color: #6ab8f3;
-  font-size: 25px;
+  font-size: calc(20px + 1.05vmin)
 }
 
 div#nickname{
@@ -105,4 +66,17 @@ div#nickname{
 h2#reserved {
   text-align: center;
   font-size: 15px;
+}
+
+h1#logotext {
+  font-size: 50px;
+  font-family: Blippo, fantasy;
+  color: white;
+  margin: 0 auto;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }

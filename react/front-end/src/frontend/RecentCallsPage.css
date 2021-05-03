@@ -4,7 +4,7 @@ div{
 
 .grayButton {
   background-color: lightgrey;
-  width: 20%;
+  width: calc(150px + 25vw);
   font-size: 20px;
   border-radius: 10px;
   padding: 20px;
@@ -30,39 +30,43 @@ div{
   background: lightgrey;
   border: solid;
   border-width: 2px;
-  padding: 20px;
+  padding: 10px;
   margin: 0 auto;
   margin-top: 10px;
-  width: 40%;
+  width: calc(150px + 35vw);
 }
 
 .link {
-  font-size: 14px;
-  width: 40%;
-  height: 80px;
-  display: inline-block;
+  height: 90px;
+  width: 150px;
+}
+
+.link-text{
   vertical-align: top;
   padding: 2%;
   background-color: white;
   border: solid black;
   border-width: 1px;
   text-align: center;
-  margin-right: 5%;
-  line-height: 80px;
+  line-height: 30px;
+  height: 30px;
   text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: calc(20px + 1.3vw) !important;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .stats {
-  width: 49%;
-  line-height: 100%;
   vertical-align: top;
-  display: inline-block;
 }
 
 .duration {
   text-align: center;
-  height: 39.5px;
-  line-height: 39.5px;
+  height: 30px;
+  line-height: 30px;
   background-color: white;
   padding: 7px;
   border: solid;
@@ -72,8 +76,8 @@ div{
 
 .people {
   text-align: center;
-  height: 39.5px;
-  line-height: 39.5px;
+  height: 30px;
+  line-height: 30px;
   background-color: white;
   padding: 7px;
   border: solid;
@@ -85,4 +89,24 @@ div{
   height: auto;
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.paragraph-call {
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px !important;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.paragraph-info {
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px !important;
+  margin: 0 auto;
+  text-decoration: none;
 }

@@ -1,10 +1,41 @@
-Button {
-  margin-top: 5px;
-  margin-left: 0;
-  margin-bottom: 5px;
-  width: 34%;
-  background-color: #2a9df4;
+div#top{
+  background-color: #1261A0;
+  min-height: 100px;
+  position: relative;
+}
+
+div#bottom{
+  background-color:#1261A0;
+  position: relative;
+  height: 100px;
+}
+
+h2#reserved {
+  text-align: center;
+  font-size: 15px;
+}
+
+h1#title {
+  text-align: center;
+  font-size: 40px;
+  color:#07263f;
+}
+
+h1#tag {
+  text-align: center;
   font-size: 20px;
-  border-radius: 10px;
-  height: 60px;
+  color:#1261A0;
+}
+
+h1#logotext {
+  font-size: 50px;
+  font-family: Blippo, fantasy;
+  color: white;
+  margin: 0 auto;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { sortTime, sortDate, moreRecent, onGoingWithTag, getUniqueTags } = require('../app');
+const { sortTime, sortDate, moreRecent, onGoingWithTag, getUniqueTags, getRandomID } = require('../app');
 
 //tests for sortTime(arg1, arg2)
 //arg1: string with format XX:XX:XX or X:XX:XX
@@ -166,9 +166,9 @@ describe('onGoingWithTag - basic functionality', () => {
 //output: a list of strings with all the unique callTags
 describe('getUniqueTags - basic functionality', () => {
     it('returns an empty list if given empty json array', () => {
-        const expected = [];
+        const expected = {};
         const actual = getUniqueTags([]);
-        expect(actual.length).to.be.eq(expected.length);
+        expect(Object.keys(actual).length).to.be.eq(Object.keys(expected).length);
     });
     it('returns just one of each tag in the event of duplicates', () => {
         const arg = [
@@ -185,12 +185,12 @@ describe('getUniqueTags - basic functionality', () => {
                 "callTag": 'blue'
             }
         ]
-        const expected = ['red', 'blue'];
+        const expected = { red: 2, blue: 1 };
         const actual = getUniqueTags(arg);
-        expect(actual.includes('red')).to.be.eq(true);
-        expect(expected.includes('red')).to.be.eq(true);
-        expect(actual.includes('blue')).to.be.eq(true);
-        expect(expected.includes('blue')).to.be.eq(true);
+        expect(actual.green).to.be.eq(expected.green);
+        expect(actual.red).to.be.eq(expected.red);
+        expect(actual.blue).to.be.eq(expected.blue);
+        expect(Object.keys(actual).length).to.be.eq(Object.keys(expected).length);
     });
     it('edge case, returns just one tag with many calls of same tag', () => {
         const arg = [
@@ -207,10 +207,84 @@ describe('getUniqueTags - basic functionality', () => {
                 "callTag": 'green'
             }
         ]
-        const expected = ['green'];
+        const expected = { green: 3 };
         const actual = getUniqueTags(arg);
-        expect(actual.includes('green')).to.be.eq(true);
-        expect(expected.includes('green')).to.be.eq(true);
-        expect(actual.length).to.be.eq(expected.length);
+        expect(actual.green).to.be.eq(expected.green);
+        expect(actual.red).to.be.eq(expected.red);
+        expect(Object.keys(actual).length).to.be.eq(Object.keys(expected).length);
+    });
+});
+
+//tests for getRandomID(callList)
+//input: array of calls with field call.callID
+//output: a random ID from the list, or the string "noongoingcalls" if there are no calls
+describe('getRandomID - basic functionality', () => {
+    it('returns "noongoingcalls" if there are no calls', () => {
+        const expected = "noongoingcalls";
+        const actual = getRandomID([]);
+        expect(actual).to.be.eq(expected);
+    });
+    it('returns the id of the only call if there is just one call', () => {
+        const arg = [
+            {
+                "callTitle": 'call1',
+                "callID": '23',
+                "onGoing": true
+            }
+        ]
+        const expected = '23';
+        const actual = getRandomID(arg);
+        expect(actual).to.be.eq(expected);
+    });
+    it('returns the id of one of the calls if there are multiple calls', () => {
+        const arg = [
+            {
+                "callTitle": 'call1',
+                "callID": '21',
+                "onGoing": true
+            },
+            {
+                "callTitle": 'call2',
+                "callID": '25',
+                "onGoing": true
+            },
+            {
+                "callTitle": 'call3',
+                "callID": '29',
+                "onGoing": true
+            },
+            {
+                "callTitle": 'call3',
+                "callID": '50',
+                "onGoing": false
+            }
+        ]
+        const expectedLowBound = "20";
+        const expectedUpperBound = "30";
+        const actual = getRandomID(arg);
+        expect(parseInt(actual)).to.be.greaterThan(parseInt(expectedLowBound));
+        expect(parseInt(actual)).to.be.lessThan(parseInt(expectedUpperBound));
+    });
+    it('returns "noongoingcalls" if all calls are ended', () => {
+        const arg = [
+            {
+                "callTitle": 'call1',
+                "callID": '21',
+                "onGoing": false
+            },
+            {
+                "callTitle": 'call2',
+                "callID": '25',
+                "onGoing": false
+            },
+            {
+                "callTitle": 'call3',
+                "callID": '29',
+                "onGoing": false
+            }
+        ]
+        const expected = "noongoingcalls";
+        const actual = getRandomID(arg);
+        expect(actual).to.be.eq(expected);
     });
 });

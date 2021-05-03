@@ -1,16 +1,16 @@
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import { INCALL, useCallState } from "../CallProvider";
 import { SPEAKER, LISTENER, MOD } from "../App";
-import { Link } from 'react-router-dom';
 import CopyLinkBox from "./CopyLinkBox";
 import Participant from "./Participant";
 import Counter from "./Counter";
 import MicIcon from "./MicIcon";
 import MutedIcon from "./MutedIcon";
-import Logo from '../frontend/images/speakeasyLogo.PNG';
 import theme from "../theme";
 import './InCall.css';
+import { useHistory } from "react-router-dom";
+
 
 const InCall = () => {
   const {
@@ -26,6 +26,40 @@ const InCall = () => {
     endCall,
   } = useCallState();
   console.log(participants);
+
+  //use room ID to get call info from database
+  const [callInfoDB, setCallInfoDB] = useState([]);
+  useEffect(() => {
+    //get request call info using fetch inside useEffect react hook
+    fetch('http://localhost:5000/getCall/' + room.name)
+      .then(response => response.json())
+      .then(data => setCallInfoDB(data))
+      .catch(error => {
+        console.error('There was an error with /getCall/' + room.name + ' !!', error);
+      });
+
+  //reload if different call name
+  }, [room.name])
+
+  const history = useHistory();
+
+  const handleEndCall = () => {
+    //get request to remove call from database
+    fetch('http://localhost:5000/end/' + room.name)
+    .then(response => response.json())
+    .catch(error => {
+      console.error('There was an error with /endcall/' + room.name + '!!', error);
+    });
+    endCall();
+    let path = 'main';
+    history.push(path);
+  }
+
+  const handleLeaveCall = () => {
+    leaveCall();
+    let path = 'main'
+    history.push(path);
+  }
 
   const local = useMemo((p) => participants?.filter((p) => p?.local)[0], [
     participants,
@@ -91,8 +125,36 @@ const InCall = () => {
     [lowerHand, raiseHand, local]
   );
 
+  const ChatroomToplog = () => {
+    return (
+      <div id = "top">
+        {mods?.length < 2 && getAccountType(local?.user_name) === MOD ? (
+            <a className="linka" href="/main">
+              <h1 id="logotext" onClick={handleEndCall}>Speakeasy </h1>
+            </a>
+          ) : (
+            <a className="linka" href="/main">
+              <h1 id="logotext" onClick={handleLeaveCall}>Speakeasy </h1>
+            </a>
+          )}
+      </div>
+    );
+  }
+  const ChatroomBottom = () => {
+    return (
+      <div id = "bottom">
+        <br></br>
+        <h2 id="reserved"> All rights reserved 2021 </h2>
+      </div>
+    );
+  }
+
   return (
+    <div>
+    <ChatroomToplog />
     <Container hidden={view !== INCALL}>
+      <h1 id="title">{"'" + callInfoDB.callTitle + "'"}</h1>
+      <h1 id="tag">{"Tag: " + callInfoDB.callTag}</h1>
       <CallHeader>
         <Header>Speakers</Header>
         <Counter />
@@ -124,25 +186,28 @@ const InCall = () => {
             </HandButton>
           )}
           {mods?.length < 2 && getAccountType(local?.user_name) === MOD ? (
-            <LeaveButton onClick={endCall}>End call</LeaveButton>
+            <LeaveButton onClick={handleEndCall}>End call</LeaveButton>
           ) : (
-            <LeaveButton onClick={leaveCall}>Leave call</LeaveButton>
+            <LeaveButton onClick={handleLeaveCall}>Leave call</LeaveButton>
           )}
         </TrayContent>
       </Tray>
     </Container>
+    <ChatroomBottom />
+    </div>
   );
 };
 
 
 const Container = styled.div`
-  margin: 0 0 0;
+  max-width: 700px;
+  margin: auto;
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
   height: ${(props) => (props.hidden ? "0" : "100%")};
   width: 100%;
 `;
 const CanSpeakContainer = styled.div`
-  border-bottom: ${theme.colors.green} 7px solid;
+  border-bottom: ${theme.colors.blue} 7px solid;
   margin-bottom: 24px;
   display: flex;
   flex-wrap: wrap;
@@ -171,8 +236,9 @@ const Tray = styled.div`
   height: 100px;
   width: 100%;
   box-sizing: border-box;
-  background-color: ${theme.colors.blue};
+  background-color:#dee8ff;
   padding: 12px;
+  border-radius:5px 5px ;
 `;
 const TrayContent = styled.div`
   max-width: 700px;
@@ -189,7 +255,7 @@ const Button = styled.button`
   border-radius: 8px;
 
   &:hover {
-    background-color: ${theme.colors.greyLightest};
+    background-color: ${theme.colors.blueLightest};
   }
 `;
 const LeaveButton = styled(Button)`
@@ -198,7 +264,7 @@ margin-left: 0;
 margin-bottom: 5px;
 width: 34%;
 background-color: #2a9df4;
-font-size: 20px;
+font-size: calc(10px + 3vw);
 border-radius: 10px;
 height: 60px;
 `;
@@ -211,14 +277,12 @@ margin-left: 0;
 margin-bottom: 5px;
 width: 34%;
 background-color: #2a9df4;
-font-size: 20px;
+font-size: calc(10px + 2vw);
 border-radius: 10px;
 height: 60px;
 `;
 const ButtonText = styled.span`
   margin-left: 4px;
 `;
-
-
 
 export default InCall;

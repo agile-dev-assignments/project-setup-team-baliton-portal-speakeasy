@@ -2,9 +2,9 @@ div{
   width: device-width;
 }
 
-.grayButton {
+.grayButtontag {
   background-color: lightgrey;
-  width: 20%;
+  width: calc(150px + 25vw);
   font-size: 20px;
   border-radius: 10px;
   padding: 20px;
@@ -12,38 +12,34 @@ div{
   text-align: center;
   border-radius: 25px;
   font-weight: 600;
-  margin-top: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   border: solid;
   border-width: 2px;
 }
 
-.grayButton > a {
+.grayButtontag > a {
   text-decoration: none;
-}
-
-.tagList {
-  display: block;
 }
 
 .tag {
   background: lightgrey;
   border: solid;
   border-width: 2px;
-  padding: 20px;
+  padding: 10px;
   margin: 0 auto;
   margin-top: 10px;
-  width: 40%;
+  width: calc(150px + 35vw);
 }
 
-.link {
+.linktag {
   font-size: 24px;
   width: 40%;
   display: inline-block;
   vertical-align: top;
   padding: 2%;
   background-color: white;
-  border: solid black;
-  border-width: 1px;
+  border: 1px solid black;
   text-align: center;
   margin-right: 5%;
   height: 80px;
@@ -51,32 +47,27 @@ div{
   text-decoration: none;
 }
 
-.stats {
-  width: 49%;
-  line-height: 100%;
-  vertical-align: top;
-  display: inline-block;
+.callstag {
+    font-size: 24px;
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 2%;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 5%;
+    height: 80px;
+    text-decoration: none;
 }
 
-.calls {
+.paragraphtag {
   text-align: center;
-  height: 39.5px;
-  line-height: 39.5px;
-  background-color: white;
-  padding: 7px;
-  border: solid;
-  border-bottom: 0px;
-  border-width: 1px;
-}
-
-.people {
-  text-align: center;
-  height: 39.5px;
-  line-height: 39.5px;
-  background-color: white;
-  padding: 7px;
-  border: solid;
-  border-width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: calc(10px + 1.5vw) !important;
+  line-height: 80px;
+  margin: 0 auto;
 }
 
 .no-calls-image {

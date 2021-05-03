@@ -4,6 +4,8 @@ import { LISTENER, MOD } from "../App";
 import theme from "../theme";
 import { useCallState } from "../CallProvider";
 import {useLocation} from "react-router-dom";
+import '../App.css';
+import { Toplog, Bottom } from '../frontend/App';
 
 const PreJoinRoom = () => {
 
@@ -80,6 +82,8 @@ const PreJoinRoom = () => {
 
   if (urlID !== "") {
     return (
+      <div>
+      <Toplog />
       <Container>
         <Title>{callMessage}</Title>
         <Form onSubmit={submitForm}>
@@ -109,10 +113,14 @@ const PreJoinRoom = () => {
           {error && <ErrorText>Error: {error.toString()}</ErrorText>}
         </Form>
       </Container>
+      <Bottom />
+      </div>
     );
   }
   else {
     return (
+      <div>
+      <Toplog />
       <Container>
         <Title>Create New Call:</Title>
         <Form onSubmit={submitForm}>
@@ -155,9 +163,12 @@ const PreJoinRoom = () => {
                 : "Create & Join Room!"
             }
           />
+          <a href="/main">Cancel</a>
           {error && <ErrorText>Error: {error.toString()}</ErrorText>}
         </Form>
       </Container>
+      <Bottom />
+      </div>
     );
   }
 };

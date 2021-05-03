@@ -10,7 +10,7 @@ require('dotenv').config();
 //use cors middle ware
 app.use(cors())
 //use json parsing middleware
-app.use(express.json());
+//app.use(express.json());
 
 //variables from dotenv
 const atlas_username = process.env.DB_USERNAME;
@@ -33,7 +33,7 @@ app.get('/postCall/:id/:title/:tag', (req, res) => {
   let storeId = req.params.id;
   let storeTitle = req.params.title;
   let storeTag = req.params.tag;
-  console.log("Adding Call to database with ID: ", storeId, "");
+  console.log("Adding Call to database with ID: ", storeId);
   console.log("Adding Call to database with Title: ", storeTitle);
   console.log("Adding Call to database with Tag: ", storeTag);
   const postCall = new Call({
@@ -50,6 +50,82 @@ app.get('/postCall/:id/:title/:tag', (req, res) => {
     .catch((err) => {
       console.log(err);
     })
+})
+
+//route to end calls(update ongoing field boolean)
+app.get('/end/:callid', (req, res, next) => {
+  let storeID = req.params.callid;
+  console.log("Updating Database to end call with ID: ", storeID);
+
+  Call.updateOne({callID:storeID}, {onGoing:false},
+    function (err, docs) {
+      if (err){
+          console.log(err)
+      }
+      else{
+          console.log("Updated Docs : ", docs);
+      }
+  }).then(dbResponse => {
+    res.json(dbResponse);
+  })
+  .catch(error => {
+    //handle error and print to console
+    console.error('There was an error with /end/:callid !!!! ', error);
+  });
+})
+
+//route to get call DB entry by querying call ID
+app.get('/getCall/:callid', (req, res, next) => {
+  let storeID = req.params.callid;
+  console.log("Fetching Database entry to end call with ID: ", storeID);
+
+  Call.findOne({callID:storeID},
+    function (err, docs) {
+      if (err){
+          console.log(err)
+      }
+      else{
+          console.log("Updated Docs : ", docs);
+      }
+    }).then(dbResponse => {
+      res.json(dbResponse);
+    })
+    .catch(error => {
+      //handle error and print to console
+      console.error('There was an error with /getCall/:callid !!!! ', error);
+    });
+})
+
+//returns a random in the given list of calls, or the string "noongoingcalls" if the list is empty
+const getRandomID = (callList) => {
+
+  callList = callList.filter(call => {
+    return call.onGoing; 
+  })
+  if (callList.length === 0) {
+    console.log("im feeling lucky attempted, no ongoing calls to return");
+    return "noongoingcalls";
+  }
+  else {
+    let randomIndex = Math.floor(Math.random() * callList.length); 
+    console.log("im feeling lucky attempted, directing to call with ID: " + callList[randomIndex].callID)
+    return callList[randomIndex].callID;
+  }
+}
+
+//route to get random ongoing call from DB
+app.get('/imFeelingLucky', (req, res, next) => {
+
+  Call.find()
+    .then(dbResponse => {
+      let callList = dbResponse;
+      let randomID = getRandomID(callList);
+      res.json({callID:randomID});
+    })
+    .catch(error => {
+      //handle error and print to console
+      console.error('There was an error with /imFeelingLucky !!!! ', error);
+    });
 })
 
 //helper functoin to sort time started's dates before sorting time
@@ -146,17 +222,14 @@ const moreRecent = (a, b) => {
 //get unique tags
 //accepts a json array of ongoing calls and returns a list of unique tags
 const getUniqueTags = (callArray) => {
-  let seenList = [];
+  let seenList = {};
 
   callArray.map(call => {
     let callTag = call.callTag;
-    if (seenList.includes(callTag)) {
-      //do nothing if this tag is already in the list
-      return;
+    if (!(callTag in seenList)) {
+      seenList[callTag] = 0
     }
-    else {
-      seenList.push(callTag);
-    }
+    seenList[callTag] += 1
   })
   
   return seenList;
@@ -195,9 +268,10 @@ app.get('/getDistinctTags', (req, res, next) => {
       callList = callList.filter(call => {
         return call.onGoing;
       })
-      let uniqueTagsList = getUniqueTags(callList);
-      res.send(uniqueTagsList)
-
+      let uniqueTagsWithNumberOfCalls = getUniqueTags(callList)
+      const unqiueTagsWithNumberOfCallsList = Object.entries(uniqueTagsWithNumberOfCalls)
+      unqiueTagsWithNumberOfCallsList.sort((a, b) => (b[1] - a[1]))
+      res.send(unqiueTagsWithNumberOfCallsList)
     })
     .catch(error => {
       //handle error and print it to console with message
@@ -234,7 +308,6 @@ app.get('/tagCallList/:tag', (req, res, next)=>{
 
 })
 
-
 // we will put some server logic here later...
 // export the express app we created to make it available to other modules
 module.exports = {
@@ -243,5 +316,6 @@ module.exports = {
     sortTime: sortTime,
     sortDate: sortDate,
     onGoingWithTag: onGoingWithTag,
-    getUniqueTags: getUniqueTags
+    getUniqueTags: getUniqueTags,
+    getRandomID: getRandomID
 }
