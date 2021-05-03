@@ -31,7 +31,7 @@ const InCall = () => {
   const [callInfoDB, setCallInfoDB] = useState([]);
   useEffect(() => {
     //get request call info using fetch inside useEffect react hook
-    fetch('http://localhost:5000/getCall/' + room.name)
+    fetch('http://159.65.182.78' + ':5000/getCall/' + room.name)
       .then(response => response.json())
       .then(data => setCallInfoDB(data))
       .catch(error => {
@@ -45,7 +45,7 @@ const InCall = () => {
 
   const handleEndCall = () => {
     //get request to remove call from database
-    fetch('http://localhost:5000/end/' + room.name)
+    fetch('http://159.65.182.78' + ':5000/end/' + room.name)
     .then(response => response.json())
     .catch(error => {
       console.error('There was an error with /endcall/' + room.name + '!!', error);
