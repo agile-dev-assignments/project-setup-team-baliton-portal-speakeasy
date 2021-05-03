@@ -12,7 +12,7 @@ const MainPage = (prop) => {
   const handleImFeelingLucky = () => {
     //get request to remove call from database
     let id = "";
-    fetch('https://159.65.182.78:5000/imFeelingLucky')
+    fetch('http://159.65.182.78:5000/imFeelingLucky')
     .then(response => response.json())
       .then(data => {
         id = data.callID;
