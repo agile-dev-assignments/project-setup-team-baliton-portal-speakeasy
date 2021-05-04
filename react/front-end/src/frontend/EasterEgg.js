@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './EasterEgg.css';
-import background from "./images/front-page-background.png"
 import { useHistory } from "react-router-dom";
 import MobileMediaQuery from "./MobileMediaQuery";
 

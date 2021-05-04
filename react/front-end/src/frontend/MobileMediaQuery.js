@@ -1,6 +1,6 @@
 import React from 'react';
 import background from "./images/front-page-background.png"
-import mobileBackground from "./images/front-page-background-mobile.png"
+import mobileBackground from "./images/easter-background-mobile.png"
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
