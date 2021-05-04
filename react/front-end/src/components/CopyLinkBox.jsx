@@ -12,17 +12,6 @@ const CopyLinkBox = ({ room }) => {
           Copy and share join code with others to invite them. Code:{" "}
           <Bold>{room?.name}</Bold>
         </SubHeader>
-        <CopyButton
-          onClick={() => {
-            navigator.clipboard.writeText(room?.name);
-            setLinkCopied(true);
-            setTimeout(() => setLinkCopied(false), 5000);
-          }}
-        >
-          <CopyButtonText>
-            {linkCopied ? "Copied!" : `Copy join code`}
-          </CopyButtonText>
-        </CopyButton>
       </InviteContainer>
     </Container>
   );
@@ -57,28 +46,6 @@ const SubHeader = styled.p`
 `;
 const Bold = styled.span`
   font-weight: 600;
-`;
-const CopyButton = styled.button`
-  border: ${theme.colors.turquoise} 1px solid;
-  background-color: ${theme.colors.blueLight};
-  padding: 8px 12px;
-  border-radius: 8px;
-  width: 122px;
-  cursor: pointer;
-
-  &:active {
-    background-color: ${theme.colors.cyan};
-  }
-  &:focus {
-    outline: none;
-    border: ${theme.colors.cyan} 1px solid;
-    border-radius: 8px;
-  }
-`;
-const CopyButtonText = styled.span`
-  font-size: ${theme.fontSize.base};
-  font-weight: 600;
-  text-align: center;
 `;
 
 export default CopyLinkBox;

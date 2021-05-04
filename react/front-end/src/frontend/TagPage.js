@@ -10,7 +10,7 @@ const TagPage = (props) => {
  
     useEffect(() => {
       // GET request using fetch inside useEffect React hook
-      fetch('http://localhost:5000/tagCallList/' + props.match.params.tag)
+      fetch('http://159.65.182.78:5000/tagCallList/' + props.match.params.tag)
         .then(response => response.json())
         .then(data => setTagCallList([...data]))
         .catch(error => {
@@ -82,7 +82,7 @@ const Call = (props) => {
         <div className="stats">
           <div className="duration">
             <p className="paragraph-info">
-              Start Time: {props.duration}
+              Duration: {props.duration} min
             </p>
           </div>
           <div className="people">
