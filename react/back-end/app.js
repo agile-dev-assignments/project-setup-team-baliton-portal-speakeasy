@@ -1,4 +1,4 @@
-// import and instantiate express
+//import and instantiate express
 const express = require("express"); // CommonJS import style!
 const cors = require('cors');
 const app = express() // instantiate an Express object
