@@ -20,7 +20,7 @@ function RecentCallsPage() {
 
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
-    fetch('http://localhost:5000/recentCallList')
+    fetch('http://159.65.182.78:5000/recentCallList')
       .then(response => response.json())
       .then(data => setRecentCallList([...data]))
       .catch(error => {
