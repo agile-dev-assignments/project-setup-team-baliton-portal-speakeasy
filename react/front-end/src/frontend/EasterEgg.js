@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './EasterEgg.css';
 import background from "./images/front-page-background.png"
 import { useHistory } from "react-router-dom";
+import MobileMediaQuery from "./MobileMediaQuery";
+
 
 const EasterEgg = () => {
     // Declare a new state variable, which we'll call "count"
@@ -16,10 +18,9 @@ const EasterEgg = () => {
     return (
       <div className="easter" id="easterDiv" >
         <header className="App-header" >
-          <div className="background" style={{ backgroundImage:`url(${background})` }}>
-          <p id="counter">clicked {count} yes </p>
-              <button id="easterButton" onClick={() => setCount(count + 1)}></button>
-          </div>
+              <button id="easterButton" onClick={() => setCount(count + 1)}>
+          <MobileMediaQuery></MobileMediaQuery>
+          </button>
         </header>
       </div>
     )
