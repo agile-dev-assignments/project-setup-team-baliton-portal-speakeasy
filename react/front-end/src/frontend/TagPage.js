@@ -82,7 +82,7 @@ const Call = (props) => {
         <div className="stats">
           <div className="duration">
             <p className="paragraph-info">
-              Start Time: {props.duration}
+              Duration: {props.duration} min
             </p>
           </div>
           <div className="people">
