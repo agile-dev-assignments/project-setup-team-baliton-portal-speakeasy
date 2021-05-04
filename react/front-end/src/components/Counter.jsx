@@ -34,7 +34,7 @@ const Counter = () => {
 
   return (
     <Container>
-      This call ends in <Count>{counter}</Count>
+      This call ends in <Count>{" " + counter}</Count>
     </Container>
   );
 };
