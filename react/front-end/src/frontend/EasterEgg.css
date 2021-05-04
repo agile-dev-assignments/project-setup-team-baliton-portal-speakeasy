@@ -34,10 +34,10 @@
   .easter #easterButton {
     background-color:transparent;
     position:static;
-    margin-top: 5%;
+    margin-top: 0;
     margin-left:-20%;
-    width:110px;
-    height:100px;
+    width: 30%;
+    height: 30%;
     background:transparent;
     border: none;
     outline: none;
