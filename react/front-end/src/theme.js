@@ -28,6 +28,7 @@ const theme = {
     base: "12px",
     med: "14px",
     large: "16px",
+    mlarge: "22px",
     xlarge: "28px",
     xxlarge: "32px",
   },

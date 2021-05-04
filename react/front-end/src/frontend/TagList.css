@@ -3,9 +3,10 @@ div{
 }
 
 .grayButtontag {
-  background-color: lightgrey;
+  color: #398AD7;
+  background-color: #e6eaef;
   width: calc(150px + 25vw);
-  font-size: 20px;
+  font-size: 22px;
   border-radius: 10px;
   padding: 20px;
   margin: 0 auto;

@@ -122,7 +122,7 @@ const PreJoinRoom = () => {
       <div>
       <Toplog />
       <Container>
-        <Title>Create New Call:</Title>
+        <Title>Create New Call</Title>
         <Form onSubmit={submitForm}>
           <Label htmlFor="fname">Choose a Nickname:</Label>
           <Input
@@ -188,8 +188,20 @@ const Container = styled.div`
   }
 `;
 const Title = styled.h1`
-  font-size: ${theme.fontSize.large};
+  font-size: ${theme.fontSize.mlarge};
   color: ${theme.colors.blueDark};
+  background-color: ${theme.colors.greyLight};
+  width: calc(125px + 25vw);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: solid;
+  border-width: 2px;
 `;
 const Form = styled.form`
   display: flex;
@@ -203,7 +215,7 @@ const SmallText = styled.p`
 `;
 const Label = styled.label`
   color: ${theme.colors.blueDark};
-  font-size: ${theme.fontSize.base};
+  font-size: ${theme.fontSize.med};
   margin-bottom: 4px;
   line-height: 16px;
   margin-top: 16px;
