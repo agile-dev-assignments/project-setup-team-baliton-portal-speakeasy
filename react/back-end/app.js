@@ -25,7 +25,7 @@ mongoose.connect(atlasURL, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('connected to speakeasy-database with username: ' + atlas_username) 
   })
   .catch((err) => {
-    console.log('connection to DB failed, string that the attempt use: ' + atlasURL + 'err: ' + err)
+    //console.log('connection to DB failed, string that the attempt use: ' + atlasURL + 'err: ' + err)
   })
 
 //post route to upload to database
