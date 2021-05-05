@@ -34,7 +34,7 @@ const Counter = () => {
 
   return (
     <Container>
-      This call ends in...<Count>{counter}</Count>
+      Call ends in<Count>{counter}</Count>
     </Container>
   );
 };
@@ -48,6 +48,7 @@ const Container = styled.p`
 const Count = styled.span`
   width: 28px;
   display: inline-block;
+  margin-right: 5px;
   text-align: right;
   color: ${theme.colors.blueDark};
 `;

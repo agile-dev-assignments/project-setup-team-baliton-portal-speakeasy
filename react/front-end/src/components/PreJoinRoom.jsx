@@ -110,6 +110,7 @@ const PreJoinRoom = () => {
                 : "Join Room!"
             }
           />
+          <CancelButton href={"/main"}>Cancel</CancelButton>
           {error && <ErrorText>Error: {error.toString()}</ErrorText>}
         </Form>
       </Container>
@@ -163,7 +164,7 @@ const PreJoinRoom = () => {
                 : "Create & Join Room!"
             }
           />
-          <a href="/main">Cancel</a>
+          <CancelButton href={"/main"}>Cancel</CancelButton>
           {error && <ErrorText>Error: {error.toString()}</ErrorText>}
         </Form>
       </Container>
@@ -250,9 +251,30 @@ const Submit = styled(Input)`
     border: ${theme.colors.cyan} solid 2px;
   }
 `;
+const CancelButton = styled.a`
+ text-align: center;
+ border-radius: 8px;
+ margin-top: 16px;
+ border: ${theme.colors.redLight} 2px solid;
+ background-color: ${theme.colors.red};
+ padding: 5px;
+ font-size: ${theme.fontSize.base};
+ font-weight: 700;
+ color: ${theme.colors.black};
+ height: 26px;
+ cursor: pointer;
+
+ &:active {
+  background-color: ${theme.colors.red};
+ }
+ &:hover {
+  border: ${theme.colors.red} solid 2px;
+ }
+`;
 const ErrorText = styled.p`
   margin-left: auto;
   color: ${theme.colors.red};
 `;
+
 
 export default PreJoinRoom;
