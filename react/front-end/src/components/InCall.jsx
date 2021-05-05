@@ -247,7 +247,7 @@ const TrayContent = styled.div`
   width: 100%;
 `;
 const Button = styled.button`
-  font-size: ${theme.fontSize.large};
+  font-size: ${theme.fontSize.med};
   font-weight: 600;
   border: none;
   background-color: transparent;
@@ -262,14 +262,21 @@ const LeaveButton = styled(Button)`
 margin-top: 5px;
 margin-left: 0;
 margin-bottom: 5px;
-width: 34%;
+width: 38%;
 background-color: #2a9df4;
 font-size: calc(10px + 3vw);
 border-radius: 10px;
 height: 60px;
 `;
 const HandButton = styled(Button)`
-  margin-right: auto;
+margin-top: 5px;
+margin-left: 0;
+margin-bottom: 5px;
+width: 48%;
+background-color: #2a9df4;
+font-size: calc(8px + 3vw);
+border-radius: 10px;
+height: 60px;
 `;
 const AudioButton = styled(Button)`
 margin-top: 5px;
