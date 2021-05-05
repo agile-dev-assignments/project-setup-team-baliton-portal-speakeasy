@@ -1,5 +1,6 @@
 ### Continuouse Integration With Travis CI (on synced forked repo):
 [![Build Status](https://travis-ci.com/dtomkovicz/project-setup-team-baliton-portal-speakeasy.svg?branch=master)](https://travis-ci.com/dtomkovicz/project-setup-team-baliton-portal-speakeasy)
+[Link To Travis CI Webpage of Forked Repo](https://travis-ci.com/github/dtomkovicz/project-setup-team-baliton-portal-speakeasy/jobs/502986211/config)
 
 ### Deployed Droplet Link:
 [Speakeasy Link](http://159.65.182.78:3000/)
