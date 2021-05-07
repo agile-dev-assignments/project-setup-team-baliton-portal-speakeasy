@@ -16,7 +16,8 @@ Disagreements and conflicts among team members will be resolved at scrum meeting
 Team members should first fork a copy of the project repository to their own github.
 Team members will then copy the main branch of their own fork to their local desktop environment.
 Create a new branch for each task, remembering to pull the most recent copy of the repository before commiting
-### Instructions for Building/Testing (to do at later date)
+### Instructions for Building/Testing 
+Pull github repo onto local machine. Run npm install in folders react/front-end and react/back-end. Then add .env file to react/back-end with database credentials and run npm start in both react/front-end and react/backend (with seperate terminals).
 
 
 ## Code of Conduct
